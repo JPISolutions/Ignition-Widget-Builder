@@ -1,0 +1,998 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]InPlay Oil/Cardium/Leafland/14-32-039-05W5/SAT 14-32-039-05W5/Well Test"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.maxValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accOil.EngHigh"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.minValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accOil.EngLow"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/accOil\"), \u00270.00\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "OIL VOLUME"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "basePath": "{view.params.basePath}"
+                                },
+                                "tagPath": "{basePath}/Meter/Current Values/accOil.EngUnit"
+                              },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_0"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.maxValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accGas.EngHigh"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.minValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accGas.EngLow"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/accGas\"), \u00270.00\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "GAS VOLUME"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "basePath": "{view.params.basePath}"
+                                },
+                                "tagPath": "{basePath}/Meter/Current Values/accGas.EngUnit"
+                              },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Gauges"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.maxValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accWater.EngHigh"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.minValue": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/Meter/Current Values/accWater.EngLow"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/accWater\"), \u00270.00\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "WATER VOLUME"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "basePath": "{view.params.basePath}"
+                                },
+                                "tagPath": "{basePath}/Meter/Current Values/accWater.EngUnit"
+                              },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_1"
+                },
+                "position": {
+                  "basis": "150px",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Progress"
+                    },
+                    "position": {
+                      "basis": "72px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/testDuration\"), \u00270.00\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "max": 24,
+                      "style": {
+                        "paddingBottom": 15,
+                        "paddingTop": 15
+                      },
+                      "valueDisplay": {
+                        "enabled": true,
+                        "format": "00"
+                      }
+                    },
+                    "type": "ia.display.progress"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "DURATION"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          },
+                          "text": "HRS"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "props": {
+                      "justify": "center",
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "150px",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder",
+                    "paddingTop": 6
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Gauges"
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Well Tested"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Meter/Current Values/wellInTest"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Well Tested"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Well UWI"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "tag(subString({view.params.basePath}, 0, lastIndexOf({view.params.basePath}, \"/\")) + \"/_testedWells/Well\" + tag({view.params.basePath} + \"/Meter/Current Values/wellInTest\") + \"/uwi\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Well UWI"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Status"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "tag({view.params.basePath} + \"/Meter/Current Values/testStatus\")"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "Error",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 0,
+                          "output": "Stopped"
+                        },
+                        {
+                          "input": 1,
+                          "output": "Purging"
+                        },
+                        {
+                          "input": 2,
+                          "output": "Testing"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Status"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Start Date"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Meter/Current Values/startDate"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "numberFormat(toInt(floor(toInt({value}) / 100)), \"00\")\r\n+ \"/\" +\r\nnumberFormat(toInt({value}) % 100, \"00\")",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Start Date"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Start Time"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Meter/Current Values/startTime"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "numberFormat(toInt(floor(toInt({value}) / 100)), \"00\")\r\n+ \":\" +\r\nnumberFormat(toInt({value}) % 100, \"00\")",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Start TIme"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "24Hr Prorated Liquid"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/totalProd\"), \u00270.00\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Prorated Liquid"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "AVERAGE WATER CUT"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/Meter/Current Values/avgCut\"), \u00270.00\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Water Volume_0"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "_comment": "Time Metrics Stacked Bar Component - Copy this into widgets between Rate and Count sections",
+  "children": [
+    {
+      "meta": {
+        "name": "TimeBarLabel"
+      },
+      "position": {
+        "shrink": 0
+      },
+      "props": {
+        "style": {
+          "classes": "Framework/Card/Label"
+        },
+        "text": "TIME BREAKDOWN"
+      },
+      "type": "ia.display.label"
+    },
+    {
+      "children": [
+        {
+          "meta": {
+            "name": "Running"
+          },
+          "position": {
+            "grow": 1
+          },
+          "propConfig": {
+            "position.grow": {
+              "binding": {
+                "config": {
+                  "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/timerunning'))"
+                },
+                "type": "expr"
+              }
+            }
+          },
+          "props": {
+            "style": {
+              "backgroundColor": "#4CAF50"
+            }
+          },
+          "type": "ia.container.flex"
+        },
+        {
+          "meta": {
+            "name": "Idle"
+          },
+          "position": {
+            "grow": 1
+          },
+          "propConfig": {
+            "position.grow": {
+              "binding": {
+                "config": {
+                  "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/timeidle'))"
+                },
+                "type": "expr"
+              }
+            }
+          },
+          "props": {
+            "style": {
+              "backgroundColor": "#FFC107"
+            }
+          },
+          "type": "ia.container.flex"
+        },
+        {
+          "meta": {
+            "name": "Planned"
+          },
+          "position": {
+            "grow": 1
+          },
+          "propConfig": {
+            "position.grow": {
+              "binding": {
+                "config": {
+                  "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/timedownplanned'))"
+                },
+                "type": "expr"
+              }
+            }
+          },
+          "props": {
+            "style": {
+              "backgroundColor": "#FF9800"
+            }
+          },
+          "type": "ia.container.flex"
+        },
+        {
+          "meta": {
+            "name": "Unplanned"
+          },
+          "position": {
+            "grow": 1
+          },
+          "propConfig": {
+            "position.grow": {
+              "binding": {
+                "config": {
+                  "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/timedownunplanned'))"
+                },
+                "type": "expr"
+              }
+            }
+          },
+          "props": {
+            "style": {
+              "backgroundColor": "#F44336"
+            }
+          },
+          "type": "ia.container.flex"
+        }
+      ],
+      "meta": {
+        "name": "TimeBar"
+      },
+      "position": {
+        "basis": "16px",
+        "shrink": 0
+      },
+      "props": {
+        "direction": "row",
+        "style": {
+          "borderRadius": "4px",
+          "overflow": "hidden"
+        }
+      },
+      "type": "ia.container.flex"
+    },
+    {
+      "children": [
+        {
+          "meta": {
+            "name": "RunLabel"
+          },
+          "position": {
+            "grow": 1
+          },
+          "props": {
+            "style": {
+              "classes": "Framework/Card/Label",
+              "color": "#4CAF50",
+              "fontSize": "10px",
+              "textAlign": "left"
+            },
+            "text": "RUN"
+          },
+          "type": "ia.display.label"
+        },
+        {
+          "meta": {
+            "name": "IdleLabel"
+          },
+          "position": {
+            "grow": 1
+          },
+          "props": {
+            "style": {
+              "classes": "Framework/Card/Label",
+              "color": "#FFC107",
+              "fontSize": "10px",
+              "textAlign": "center"
+            },
+            "text": "IDLE"
+          },
+          "type": "ia.display.label"
+        },
+        {
+          "meta": {
+            "name": "PlanLabel"
+          },
+          "position": {
+            "grow": 1
+          },
+          "props": {
+            "style": {
+              "classes": "Framework/Card/Label",
+              "color": "#FF9800",
+              "fontSize": "10px",
+              "textAlign": "center"
+            },
+            "text": "PLAN"
+          },
+          "type": "ia.display.label"
+        },
+        {
+          "meta": {
+            "name": "DownLabel"
+          },
+          "position": {
+            "grow": 1
+          },
+          "props": {
+            "style": {
+              "classes": "Framework/Card/Label",
+              "color": "#F44336",
+              "fontSize": "10px",
+              "textAlign": "right"
+            },
+            "text": "DOWN"
+          },
+          "type": "ia.display.label"
+        }
+      ],
+      "meta": {
+        "name": "TimeLegend"
+      },
+      "position": {
+        "shrink": 0
+      },
+      "props": {
+        "style": {
+          "overflow": "visible"
+        }
+      },
+      "type": "ia.container.flex"
+    }
+  ],
+  "meta": {
+    "name": "TimeMetrics"
+  },
+  "position": {
+    "basis": "70px",
+    "shrink": 0
+  },
+  "props": {
+    "direction": "column",
+    "style": {
+      "classes": "Framework/Card/ContainerWBorder",
+      "paddingBottom": 4,
+      "paddingTop": 4
+    }
+  },
+  "type": "ia.container.flex"
+}

@@ -1,0 +1,798 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Path/To/Your/Work Order"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 420,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/workordernumber"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "WO-00000"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \"/quantitytarget\") > 0, numberformat(tag({view.params.basePath} + \"/quantityactual\") / tag({view.params.basePath} + \"/quantitytarget\") * 100, '0.0'), 0)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "COMPLETE"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Completion_Container"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \"/quantityactual\") > 0, numberformat((1 - tag({view.params.basePath} + \"/quantitydefect\") / tag({view.params.basePath} + \"/quantityactual\")) * 100, '0.0'), 100)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "YIELD"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Yield_Container"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "GaugeRow"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Progress"
+                },
+                "position": {
+                  "basis": "36px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "tag({view.params.basePath} + \"/quantityactual\")"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.max": {
+                    "binding": {
+                      "config": {
+                        "expression": "tag({view.params.basePath} + \"/quantitytarget\")"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "max": 100,
+                  "style": {
+                    "paddingBottom": 6,
+                    "paddingTop": 6
+                  },
+                  "valueDisplay": {
+                    "enabled": true,
+                    "format": "#,##0"
+                  }
+                },
+                "type": "ia.display.progress"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "PROGRESS"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/uom"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "units"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "props": {
+                  "justify": "center",
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Progress_Container"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder",
+                "paddingTop": 4
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ProgressRow"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Target"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/quantitytarget\"), '#,##0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TargetRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Actual"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/quantityactual\"), '#,##0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ActualRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Good"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/quantityactual\") - tag({view.params.basePath} + \"/quantitydefect\"), '#,##0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "GoodRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Defect"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/quantitydefect\"), '#,##0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "DefectRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Remaining"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(max(0, tag({view.params.basePath} + \"/quantitytarget\") - tag({view.params.basePath} + \"/quantityactual\")), '#,##0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "RemainingRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Started"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "StartedRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Duration"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "DurationRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

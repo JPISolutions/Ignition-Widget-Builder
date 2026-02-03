@@ -1,0 +1,87 @@
+{
+  "name": "Work Order",
+  "parameters": {
+    "srcBasePath": {
+      "dataType": "String",
+      "value": "[MQTT Engine]Edge Nodes/jpi/Cappy Hour Inc/Site1/fillerproduction/fillingline01/Work Order"
+    }
+  },
+  "tagType": "UdtInstance",
+  "tags": [
+    {
+      "name": "quantityactual",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "Widget",
+      "tagType": "UdtInstance",
+      "tags": [
+        {
+          "name": "sizeX",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "params",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathDetail",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "path",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeY",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "title",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathTrend",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathConfig",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "hide",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "priority",
+          "tagType": "AtomicTag"
+        }
+      ]
+    },
+    {
+      "name": "workorderid",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "assetid",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "workordernumber",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "quantitytarget",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "uom",
+      "tagType": "AtomicTag"
+    },
+    {
+      "name": "quantitydefect",
+      "tagType": "AtomicTag"
+    }
+  ],
+  "typeId": "Generated/Workcell/Work Order_C37358E8"
+}

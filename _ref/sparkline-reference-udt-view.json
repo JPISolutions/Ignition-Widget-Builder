@@ -1,0 +1,566 @@
+{
+  "custom": {
+    "history": [
+      {
+        "aggregate": "Maximum",
+        "alias": "Min"
+      }
+    ]
+  },
+  "params": {
+    "basePath": "[default]JPI Solutions/Test Area/Test Field/Test Site A/Test Well/Equipment/Test Analog"
+  },
+  "propConfig": {
+    "custom.history": {
+      "persistent": true
+    },
+    "custom.history[0].path": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath}+\u0027/PV\u0027"
+        },
+        "type": "expr"
+      }
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.maxValue": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/PV.EngHigh"
+                      },
+                      "type": "tag"
+                    }
+                  },
+                  "props.minValue": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/PV.EngLow"
+                      },
+                      "type": "tag"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/PV"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "113.5px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "tag({view.params.basePath}+\u0027.name\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "textStyle": {
+                        "fontSize": "12px"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "position": {
+                      "basis": "30px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/PV.EngUnit"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "textStyle": {
+                        "fontSize": 10,
+                        "textAlignLast": "right"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "27px"
+                },
+                "props": {
+                  "justify": "space-between"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onDoubleClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "C6QXMDxM",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "title": "Poll History 1Day",
+                    "type": "open",
+                    "viewParams": {
+                      "basePath": "{view.params.basePath}",
+                      "tagPath": "/PV"
+                    },
+                    "viewPath": "Diagnostics/Embedded/HistoricList",
+                    "viewportBound": true
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "146px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Sparkline"
+            },
+            "position": {
+              "basis": "148px"
+            },
+            "propConfig": {
+              "props.points": {
+                "binding": {
+                  "config": {
+                    "aggregate": "MinMax",
+                    "avoidScanClassValidation": true,
+                    "dateRange": {
+                      "mostRecent": "{session.custom.sparklineTime}",
+                      "mostRecentUnits": "HOUR"
+                    },
+                    "enableValueCache": true,
+                    "ignoreBadQuality": false,
+                    "polling": {
+                      "enabled": false,
+                      "rate": "30"
+                    },
+                    "preventInterpolation": false,
+                    "returnFormat": "Wide",
+                    "returnSize": {
+                      "numRows": "100",
+                      "type": "FIXED"
+                    },
+                    "tags": "{view.custom.history}",
+                    "valueFormat": "DATASET"
+                  },
+                  "type": "tag-history"
+                }
+              },
+              "props.range.high": {
+                "binding": {
+                  "config": {
+                    "aggregate": "MinMax",
+                    "avoidScanClassValidation": true,
+                    "dateRange": {
+                      "mostRecent": "{session.custom.sparklineTime}",
+                      "mostRecentUnits": "HOUR"
+                    },
+                    "enableValueCache": true,
+                    "ignoreBadQuality": false,
+                    "polling": {
+                      "enabled": false,
+                      "rate": "30"
+                    },
+                    "preventInterpolation": false,
+                    "returnFormat": "Wide",
+                    "returnSize": {
+                      "numRows": "100",
+                      "type": "FIXED"
+                    },
+                    "tags": "{view.custom.history}",
+                    "valueFormat": "DATASET"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\n\tif value is not None and len(value) \u003e 0:\n\t\tmaxValue \u003d None\n\t\t\n\t\tfor row in value:\n\t\t\tval \u003d row[1]  # value column is index 1\n\t\t\t\n\t\t\tif maxValue is None or val \u003e maxValue:\n\t\t\t\tmaxValue \u003d val\n\t\t\n\t\treturn maxValue\n\telse:\n\t\treturn 0",
+                      "type": "script"
+                    },
+                    {
+                      "expression": "({value}+({value}/8))",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag-history"
+                }
+              },
+              "props.range.low": {
+                "binding": {
+                  "config": {
+                    "aggregate": "MinMax",
+                    "avoidScanClassValidation": true,
+                    "dateRange": {
+                      "mostRecent": "{session.custom.sparklineTime}",
+                      "mostRecentUnits": "HOUR"
+                    },
+                    "enableValueCache": true,
+                    "ignoreBadQuality": false,
+                    "polling": {
+                      "enabled": false,
+                      "rate": "30"
+                    },
+                    "preventInterpolation": false,
+                    "returnFormat": "Wide",
+                    "returnSize": {
+                      "numRows": "100",
+                      "type": "FIXED"
+                    },
+                    "tags": "{view.custom.history}",
+                    "valueFormat": "DATASET"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\n\tif value is not None and len(value) \u003e 0:\n\t\tminValue \u003d None\n\t\t\n\t\tfor row in value:\n\t\t\tval \u003d row[1]  # value column is index 1\n\t\t\t\n\t\t\tif minValue is None or val \u003c minValue:\n\t\t\t\tminValue \u003d val\n\t\t\n\t\treturn minValue\n\telse:\n\t\treturn 0",
+                      "type": "script"
+                    },
+                    {
+                      "expression": "{value}-({value}/8)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag-history"
+                }
+              }
+            },
+            "props": {
+              "marker": {
+                "first": {
+                  "size": 0
+                },
+                "high": {
+                  "size": 0
+                },
+                "last": {
+                  "size": 0
+                },
+                "low": {
+                  "size": 0
+                }
+              },
+              "range": {},
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.display.sparkline"
+          }
+        ],
+        "meta": {
+          "name": "Current"
+        },
+        "position": {
+          "basis": "112px",
+          "shrink": 0.5
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "QUALITY"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/PV.quality"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Temp_1"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "LAST POLL"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "dateFormat(tag({view.params.basePath} + \"/PV.Timestamp\"), \"MMM dd, yyyy h:mm a\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Temp_2"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "64px"
+            },
+            "propConfig": {
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/PV/Alarms.HasActive"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "path": "material/warning"
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "189px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(tag({view.params.basePath}+\"/pv/Alarms.HighestActiveName\") \u003d null , \" \", tag({view.params.basePath}+\"/pv/Alarms.HighestActiveName\")) "
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "classes": "Framework/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": 40
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "if(tag({view.params.basePath} + \"/PV/Alarms.HasActive\"),if(floor(getMillis(now(750)) / 750) % 2 \u003d 0, \"#E921274A\", \"\"), \"\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "justify": "space-around",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

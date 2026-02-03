@@ -1,0 +1,191 @@
+{
+  "name": "caploader",
+  "parameters": {
+    "srcBasePath": {
+      "dataType": "String",
+      "value": "[MQTT Engine]Edge Nodes/jpi/Cappy Hour Inc/Site1/fillerproduction/fillingline01/caploader"
+    }
+  },
+  "tagType": "UdtInstance",
+  "tags": [
+    {
+      "name": "_metadata",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "assetidentifier",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "displayname",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "parentassetid",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "assetpath",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "assetid",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "assetname",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "assettypename",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "sortorder",
+              "tagType": "AtomicTag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "_metric",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "availability",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "performance",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "oee",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "quality",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "input",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "countinfeed",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "countoutfeed",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "ratestandard",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "timerunning",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "countdefect",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "timedownplanned",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "timeidle",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "rateactual",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "timedownunplanned",
+              "tagType": "AtomicTag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "State",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "code",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "type",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "name",
+          "tagType": "AtomicTag"
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "infeedtooutfeed",
+          "tagType": "AtomicTag"
+        }
+      ]
+    },
+    {
+      "name": "Widget",
+      "tagType": "UdtInstance",
+      "tags": [
+        {
+          "name": "pathTrend",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathConfig",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "hide",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "title",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "params",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "path",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeX",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "priority",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeY",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathDetail",
+          "tagType": "AtomicTag"
+        }
+      ]
+    }
+  ],
+  "typeId": "Generated/Workcell/caploader_FEA607D5"
+}
