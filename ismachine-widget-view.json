@@ -1,0 +1,474 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Path/To/Your/ismachine"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 340,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.tooltip": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Description"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "cursor": "help"
+              },
+              "text": "IS MACHINE",
+              "tooltip": ""
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "State"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/State/StateCurrent"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "Running"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "State Reason"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/State/StateReason"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "StateReasonRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "STATUS"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "StatusHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SpeedLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Machine Speed"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "SpeedValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Status/MachineSpeed\"), '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "SpeedCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SectionsLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Sections Active"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "SectionsValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Status/SectionsActive\"), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "SectionsCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "StatusGrid"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "PRODUCTION"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ProductionHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "CycleLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Cycles"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "CycleValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Production/CycleCount\"), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CycleCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ContainersLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Containers"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ContainersValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Production/ContainersFormed\"), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ContainersCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ProductionGrid"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

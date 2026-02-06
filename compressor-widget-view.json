@@ -1,0 +1,1207 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Path/To/Your/compressor"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 500,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.tooltip": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/_metadata/Identification/ComponentName"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "cursor": "help"
+              },
+              "text": "COMPRESSOR",
+              "tooltip": ""
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "State"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Operational/OperatingState/valueName"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "OPERATING STATE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "StateHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "State0Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 0, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State0Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/0"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State1Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 1, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State1Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/1"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State2Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 2, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State2Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/2"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State3Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 3, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State3Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/3"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "StateRow1"
+            },
+            "props": {},
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "State4Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 4, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State4Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/4"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State5Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 5, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State5Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/5"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State6Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 6, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State6Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/6"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "State7Cell"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 7, '#2196F3', 'transparent')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "3px",
+                    "padding": "2px"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": {
+                      "name": "State7Label"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "basePath": "{view.params.basePath}"
+                            },
+                            "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/7"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "0.7em",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "StateRow2"
+            },
+            "props": {},
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "StateGrid"
+        },
+        "position": {
+          "basis": "70px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "PRESSURES"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "PressureHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "OutletLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Outlet"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "OutletValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/ProcessFluidCircuit/Outlet/GaugePressure/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/GaugePressure/engineeringUnits/displayName')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "OutletPressureCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DeltaLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Delta"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DeltaValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/ProcessFluidCircuit/Delta/GaugePressure/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Delta/GaugePressure/engineeringUnits/displayName')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DeltaPressureCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "PressureGrid"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "TEMPERATURES"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TempHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "OutletTempLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Outlet"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "OutletTempValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/ProcessFluidCircuit/Outlet/Temperature/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/Temperature/engineeringUnits/displayName')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "OutletTempCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "OilTempLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Oil"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "OilTempValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/Operational/OilTemperature/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/Operational/OilTemperature/engineeringUnits/displayName')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "OilTempCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DewPointLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Dew Point"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DewPointValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/ProcessFluidCircuit/Outlet/DewPoint/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/DewPoint/engineeringUnits/displayName')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DewPointCell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TempGrid"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Motor Current"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + '/ElectricalCircuit/Input/Current/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ElectricalCircuit/Input/Current/engineeringUnits/displayName')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "0"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "MotorCurrentRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "MAINTENANCE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "MaintenanceHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "RunningTimeProgress"
+            },
+            "position": {
+              "basis": "32px"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Statistics/RunningTime/value"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "max": 1000,
+              "style": {
+                "paddingBottom": 5,
+                "paddingTop": 5
+              },
+              "value": 0,
+              "valueDisplay": {
+                "enabled": true,
+                "format": "#,##0"
+              }
+            },
+            "type": "ia.display.progress"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "MinLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "left"
+                  },
+                  "text": "0 hrs"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "CenterLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "center"
+                  },
+                  "text": "Running Time"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MaxLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "right"
+                  },
+                  "text": "1000 hrs"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ProgressLabelRow"
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "MaintenanceContainer"
+        },
+        "position": {
+          "basis": "70px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

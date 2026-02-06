@@ -1,0 +1,767 @@
+{
+  "name": "Compressor01",
+  "parameters": {
+    "srcBasePath": {
+      "dataType": "String",
+      "value": ""
+    }
+  },
+  "tagType": "UdtType",
+  "tags": [
+    {
+      "name": "_metadata",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "ElectricalCircuit",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Input",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "Current",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "engineeringUnits",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ElectricalCircuit_Input_Current_engineeringUnits_displayName\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "displayName",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ElectricalCircuit_Input_Current_engineeringUnits_namespaceUri\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "namespaceUri",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag({srcBasePath} + \"/ElectricalCircuit_Input_Current_engineeringUnits_unitId\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "unitId",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Operational",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "OperatingState",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "enumValues",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_0\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "0",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_7\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "7",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_2\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "2",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_5\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "5",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_6\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "6",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_3\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "3",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_4\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "4",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OperatingState_enumValues_1\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "1",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    }
+                  ]
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/Operational_OperatingState_dataType\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "dataType",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            },
+            {
+              "name": "OilTemperature",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "engineeringUnits",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag({srcBasePath} + \"/Operational_OilTemperature_engineeringUnits_unitId\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "unitId",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OilTemperature_engineeringUnits_displayName\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "displayName",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Operational_OilTemperature_engineeringUnits_namespaceUri\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "namespaceUri",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Statistics",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "RunningTime",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "engineeringUnits",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_engineeringUnits_displayName\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "displayName",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_engineeringUnits_unitId\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "unitId",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_engineeringUnits_namespaceUri\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "namespaceUri",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    }
+                  ]
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_description\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "description",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Identification",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Identification_AssetId\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "AssetId",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Identification_ComponentName\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "ComponentName",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Identification_DeviceClass\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "DeviceClass",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "ProcessFluidCircuit",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Delta",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "GaugePressure",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "engineeringUnits",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Delta_GaugePressure_engineeringUnits_unitId\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "unitId",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Delta_GaugePressure_engineeringUnits_namespaceUri\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "namespaceUri",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Delta_GaugePressure_engineeringUnits_displayName\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "displayName",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Outlet",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "DewPoint",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "engineeringUnits",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_DewPoint_engineeringUnits_displayName\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "displayName",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_DewPoint_engineeringUnits_unitId\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "unitId",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_DewPoint_engineeringUnits_namespaceUri\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "namespaceUri",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "GaugePressure",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "engineeringUnits",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_GaugePressure_engineeringUnits_unitId\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "unitId",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_GaugePressure_engineeringUnits_displayName\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "displayName",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_GaugePressure_engineeringUnits_namespaceUri\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "namespaceUri",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Temperature",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "engineeringUnits",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_Temperature_engineeringUnits_namespaceUri\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "namespaceUri",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_Temperature_engineeringUnits_unitId\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "unitId",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_Temperature_engineeringUnits_displayName\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "displayName",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Widget",
+      "tagType": "UdtInstance",
+      "tags": [
+        {
+          "name": "path",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathDetail",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeX",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeY",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathTrend",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathConfig",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "params",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "hide",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "priority",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "title",
+          "tagType": "AtomicTag"
+        }
+      ],
+      "typeId": "JPI-Framework/Misc/Metadata/Widget"
+    },
+    {
+      "name": "Operational",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "OperatingState",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Operational_OperatingState_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Operational_OperatingState_valueName\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "valueName",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/Operational_OperatingState_value\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "OilTemperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Operational_OilTemperature_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/Operational_OilTemperature_value\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ProcessFluidCircuit",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_FluidType\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "FluidType",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "Outlet",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Temperature",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_Temperature_timestamp\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "timestamp",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "Float8",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_Temperature_value\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "value",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            },
+            {
+              "name": "GaugePressure",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_GaugePressure_timestamp\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "timestamp",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "Float8",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_GaugePressure_value\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "value",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            },
+            {
+              "name": "DewPoint",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_DewPoint_timestamp\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "timestamp",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "Float8",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Outlet_DewPoint_value\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "value",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Delta",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "GaugePressure",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "Float8",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Delta_GaugePressure_value\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "value",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/ProcessFluidCircuit_Delta_GaugePressure_timestamp\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "timestamp",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ElectricalCircuit",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Input",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Current",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "Float8",
+                  "expression": "tag({srcBasePath} + \"/ElectricalCircuit_Input_Current_value\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "value",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag({srcBasePath} + \"/ElectricalCircuit_Input_Current_timestamp\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "timestamp",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "RunningTime",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/Statistics_RunningTime_value\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

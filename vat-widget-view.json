@@ -996,14 +996,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'RUN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timerunning') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#4CAF50",
                     "fontSize": "10px",
                     "textAlign": "left"
                   },
-                  "text": "RUN"
+                  "text": "RUN: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -1014,14 +1023,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'IDLE: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timeidle') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#FFC107",
                     "fontSize": "10px",
                     "textAlign": "center"
                   },
-                  "text": "IDLE"
+                  "text": "IDLE: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -1032,14 +1050,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'PLAN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timedownplanned') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#FF9800",
                     "fontSize": "10px",
                     "textAlign": "center"
                   },
-                  "text": "PLAN"
+                  "text": "PLAN: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -1050,14 +1077,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'DOWN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timedownunplanned') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#F44336",
                     "fontSize": "10px",
                     "textAlign": "right"
                   },
-                  "text": "DOWN"
+                  "text": "DOWN: 0"
                 },
                 "type": "ia.display.label"
               }

@@ -4,6 +4,8 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 
 ## Project Status
 
+### Enterprise B Widgets (OEE-focused)
+
 | Widget | Status |
 |--------|--------|
 | Caploader Widget | Complete |
@@ -20,6 +22,23 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 | Reference Analysis | Complete |
 | Documentation | Complete |
 
+### Enterprise C Widgets (Process-focused)
+
+| Category | Count | Status |
+|----------|-------|--------|
+| Complex Equipment | 9 | Complete |
+| Batch Controllers | 2 | Complete |
+| Controller Instruments (PV/SP) | 15 | Complete |
+| Simple Indicators | 19 | Complete |
+| **Total Enterprise C** | **45** | **Complete** |
+
+### Vendor UDT Widgets (OPC-UA Companion Spec)
+
+| Widget | Status |
+|--------|--------|
+| Compressor Widget | Complete |
+| Compressor Config View | Complete |
+
 ## Files
 
 ```
@@ -28,10 +47,15 @@ Ignition-Widget-Builder/
 │   ├── reference-UDT-view.json          # Styling & structure reference
 │   ├── sparkline-reference-udt-view.json # Sparkline implementation reference
 │   ├── caploader-data-tag-structure.json # Caploader UDT tag structure
-│   ├── full-udt-reference.json          # Complete UDT definitions
+│   ├── full-udt-reference.json          # Complete UDT definitions (Enterprise B)
+│   ├── entc-udt-reference.json          # Enterprise C UDT definitions
 │   ├── widget-design.txt                 # Layout/data display inspiration
 │   ├── work-order-references.json        # Work Order UDT tag structure
-│   └── time-metrics-component.json       # Reusable time breakdown bar component
+│   ├── time-metrics-component.json       # Reusable time breakdown bar component
+│   └── vendorUDT/
+│       └── compressor-UDT.json          # Vendor compressor UDT definition (OPC-UA)
+│
+├── # Enterprise B Widgets (OEE-focused)
 ├── caploader-widget-view.json            # Cap Loader widget
 ├── pallet-widget-view.json               # Pallet widget
 ├── filler-widget-view.json               # Filler widget
@@ -43,6 +67,62 @@ Ignition-Widget-Builder/
 ├── sealer-widget-view.json               # Sealer widget
 ├── workstation-widget-view.json          # Workstation widget
 ├── workorder-widget-view.json            # Work Order widget
+│
+├── # Enterprise C Widgets (Process-focused)
+├── ## Equipment (9)
+├── forehearth-widget-view.json           # Glass forehearth
+├── inspector-widget-view.json            # Product inspector
+├── batchmixer-widget-view.json           # Batch mixer
+├── silo-widget-view.json                 # Storage silo
+├── lehr-widget-view.json                 # Annealing lehr
+├── furnace-widget-view.json              # Glass furnace
+├── ismachine-widget-view.json            # IS machine
+├── palletizer-widget-view.json           # Palletizer
+├── batchcharger-widget-view.json         # Batch charger
+├── ## Batch Controllers (2)
+├── tff300-widget-view.json               # TFF300 batch controller
+├── chr01-widget-view.json                # CHR01 batch controller
+├── ## Controller Instruments (15)
+├── tic-widget-view.json                  # Temperature controller
+├── tic501-widget-view.json               # Temperature controller 501
+├── sic-widget-view.json                  # Speed controller
+├── sic501-widget-view.json               # Speed controller 501
+├── sic-250-002-widget-view.json          # Speed controller (LPM)
+├── sic-250-005-widget-view.json          # Speed controller (mL/min)
+├── sic-250-006-widget-view.json          # Speed controller (L/min)
+├── sic-250-008-widget-view.json          # Speed controller (LPM)
+├── sic-7c8a8608-widget-view.json         # Speed controller (SLPM)
+├── aic-250-001-widget-view.json          # Analyzer controller (%)
+├── aic-250-003-widget-view.json          # Analyzer controller (pH)
+├── fic-widget-view.json                  # Flow controller
+├── fic-250-002-widget-view.json          # Flow controller (SLPM)
+├── fcv-widget-view.json                  # Flow control valve
+├── pic-250-001-widget-view.json          # Pressure controller
+├── ## Simple Indicators (19)
+├── ti-widget-view.json                   # Temperature indicator
+├── ti8r-widget-view.json                 # Temperature indicator (°C)
+├── fi7f-widget-view.json                 # Flow indicator (LPM)
+├── fx7f-widget-view.json                 # Flow indicator (LMH)
+├── ai501-widget-view.json                # Analog indicator
+├── pcv7x-widget-view.json                # Pressure indicator (psig)
+├── hv-250-001-widget-view.json           # Valve position (%)
+├── hv-250-003-widget-view.json           # Valve position (%)
+├── hv-250-004-widget-view.json           # Valve position (%)
+├── dpi7m-widget-view.json                # Differential pressure (psig)
+├── wi-250-001-widget-view.json           # Weight indicator (kg)
+├── wi17k-widget-view.json                # Weight indicator (kg)
+├── chr-widget-view.json                  # Chromatography (with EU)
+├── chr01-v-widget-view.json              # Chromatography variant
+├── uv8r-widget-view.json                 # UV absorbance (AU)
+├── sr8r-widget-view.json                 # Shear rate (s⁻¹)
+├── aic-250-002-widget-view.json          # Analyzer status
+├── sum500-widget-view.json               # Summation (formula)
+├── sum500-47ab92d1-widget-view.json      # Summation (status)
+│
+├── # Vendor UDT Widgets (OPC-UA Companion Spec)
+├── compressor-widget-view.json           # Air compressor operational widget
+├── compressor-config-view.json           # Air compressor config/metadata view
+│
 └── README.md                             # This file
 ```
 
@@ -767,6 +847,264 @@ A React component mockup showing the desired data presentation and layout concep
 
 ---
 
+## Compressor Widget
+
+**File:** `compressor-widget-view.json`
+
+Operational monitoring widget for air compressors using vendor OPC-UA companion spec UDTs. Features grouped data sections and visual operating state indicator.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Header | Component Name (tooltip) | `_metadata/Identification/ComponentName` |
+| Header | Operating State | `Operational/OperatingState/valueName` |
+| Operating State | 2x4 state grid (active = blue) | `Operational/OperatingState/value` + `_metadata/.../enumValues/0-7` |
+| Pressures | Outlet pressure + EU | `ProcessFluidCircuit/Outlet/GaugePressure/value` |
+| Pressures | Delta pressure + EU | `ProcessFluidCircuit/Delta/GaugePressure/value` |
+| Temperatures | Outlet temp + EU | `ProcessFluidCircuit/Outlet/Temperature/value` |
+| Temperatures | Oil temp + EU | `Operational/OilTemperature/value` |
+| Temperatures | Dew point + EU | `ProcessFluidCircuit/Outlet/DewPoint/value` |
+| Motor Current | Current + EU | `ElectricalCircuit/Input/Current/value` |
+| Maintenance | Running time progress bar (max 1000 hrs) | `Statistics/RunningTime/value` |
+
+**Dynamic Engineering Units:** Values display with units fetched from `_metadata/.../engineeringUnits/displayName`.
+
+**Operating State Grid:** Each of the 8 enum states is displayed in a 2x4 grid. The active state is highlighted with a blue (#2196F3) background using conditional expression bindings.
+
+**Size:** 320 x 500 px
+
+---
+
+## Compressor Config View
+
+**File:** `compressor-config-view.json`
+
+Configuration/metadata display for air compressor UDTs. Shows all `_metadata` in a wide layout for reference and commissioning.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Header | Component Name | `_metadata/Identification/ComponentName` |
+| Identification | Asset ID | `_metadata/Identification/AssetId` |
+| Identification | Component Name | `_metadata/Identification/ComponentName` |
+| Identification | Device Class | `_metadata/Identification/DeviceClass` |
+| Operating State | Data Type | `_metadata/Operational/OperatingState/dataType` |
+| Operating State | Enum definitions (0-7) | `_metadata/Operational/OperatingState/enumValues/0-7` |
+| Engineering Units | Namespace URI (shared, shown once) | `_metadata/.../engineeringUnits/namespaceUri` |
+| Engineering Units | 7 measurements: displayName + unitId | `_metadata/.../engineeringUnits/displayName`, `unitId` |
+
+**Layout:** Side-by-side sections (Identification | Operating State) on top, full-width Engineering Units grid on bottom. All 8 enums in a single row, all 7 EU measurements in a single row.
+
+**Size:** 960 x 380 px
+
+---
+
+---
+
+## Enterprise C Widgets
+
+Enterprise C widgets are process-focused, differing from Enterprise B's OEE-centric approach.
+
+### Key Differences from Enterprise B
+
+| Aspect | Enterprise B | Enterprise C |
+|--------|--------------|--------------|
+| Metrics | OEE-focused (_metric/oee, availability, performance, quality) | Process-focused (no standard OEE) |
+| Asset Name | `_metadata/assetidentifier/displayname` | `Description` tag at root |
+| State | `State/name`, `State/duration` | `State/StateCurrent`, `State/StateReason` |
+| Data | Time metrics, counts, rates | Process values (PV), setpoints (SP), edge data |
+
+### Widget Categories
+
+#### Category 1: Complex Equipment (9 widgets)
+
+| File | UDT | Key Tags | Size |
+|------|-----|----------|------|
+| `forehearth-widget-view.json` | Forehearth | State, Status/GobTemp, Status/Temperature | 320×420 |
+| `inspector-widget-view.json` | Inspector | State, Production counts (PassCount, RejectCount, Defects) | 320×480 |
+| `batchmixer-widget-view.json` | BatchMixer | State, Status/BatchWeight | 320×320 |
+| `silo-widget-view.json` | Silo | Status/Material, Status/Level | 320×240 |
+| `lehr-widget-view.json` | Lehr | State, Status/BeltSpeed, ZoneTemp1-3 | 320×420 |
+| `furnace-widget-view.json` | Furnace | State, Status/Temperature, Status/GlassLevel | 320×360 |
+| `ismachine-widget-view.json` | ISMachine | State, Production, Status/MachineSpeed, SectionsActive | 320×480 |
+| `palletizer-widget-view.json` | Palletizer | State, Production/ContainersPerPallet, PalletsCompleted | 320×360 |
+| `batchcharger-widget-view.json` | BatchCharger | State, Status/FeedRate | 320×320 |
+
+#### Category 2: Batch Controllers (2 widgets)
+
+| File | UDT | Key Tags | Size |
+|------|-----|----------|------|
+| `tff300-widget-view.json` | TFF300 | RECIPE-NAME, BATCH-ID, FORMULA-NAME | 320×280 |
+| `chr01-widget-view.json` | CHR01 | STATE_PV, PHASE_PV, BATCH-ID, RECIPE-NAME, PROD_PV, WASTE_PV | 320×380 |
+
+#### Category 3: Controller Instruments with PV/SP (15 widgets)
+
+| File | UDT | Key Tags | Unit | Size |
+|------|-----|----------|------|------|
+| `tic-widget-view.json` | TIC | PV_Celsius, SP_Celsius | °C | 320×280 |
+| `tic501-widget-view.json` | TIC501 | PV_Celsius, SP_Celsius, MODE | °C | 320×320 |
+| `sic-widget-view.json` | SIC | PV_RPM, SP_RPM | RPM | 320×280 |
+| `sic501-widget-view.json` | SIC501 | PV_RPM, SP_RPM, MODE | RPM | 320×320 |
+| `sic-250-002-widget-view.json` | SIC-250-002 | PV_LPM, SP_LPM, START | LPM | 320×320 |
+| `sic-250-005-widget-view.json` | SIC-250-005 | PV_mL_per_min, SP_mL_per_min, START | mL/min | 320×320 |
+| `sic-250-006-widget-view.json` | SIC-250-006 | PV_L_per_min, SP_L_per_min, START | L/min | 320×320 |
+| `sic-250-008-widget-view.json` | SIC-250-008 | PV_LPM, SP_LPM, START | LPM | 320×320 |
+| `sic-7c8a8608-widget-view.json` | SIC-7C8A8608 | PV_SLPM, SP_SLPM, START | SLPM | 320×320 |
+| `aic-250-001-widget-view.json` | AIC-250-001 | PV_percent, SP_percent, START | % | 320×320 |
+| `aic-250-003-widget-view.json` | AIC-250-003 | PV_pH, SP_pH, START | pH | 320×320 |
+| `fic-widget-view.json` | FIC | PV, SP | (generic) | 320×280 |
+| `fic-250-002-widget-view.json` | FIC-250-002 | PV_SLPM, SP_SLPM, START | SLPM | 320×320 |
+| `fcv-widget-view.json` | FCV | PV, SP | (generic) | 320×280 |
+| `pic-250-001-widget-view.json` | PIC-250-001 | PV_psi, SP_psi, START | psi | 320×320 |
+
+#### Category 4: Simple Indicators (19 widgets)
+
+| File | UDT | Key Tags | Unit | Size |
+|------|-----|----------|------|------|
+| `ti-widget-view.json` | TI | PV | (generic) | 320×200 |
+| `ti8r-widget-view.json` | TI8R | Celsius | °C | 320×200 |
+| `fi7f-widget-view.json` | FI7F | LPM | LPM | 320×200 |
+| `fx7f-widget-view.json` | FX7F | LMH | LMH | 320×200 |
+| `ai501-widget-view.json` | AI501 | PV, DESC | (generic) | 320×240 |
+| `pcv7x-widget-view.json` | PCV7X | psig | psig | 320×200 |
+| `hv-250-001-widget-view.json` | HV-250-001 | PV_percent | % | 320×200 |
+| `hv-250-003-widget-view.json` | HV-250-003 | PV_percent | % | 320×200 |
+| `hv-250-004-widget-view.json` | HV-250-004 | PV_percent | % | 320×200 |
+| `dpi7m-widget-view.json` | DPI7M | psig | psig | 320×200 |
+| `wi-250-001-widget-view.json` | WI-250-001 | PV_kg | kg | 320×200 |
+| `wi17k-widget-view.json` | WI17K | kg | kg | 320×200 |
+| `chr-widget-view.json` | CHR | Description, PV, EU | (dynamic) | 320×280 |
+| `chr01-v-widget-view.json` | CHR01-V | Description, PV | (generic) | 320×240 |
+| `uv8r-widget-view.json` | UV8R | AU | AU | 320×200 |
+| `sr8r-widget-view.json` | SR8R | sec_-1 | s⁻¹ | 320×200 |
+| `aic-250-002-widget-view.json` | AIC-250-002 | ACTIVE | (status) | 320×200 |
+| `sum500-widget-view.json` | SUM500 | FORMULA-NAME | (text) | 320×200 |
+| `sum500-47ab92d1-widget-view.json` | SUM500 variant | STATUS | (text) | 320×200 |
+
+### Enterprise C Tag Path Patterns
+
+| Widget Data | Tag Path |
+|-------------|----------|
+| Asset Name | `Description` |
+| State | `State/StateCurrent` |
+| State Reason | `State/StateReason` |
+| Status values | `Status/{tagname}` |
+| Production | `Production/{tagname}` |
+| Process Value | `PV`, `PV_Celsius`, `PV_RPM`, etc. |
+| Setpoint | `SP`, `SP_Celsius`, `SP_RPM`, etc. |
+
+### Enterprise C Binding Patterns
+
+**Indirect Tag Binding** (for Description, State):
+```json
+{
+  "binding": {
+    "config": {
+      "fallbackDelay": 2.5,
+      "mode": "indirect",
+      "references": { "basePath": "{view.params.basePath}" },
+      "tagPath": "{basePath}/Description"
+    },
+    "type": "tag"
+  }
+}
+```
+
+**Expression Binding** (for Status values with units):
+```json
+{
+  "binding": {
+    "config": {
+      "expression": "numberformat(tag({view.params.basePath} + \"/Status/Temperature\"), '#,##0.0') + ' °C'"
+    },
+    "type": "expr"
+  }
+}
+```
+
+---
+
+## Vendor UDT Widgets
+
+Vendor UDT widgets differ from Enterprise B/C by using OPC-UA companion specification tag structures from equipment manufacturers.
+
+### Key Differences from Enterprise B/C
+
+| Aspect | Enterprise B/C | Vendor UDT |
+|--------|----------------|------------|
+| Asset Name | `_metadata/assetidentifier/displayname` or `Description` | `_metadata/Identification/ComponentName` |
+| State | `State/name` or `State/StateCurrent` | `Operational/OperatingState/valueName` |
+| Engineering Units | Hardcoded in widget (e.g., "°C", "RPM") | Dynamic from `_metadata/.../engineeringUnits/displayName` |
+| Metadata | Minimal (`_metadata/assetidentifier`) | Rich (`_metadata/Identification`, `_metadata/.../engineeringUnits`, enum definitions) |
+| Tag Paths | Flat (e.g., `Status/Temperature`) | Hierarchical (e.g., `ProcessFluidCircuit/Outlet/Temperature/value`) |
+
+### Vendor UDT Tag Structure (Compressor)
+
+```
+compressor/
+├── _metadata/
+│   ├── Identification/
+│   │   ├── AssetId                    # Asset identifier
+│   │   ├── ComponentName              # Display name
+│   │   └── DeviceClass                # Equipment classification
+│   ├── Operational/
+│   │   └── OperatingState/
+│   │       ├── dataType               # Value data type
+│   │       └── enumValues/0-7         # State name definitions
+│   ├── ProcessFluidCircuit/
+│   │   ├── Outlet/GaugePressure/engineeringUnits/   # displayName, unitId, namespaceUri
+│   │   ├── Outlet/Temperature/engineeringUnits/
+│   │   ├── Outlet/DewPoint/engineeringUnits/
+│   │   └── Delta/GaugePressure/engineeringUnits/
+│   ├── ElectricalCircuit/Input/Current/engineeringUnits/
+│   ├── Operational/OilTemperature/engineeringUnits/
+│   └── Statistics/RunningTime/
+│       ├── description                # Tag description
+│       └── engineeringUnits/          # displayName, unitId, namespaceUri
+├── Operational/
+│   ├── OperatingState/
+│   │   ├── value                      # Int4 (0-7)
+│   │   ├── valueName                  # String (current state name)
+│   │   └── timestamp
+│   └── OilTemperature/value           # Float8
+├── ProcessFluidCircuit/
+│   ├── Outlet/
+│   │   ├── GaugePressure/value        # Float8
+│   │   ├── Temperature/value          # Float8
+│   │   └── DewPoint/value             # Float8
+│   └── Delta/
+│       └── GaugePressure/value        # Float8
+├── ElectricalCircuit/Input/Current/value  # Float8
+├── Statistics/RunningTime/value       # Float8
+└── Widget/                            # Navigation metadata
+```
+
+### Vendor UDT Binding Patterns
+
+**Dynamic Engineering Units** (value + unit from metadata):
+```json
+{
+  "binding": {
+    "config": {
+      "expression": "numberformat(tag({view.params.basePath} + '/ProcessFluidCircuit/Outlet/GaugePressure/value'), '#,##0.0') + ' ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/GaugePressure/engineeringUnits/displayName')"
+    },
+    "type": "expr"
+  }
+}
+```
+
+**Conditional State Highlighting** (active state = blue):
+```json
+{
+  "binding": {
+    "config": {
+      "expression": "if(tag({view.params.basePath} + '/Operational/OperatingState/value') = 0, '#2196F3', 'transparent')"
+    },
+    "type": "expr"
+  }
+}
+```
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -779,3 +1117,7 @@ A React component mockup showing the desired data presentation and layout concep
 - [ ] Work Order: Add status tag binding when available
 - [ ] Work Order: Add start time / duration bindings when available
 - [ ] Work Order: Add item/product info when available
+- [x] Create Enterprise C widgets (45 total)
+- [x] Create vendor UDT compressor widget with operating state visualization
+- [x] Create vendor UDT compressor config/metadata view
+- [ ] Add additional vendor UDT equipment types (pumps, valves, etc.)

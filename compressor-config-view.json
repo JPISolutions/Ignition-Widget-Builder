@@ -1,0 +1,318 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Path/To/Your/compressor"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 380,
+      "width": 960
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": { "name": "Label" },
+            "position": { "grow": 1 },
+            "props": { "style": { "classes": "Framework/Card/Label" }, "text": "COMPRESSOR CONFIG" },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "ComponentName" },
+            "position": { "shrink": 0 },
+            "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Identification/ComponentName" }, "type": "tag" } } },
+            "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": { "name": "Header" },
+        "position": { "shrink": 0 },
+        "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label" }, "text": "IDENTIFICATION" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "IdentHeader" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/Row" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Asset ID" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Value" },
+                    "position": { "shrink": 0 },
+                    "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Identification/AssetId" }, "type": "tag" } } },
+                    "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "AssetIdRow" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Component Name" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Value" },
+                    "position": { "shrink": 0 },
+                    "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Identification/ComponentName" }, "type": "tag" } } },
+                    "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "CompNameRow" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Device Class" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Value" },
+                    "position": { "shrink": 0 },
+                    "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Identification/DeviceClass" }, "type": "tag" } } },
+                    "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "DevClassRow" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": { "name": "IdentSection" },
+            "position": { "grow": 1 },
+            "props": { "direction": "column" },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label" }, "text": "OPERATING STATE DEFINITION" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "DataTypeValue" },
+                    "position": { "shrink": 0 },
+                    "propConfig": { "props.text": { "binding": { "config": { "expression": "'Data Type: ' + tag({view.params.basePath} + '/_metadata/Operational/OperatingState/dataType')" }, "type": "expr" } } },
+                    "props": { "style": { "classes": "Framework/Card/Value" }, "text": "Data Type: --" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "StateDefHeader" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx0" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "0" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val0" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/0" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum0" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx1" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "1" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val1" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/1" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum1" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx2" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "2" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val2" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/2" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum2" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx3" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "3" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val3" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/3" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum3" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx4" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "4" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val4" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/4" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum4" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx5" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "5" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val5" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/5" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum5" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx6" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "6" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val6" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/6" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum6" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Idx7" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em", "textAlign": "center" }, "text": "7" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Val7" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OperatingState/enumValues/7" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.75em", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Enum7" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+                  }
+                ],
+                "meta": { "name": "EnumGrid" },
+                "position": { "basis": "60px", "shrink": 0 },
+                "props": { "style": { "classes": "Framework/Card/ContainerWBorder" } },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": { "name": "StateSection" },
+            "position": { "grow": 2 },
+            "props": { "direction": "column" },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": { "name": "TopSection" },
+        "position": { "shrink": 0 },
+        "props": {},
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": { "name": "Label" },
+            "position": { "grow": 1 },
+            "props": { "style": { "classes": "Framework/Card/Label" }, "text": "ENGINEERING UNITS" },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "Namespace" },
+            "position": { "shrink": 0 },
+            "propConfig": { "props.text": { "binding": { "config": { "expression": "'Namespace: ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/GaugePressure/engineeringUnits/namespaceUri')" }, "type": "expr" } } },
+            "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.8em" }, "text": "Namespace: --" },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": { "name": "EUHeader" },
+        "position": { "shrink": 0 },
+        "props": { "style": { "classes": "Framework/Card/Row" }, "wrap": "wrap" },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Outlet Pressure" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ProcessFluidCircuit/Outlet/GaugePressure/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/GaugePressure/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "OutletPressEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Delta Pressure" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ProcessFluidCircuit/Delta/GaugePressure/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Delta/GaugePressure/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "DeltaPressEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Outlet Temp" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ProcessFluidCircuit/Outlet/Temperature/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/Temperature/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "OutletTempEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Oil Temp" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Operational/OilTemperature/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/Operational/OilTemperature/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "OilTempEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Dew Point" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ProcessFluidCircuit/Outlet/DewPoint/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/ProcessFluidCircuit/Outlet/DewPoint/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "DewPointEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Motor Current" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ElectricalCircuit/Input/Current/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/ElectricalCircuit/Input/Current/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "MotorCurrentEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              { "meta": { "name": "Label" }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.85em" }, "text": "Running Time" }, "type": "ia.display.label" },
+              { "meta": { "name": "Unit" }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/Statistics/RunningTime/engineeringUnits/displayName" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "0.85em" }, "text": "--" }, "type": "ia.display.label" },
+              { "meta": { "name": "Id" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Unit ID: ' + tag({view.params.basePath} + '/_metadata/Statistics/RunningTime/engineeringUnits/unitId')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.75em" }, "text": "Unit ID: --" }, "type": "ia.display.label" },
+              { "meta": { "name": "Desc" }, "propConfig": { "props.text": { "binding": { "config": { "expression": "'Desc: ' + tag({view.params.basePath} + '/_metadata/Statistics/RunningTime/description')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "0.7em", "fontStyle": "italic" }, "text": "Desc: --" }, "type": "ia.display.label" }
+            ],
+            "meta": { "name": "RunningTimeEU" }, "position": { "grow": 1 }, "props": { "alignItems": "center", "direction": "column", "justify": "center" }, "type": "ia.container.flex"
+          }
+        ],
+        "meta": { "name": "EUGrid" },
+        "position": { "basis": "120px", "shrink": 0 },
+        "props": { "style": { "classes": "Framework/Card/ContainerWBorder" } },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": { "name": "root" },
+    "props": { "direction": "column" },
+    "type": "ia.container.flex"
+  }
+}

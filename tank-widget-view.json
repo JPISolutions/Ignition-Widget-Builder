@@ -766,14 +766,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'RUN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timerunning') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#4CAF50",
                     "fontSize": "10px",
                     "textAlign": "left"
                   },
-                  "text": "RUN"
+                  "text": "RUN: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -784,14 +793,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'IDLE: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timeidle') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#FFC107",
                     "fontSize": "10px",
                     "textAlign": "center"
                   },
-                  "text": "IDLE"
+                  "text": "IDLE: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -802,14 +820,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'PLAN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timedownplanned') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#FF9800",
                     "fontSize": "10px",
                     "textAlign": "center"
                   },
-                  "text": "PLAN"
+                  "text": "PLAN: 0"
                 },
                 "type": "ia.display.label"
               },
@@ -820,14 +847,23 @@
                 "position": {
                   "grow": 1
                 },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'DOWN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/timedownunplanned') / 60, '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
                 "props": {
                   "style": {
-                    "classes": "Framework/Card/Label",
                     "color": "#F44336",
                     "fontSize": "10px",
                     "textAlign": "right"
                   },
-                  "text": "DOWN"
+                  "text": "DOWN: 0"
                 },
                 "type": "ia.display.label"
               }
@@ -867,167 +903,215 @@
         "children": [
           {
             "meta": {
-              "name": "Label"
+              "name": "ThroughputLabel"
             },
             "position": {
-              "grow": 1
+              "shrink": 0
             },
             "props": {
               "style": {
                 "classes": "Framework/Card/Label"
               },
-              "text": "Count Infeed"
+              "text": "THROUGHPUT"
             },
             "type": "ia.display.label"
           },
           {
-            "meta": {
-              "name": "Value"
-            },
-            "position": {
-              "shrink": 0
-            },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "config": {
-                    "expression": "numberformat(tag({view.params.basePath} + \"/_metric/input/countinfeed\"), '#,##0')"
+            "children": [
+              {
+                "meta": {
+                  "name": "OutfeedSegment"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.grow": {
+                    "binding": {
+                      "config": {
+                        "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/countoutfeed'))"
+                      },
+                      "type": "expr"
+                    }
                   },
-                  "type": "expr"
-                }
-              }
-            },
-            "props": {
-              "style": {
-                "classes": "Framework/Card/Value"
-              }
-            },
-            "type": "ia.display.label"
-          }
-        ],
-        "meta": {
-          "name": "CountInfeed"
-        },
-        "position": {
-          "shrink": 0
-        },
-        "props": {
-          "style": {
-            "classes": "Framework/Card/Row"
-          },
-          "wrap": "wrap"
-        },
-        "type": "ia.container.flex"
-      },
-      {
-        "children": [
-          {
-            "meta": {
-              "name": "Label"
-            },
-            "position": {
-              "grow": 1
-            },
-            "props": {
-              "style": {
-                "classes": "Framework/Card/Label"
+                  "props.tooltip": {
+                    "binding": {
+                      "config": {
+                        "expression": "'Outfeed: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countoutfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#4CAF50",
+                    "borderRadius": "4px 0 0 4px"
+                  }
+                },
+                "type": "ia.container.flex"
               },
-              "text": "Count Outfeed"
-            },
-            "type": "ia.display.label"
-          },
-          {
+              {
+                "meta": {
+                  "name": "DefectSegment"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.grow": {
+                    "binding": {
+                      "config": {
+                        "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/countdefect'))"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.tooltip": {
+                    "binding": {
+                      "config": {
+                        "expression": "'Defect: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countdefect'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#F44336",
+                    "borderRadius": "0 4px 4px 0"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
             "meta": {
-              "name": "Value"
+              "name": "ThroughputBar"
             },
             "position": {
+              "basis": "20px",
               "shrink": 0
             },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "config": {
-                    "expression": "numberformat(tag({view.params.basePath} + \"/_metric/input/countoutfeed\"), '#,##0')"
-                  },
-                  "type": "expr"
-                }
-              }
-            },
             "props": {
+              "direction": "row",
               "style": {
-                "classes": "Framework/Card/Value"
+                "borderRadius": "4px",
+                "overflow": "hidden"
               }
             },
-            "type": "ia.display.label"
-          }
-        ],
-        "meta": {
-          "name": "CountOutfeed"
-        },
-        "position": {
-          "shrink": 0
-        },
-        "props": {
-          "style": {
-            "classes": "Framework/Card/Row"
+            "type": "ia.container.flex"
           },
-          "wrap": "wrap"
-        },
-        "type": "ia.container.flex"
-      },
-      {
-        "children": [
           {
-            "meta": {
-              "name": "Label"
-            },
-            "position": {
-              "grow": 1
-            },
-            "props": {
-              "style": {
-                "classes": "Framework/Card/Label"
+            "children": [
+              {
+                "meta": {
+                  "name": "InfeedLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'IN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countinfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "10px",
+                    "textAlign": "left"
+                  },
+                  "text": "IN: 0"
+                },
+                "type": "ia.display.label"
               },
-              "text": "Count Defect"
-            },
-            "type": "ia.display.label"
-          },
-          {
+              {
+                "meta": {
+                  "name": "OutfeedLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'OUT: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countoutfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "color": "#4CAF50",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "OUT: 0"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DefectLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'DEF: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countdefect'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "color": "#F44336",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "DEF: 0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
             "meta": {
-              "name": "Value"
+              "name": "ThroughputLegend"
             },
             "position": {
               "shrink": 0
             },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "config": {
-                    "expression": "numberformat(tag({view.params.basePath} + \"/_metric/input/countdefect\"), '#,##0')"
-                  },
-                  "type": "expr"
-                }
-              }
-            },
             "props": {
               "style": {
-                "classes": "Framework/Card/Value"
+                "overflow": "visible"
               }
             },
-            "type": "ia.display.label"
+            "type": "ia.container.flex"
           }
         ],
         "meta": {
-          "name": "CountDefect"
+          "name": "ThroughputMetrics"
         },
         "position": {
+          "basis": "70px",
           "shrink": 0
         },
         "props": {
+          "direction": "column",
           "style": {
-            "classes": "Framework/Card/Row"
-          },
-          "wrap": "wrap"
+            "classes": "Framework/Card/ContainerWBorder",
+            "paddingBottom": 4,
+            "paddingTop": 4
+          }
         },
         "type": "ia.container.flex"
       },

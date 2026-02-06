@@ -1,0 +1,431 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Path/To/Your/lehr"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 320,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.tooltip": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Description"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "cursor": "help"
+              },
+              "text": "LEHR",
+              "tooltip": ""
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "State"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/State/StateCurrent"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "Running"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "State Reason"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/State/StateReason"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "StateReasonRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Belt Speed"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + \"/Status/BeltSpeed\"), '#,##0.0')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              },
+              "text": "0"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "BeltSpeedRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "ZONE TEMPERATURES"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ZoneTempHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Zone1Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Zone 1"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Zone1Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Status/ZoneTemp1\"), '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Zone1Cell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Zone2Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Zone 2"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Zone2Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Status/ZoneTemp2\"), '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Zone2Cell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Zone3Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "Zone 3"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Zone3Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/Status/ZoneTemp3\"), '#,##0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "0.85em"
+                  },
+                  "text": "0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Zone3Cell"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ZoneTempGrid"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}
