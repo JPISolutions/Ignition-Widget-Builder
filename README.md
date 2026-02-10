@@ -4,6 +4,17 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 
 ## Project Status
 
+### Enterprise A Dashboard (Glass Manufacturing)
+
+| Widget | Status |
+|--------|--------|
+| Line KPI Widget (OEE Overview) | Complete |
+| Batch House Widget | Complete |
+| Hot End Widget | Complete |
+| Cold End Widget | Complete |
+| ISO 7459 Compliance Widget | Complete |
+| Composed Dashboard | Complete |
+
 ### Enterprise B Widgets (OEE-focused)
 
 | Widget | Status |
@@ -105,9 +116,21 @@ Ignition-Widget-Builder/
 │   ├── widget-design.txt                 # Layout/data display inspiration
 │   ├── work-order-references.json        # Work Order UDT tag structure
 │   ├── time-metrics-component.json       # Reusable time breakdown bar component
-│   └── vendorUDT/
-│       ├── compressor-UDT.json          # Vendor compressor UDT definition (OPC-UA)
-│       └── sp474-udt.json              # SP474 gas meter UDT definition
+│   ├── vendorUDT/
+│   │   ├── compressor-UDT.json          # Vendor compressor UDT definition (OPC-UA)
+│   │   └── sp474-udt.json              # SP474 gas meter UDT definition
+│   └── rollups/
+│       └── EntA/
+│           ├── react-dashboard-design-example.json  # React layout reference
+│           └── entA-tag.json                        # Enterprise A tag export
+│
+├── # Enterprise A Dashboard (Glass Manufacturing)
+├── enta-line-kpi-widget-view.json         # OEE overview (5 gauges + production stats)
+├── enta-batchhouse-widget-view.json       # Batch house (4 silos + mixer + charger)
+├── enta-hotend-widget-view.json           # Hot end (furnace, forehearth, IS machine, fuel gas)
+├── enta-coldend-widget-view.json          # Cold end (lehr, inspector + defects, palletizer)
+├── enta-iso-widget-view.json              # ISO 7459 compliance (parameters table + Cpk)
+├── enta-dashboard-view.json               # Composed dashboard (all sections + compressor)
 │
 ├── # Enterprise B Widgets (OEE-focused)
 ├── caploader-widget-view.json            # Cap Loader widget
@@ -2141,6 +2164,248 @@ return result
 
 ---
 
+## Enterprise A Dashboard (Glass Manufacturing)
+
+A line-level dashboard for glass manufacturing operations. Enterprise A uses a **process-flow layout** (Batch House → Hot End → Cold End) rather than the area/line hierarchy of Enterprise B. Includes OEE metrics, ISO 7459 compliance tracking, and a reusable compressor utility widget.
+
+### Key Differences from Enterprise B/C
+
+| Aspect | Enterprise B | Enterprise A |
+|--------|--------------|--------------|
+| Industry | Beverage bottling | Glass manufacturing |
+| OEE Tags | `_metric/oee` (0-1 decimal) | `_metrics/OEE/Availability` (0-100 string) |
+| OEE Calculation | Direct tag | Calculated: `(A × P × Q) / 10000` |
+| Additional Metrics | Time breakdown | Yield Efficiency, Good/Bad/Waste counts |
+| Layout | Area → Line → Equipment | Line → Process sections (Batch/Hot/Cold) |
+| Equipment | EntB UDT instances | EntC UDT instances + Vendor UDTs (SP474, Compressor) |
+| Compliance | None | ISO 7459 dimensional/mechanical inspection |
+| Data Source | Direct tags | MQTT Engine expression tags (String type) |
+
+### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `basePath` | String | Root path to the line (e.g., `[default]Enterprise A/Dallas/Glass Manufacturing/Line 1`) |
+| `facilityBasePath` | String | Facility path for shift data (e.g., `[default]Enterprise A/Dallas`) |
+
+### Tag Structure
+
+```
+Enterprise A/Dallas/Glass Manufacturing/Line 1/
+├── _metrics/OEE/
+│   ├── Availability          # 0-100% (String)
+│   ├── Performance           # 0-100% (String)
+│   ├── Quality               # 0-100% (String)
+│   ├── YieldEfficiency       # 0-100% (String)
+│   ├── GoodCount, BadCount, Waste, Infeed, Outfeed
+│   ├── RunTime               # Seconds (String)
+│   ├── StandardRate           # cpm (String)
+│   ├── State, WorkOrder, ProductionID, StartTime
+├── BatchHouse/
+│   ├── Silo01-04/            # Status/Level, Status/Material, Description
+│   ├── BatchMixer/           # State/StateCurrent, Status/BatchWeight
+│   └── BatchCharger/         # State/StateCurrent, Status/FeedRate
+├── HotEnd/
+│   ├── Furnace/              # State/StateCurrent, Status/Temperature, Status/GlassLevel
+│   ├── Forehearth/           # State/StateCurrent, Status/Temperature, Status/GobTemp
+│   ├── ISMachine/            # State/StateCurrent, Status/MachineSpeed, Status/SectionsActive, Production/ContainersFormed
+│   └── Furnace Fuel Gas/     # SP474 UDT (Operational/FlowRate/value, CurrentDayVolume/value)
+├── ColdEnd/
+│   ├── Lehr/                 # State/StateCurrent, Status/ZoneTemp1-3, Status/BeltSpeed
+│   ├── Inspector/            # State/StateCurrent, Production/PassCount, RejectCount, DefectSED/CHK/DIM
+│   └── Palletizer/           # State/StateCurrent, Production/PalletsCompleted, ContainersPerPallet
+├── Utility/
+│   └── Compressor01/         # Vendor compressor UDT (reuses existing compressor-widget)
+└── _metadata/
+    └── ISO7459/              # Dimensional tolerances, mechanical properties, inspection data
+```
+
+### Dashboard Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Glass Manufacturing          │ WO-2026-0847 │ PID-4521 │ Day │ Running    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ OEE OVERVIEW (enta-line-kpi-widget, 960×280)                               │
+│ [OEE] [AVAIL] [PERF] [QUAL] [YIELD] │ Good  Bad  Waste  StdRate          │
+│                                       │ Infeed  Outfeed  RunTime  State   │
+├──────────────┬───────────────────────┬──────────────────────────────────────┤
+│ BATCH HOUSE  │ HOT END               │ COLD END                            │
+│ (380×420)    │ (480×420)             │ (480×420)                           │
+│ [Silo Bars]  │ Furnace │ IS Machine  │ Lehr      │ Inspector              │
+│ Mixer        │ Forehrth│ Fuel Gas    │ Palletizer│ Pass/Reject/Defects    │
+│ Charger      │         │             │           │                        │
+├──────────────┴─────────────────────┬─┴───────────┴────────────────────────┤
+│ ISO 7459 COMPLIANCE (640×380)      │ UTILITY — Compressor 01 (320×500)    │
+│ [Parameters Table]  │ Cpk  Samples  │ (reuses compressor-widget-view.json)│
+│ Nominal/Actual/Pass │ Next Inspect. │                                     │
+└────────────────────────────────────┴──────────────────────────────────────┘
+```
+
+### Widget 1: EntA Line KPI Widget
+
+**File:** `enta-line-kpi-widget-view.json`
+
+Wide OEE overview with 5 gauges and 8 stat cards.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Gauges | OEE (calculated) | `(Availability × Performance × Quality) / 10000` |
+| Gauges | Availability | `_metrics/OEE/Availability` |
+| Gauges | Performance | `_metrics/OEE/Performance` |
+| Gauges | Quality | `_metrics/OEE/Quality` |
+| Gauges | Yield Efficiency | `_metrics/OEE/YieldEfficiency` |
+| Stats | Good (green) | `_metrics/OEE/GoodCount` |
+| Stats | Bad (red) | `_metrics/OEE/BadCount` |
+| Stats | Waste (orange) | `_metrics/OEE/Waste` |
+| Stats | Std Rate | `_metrics/OEE/StandardRate` |
+| Stats | Infeed | `_metrics/OEE/Infeed` |
+| Stats | Outfeed (green) | `_metrics/OEE/Outfeed` |
+| Stats | Run Time (adaptive) | `_metrics/OEE/RunTime` |
+| Stats | State | `_metrics/OEE/State` |
+
+**Size:** 960 x 280 px
+
+---
+
+### Widget 2: EntA Batch House Widget
+
+**File:** `enta-batchhouse-widget-view.json`
+
+Batch house section with 4 silo level bars, batch mixer, and batch charger status.
+
+| Feature | Tag Path |
+|---------|----------|
+| Silo 01-04 Description | `BatchHouse/SiloXX/Description` |
+| Silo 01-04 Level (%) | `BatchHouse/SiloXX/Status/Level` |
+| Silo 01-04 Material | `BatchHouse/SiloXX/Status/Material` |
+| Mixer State | `BatchHouse/BatchMixer/State/StateCurrent` |
+| Mixer Batch Weight | `BatchHouse/BatchMixer/Status/BatchWeight` |
+| Charger State | `BatchHouse/BatchCharger/State/StateCurrent` |
+| Charger Feed Rate | `BatchHouse/BatchCharger/Status/FeedRate` |
+
+**Size:** 380 x 420 px
+
+---
+
+### Widget 3: EntA Hot End Widget
+
+**File:** `enta-hotend-widget-view.json`
+
+Hot end process section with 2-column grid showing 4 equipment cards.
+
+| Equipment | Feature | Tag Path |
+|-----------|---------|----------|
+| Furnace | State | `HotEnd/Furnace/State/StateCurrent` |
+| Furnace | Temperature (°F) | `HotEnd/Furnace/Status/Temperature` |
+| Furnace | Glass Level (%) | `HotEnd/Furnace/Status/GlassLevel` |
+| Forehearth | State | `HotEnd/Forehearth/State/StateCurrent` |
+| Forehearth | Temperature (°F) | `HotEnd/Forehearth/Status/Temperature` |
+| Forehearth | Gob Temp (°F) | `HotEnd/Forehearth/Status/GobTemp` |
+| IS Machine | State | `HotEnd/ISMachine/State/StateCurrent` |
+| IS Machine | Speed (cpm) | `HotEnd/ISMachine/Status/MachineSpeed` |
+| IS Machine | Sections Active | `HotEnd/ISMachine/Status/SectionsActive` |
+| IS Machine | Containers Formed | `HotEnd/ISMachine/Production/ContainersFormed` |
+| Fuel Gas | Flow Rate (scfh) | `HotEnd/Furnace Fuel Gas/Operational/FlowRate/value` |
+| Fuel Gas | Daily Volume (scf) | `HotEnd/Furnace Fuel Gas/Operational/CurrentDayVolume/value` |
+
+**Size:** 480 x 420 px
+
+---
+
+### Widget 4: EntA Cold End Widget
+
+**File:** `enta-coldend-widget-view.json`
+
+Cold end process section with 2-column grid showing lehr, inspector (with defect breakdown), and palletizer.
+
+| Equipment | Feature | Tag Path | Color |
+|-----------|---------|----------|-------|
+| Lehr | State | `ColdEnd/Lehr/State/StateCurrent` | -- |
+| Lehr | Zone 1-3 Temps (°F) | `ColdEnd/Lehr/Status/ZoneTemp1-3` | -- |
+| Lehr | Belt Speed (fpm) | `ColdEnd/Lehr/Status/BeltSpeed` | -- |
+| Inspector | State | `ColdEnd/Inspector/State/StateCurrent` | -- |
+| Inspector | Pass Count | `ColdEnd/Inspector/Production/PassCount` | Green (#4CAF50) |
+| Inspector | Reject Count | `ColdEnd/Inspector/Production/RejectCount` | Red (#F44336) |
+| Inspector | Defect SED | `ColdEnd/Inspector/Production/DefectSED` | Orange (#FF9800) |
+| Inspector | Defect CHK | `ColdEnd/Inspector/Production/DefectCHK` | Purple (#AB47BC) |
+| Inspector | Defect DIM | `ColdEnd/Inspector/Production/DefectDIM` | Cyan (#29B6F6) |
+| Palletizer | State | `ColdEnd/Palletizer/State/StateCurrent` | -- |
+| Palletizer | Pallets Completed | `ColdEnd/Palletizer/Production/PalletsCompleted` | -- |
+| Palletizer | Containers/Pallet | `ColdEnd/Palletizer/Production/ContainersPerPallet` | -- |
+
+**Size:** 480 x 420 px
+
+---
+
+### Widget 5: EntA ISO 7459 Compliance Widget
+
+**File:** `enta-iso-widget-view.json`
+
+ISO 7459 compliance section with parameters table (nominal/actual/status), Cpk indicator, sample statistics, and next inspection due date.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Table | Body Diameter (mm) | `_metadata/ISO7459/dimensional_tolerances_body_diameter_*` |
+| Table | Finish Height (mm) | `_metadata/ISO7459/dimensional_tolerances_finish_height_*` |
+| Table | Overall Height (mm) | `_metadata/ISO7459/dimensional_tolerances_overall_height_*` |
+| Table | Wall Thickness (mm) | `_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_*` |
+| Table | Finish OD (mm) | `_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_*` |
+| Table | Capacity (ml) | `_metadata/ISO7459/capacity_tolerance_*` |
+| Table | Pressure Resistance (bar) | `_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_*` |
+| Table | Thermal Shock (°C) | `_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_*` |
+| Summary | Cpk (color-coded) | `_metadata/ISO7459/inspection_data_cpk_value` |
+| Summary | Sample Size | `_metadata/ISO7459/inspection_data_sample_size` |
+| Summary | Passed (green) | `_metadata/ISO7459/inspection_data_samples_passed` |
+| Summary | Failed (red) | `_metadata/ISO7459/inspection_data_samples_failed` |
+| Summary | Compliance | `_metadata/ISO7459/inspection_data_overall_compliance` |
+| Summary | Next Inspection (cyan) | `_metadata/ISO7459/next_inspection_due` |
+
+**Cpk Color Coding:** Green (≥1.33), Yellow (≥1.0), Red (<1.0)
+
+**Status Color Coding:** Green = PASS, Red = non-PASS
+
+**Size:** 640 x 380 px
+
+---
+
+### Composed Dashboard: EntA Dashboard
+
+**File:** `enta-dashboard-view.json`
+
+Full line dashboard composing all section widgets using `ia.display.view`. Reuses the existing `compressor-widget-view.json` for the utility section.
+
+| Section | Component | View Template | Size |
+|---------|-----------|---------------|------|
+| Header | `ia.container.flex` (inline) | -- | 50px fixed |
+| OEE Overview | `ia.display.view` | enta-line-kpi | 280px fixed |
+| Process Flow | 3x `ia.display.view` | batchhouse / hotend / coldend | 420px fixed |
+| Bottom Row | 2x `ia.display.view` | iso / compressor-widget | grow |
+
+**Header Content:**
+- Title: "Glass Manufacturing" / "Enterprise A / Dallas Plant"
+- Work Order (cyan): `_metrics/OEE/WorkOrder`
+- Product ID: `_metrics/OEE/ProductionID`
+- Shift: `{facilityBasePath}/_metadata/_shift/CurrentShift`
+- State: `_metrics/OEE/State`
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Enterprise A/Dallas/Glass Manufacturing/Line 1` | Line-level tag path |
+| `facilityBasePath` | `[default]Enterprise A/Dallas` | Facility path (for shift data) |
+| `oeeViewPath` | `UDT Views/Prove It/Rollups/EntA/enta-line-kpi` | OEE widget view path |
+| `batchHouseViewPath` | `UDT Views/Prove It/Rollups/EntA/enta-batchhouse` | Batch house widget path |
+| `hotEndViewPath` | `UDT Views/Prove It/Rollups/EntA/enta-hotend` | Hot end widget path |
+| `coldEndViewPath` | `UDT Views/Prove It/Rollups/EntA/enta-coldend` | Cold end widget path |
+| `isoViewPath` | `UDT Views/Prove It/Rollups/EntA/enta-iso` | ISO compliance widget path |
+| `compressorViewPath` | `UDT Views/Prove It/VendorUDT/compressor-widget` | Compressor widget path |
+
+**Size:** 1201 x 1080 px
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -2178,3 +2443,14 @@ return result
 - [ ] Area Status: Add active work order count tag binding when available
 - [ ] Area Status: Add MTBF tag binding when available
 - [ ] Area Status: Add MTTR tag binding when available
+- [x] Create Enterprise A glass manufacturing dashboard (OEE, Batch House, Hot End, Cold End, ISO 7459, Utility)
+- [x] Create EntA OEE KPI widget with 5 gauges (OEE calculated, A/P/Q, Yield Efficiency) + production stats
+- [x] Create EntA Batch House widget with 4 silo level bars + mixer/charger status
+- [x] Create EntA Hot End widget with furnace, forehearth, IS machine, fuel gas (SP474)
+- [x] Create EntA Cold End widget with lehr, inspector (defect breakdown), palletizer
+- [x] Create EntA ISO 7459 compliance widget with parameters table + Cpk + sample stats
+- [x] Create EntA composed dashboard reusing existing compressor-widget for utility section
+- [ ] EntA: Add OEE sparkline (tag history) to KPI widget
+- [ ] EntA: Add silo level color coding (green/yellow/red thresholds)
+- [ ] EntA: Add multi-line support (dynamic line tab discovery like EntB)
+- [ ] EntA: Add BigQuery metadata integration for historical analytics

@@ -1,0 +1,501 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Enterprise A/Dallas/Glass Manufacturing/Line 1"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 420,
+      "width": 380
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "BATCH HOUSE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SiloLabel"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "fontSize": "10px",
+                "marginBottom": "4px"
+              },
+              "text": "SILO LEVELS"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": { "name": "LevelBar" },
+                    "position": { "grow": 1 },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": { "config": { "expression": "tag({view.params.basePath} + '/BatchHouse/Silo01/Status/Level')" }, "type": "expr" }
+                      }
+                    },
+                    "props": { "max": 100, "orientation": "vertical", "style": { "paddingLeft": 4, "paddingRight": 4 }, "valueDisplay": { "enabled": true, "format": "0" } },
+                    "type": "ia.display.progress"
+                  },
+                  {
+                    "meta": { "name": "Material" },
+                    "position": { "shrink": 0 },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo01/Status/Material" }, "type": "tag" }
+                      }
+                    },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "9px", "textAlign": "center" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "Silo01" },
+                "position": { "grow": 1 },
+                "propConfig": {
+                  "props.tooltip": {
+                    "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo01/Description" }, "type": "tag" }
+                  }
+                },
+                "props": { "direction": "column", "justify": "center", "alignItems": "stretch", "style": { "cursor": "help" }, "tooltip": "" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "LevelBar" },
+                    "position": { "grow": 1 },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": { "config": { "expression": "tag({view.params.basePath} + '/BatchHouse/Silo02/Status/Level')" }, "type": "expr" }
+                      }
+                    },
+                    "props": { "max": 100, "orientation": "vertical", "style": { "paddingLeft": 4, "paddingRight": 4 }, "valueDisplay": { "enabled": true, "format": "0" } },
+                    "type": "ia.display.progress"
+                  },
+                  {
+                    "meta": { "name": "Material" },
+                    "position": { "shrink": 0 },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo02/Status/Material" }, "type": "tag" }
+                      }
+                    },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "9px", "textAlign": "center" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "Silo02" },
+                "position": { "grow": 1 },
+                "propConfig": {
+                  "props.tooltip": {
+                    "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo02/Description" }, "type": "tag" }
+                  }
+                },
+                "props": { "direction": "column", "justify": "center", "alignItems": "stretch", "style": { "cursor": "help" }, "tooltip": "" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "LevelBar" },
+                    "position": { "grow": 1 },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": { "config": { "expression": "tag({view.params.basePath} + '/BatchHouse/Silo03/Status/Level')" }, "type": "expr" }
+                      }
+                    },
+                    "props": { "max": 100, "orientation": "vertical", "style": { "paddingLeft": 4, "paddingRight": 4 }, "valueDisplay": { "enabled": true, "format": "0" } },
+                    "type": "ia.display.progress"
+                  },
+                  {
+                    "meta": { "name": "Material" },
+                    "position": { "shrink": 0 },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo03/Status/Material" }, "type": "tag" }
+                      }
+                    },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "9px", "textAlign": "center" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "Silo03" },
+                "position": { "grow": 1 },
+                "propConfig": {
+                  "props.tooltip": {
+                    "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo03/Description" }, "type": "tag" }
+                  }
+                },
+                "props": { "direction": "column", "justify": "center", "alignItems": "stretch", "style": { "cursor": "help" }, "tooltip": "" },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "LevelBar" },
+                    "position": { "grow": 1 },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": { "config": { "expression": "tag({view.params.basePath} + '/BatchHouse/Silo04/Status/Level')" }, "type": "expr" }
+                      }
+                    },
+                    "props": { "max": 100, "orientation": "vertical", "style": { "paddingLeft": 4, "paddingRight": 4 }, "valueDisplay": { "enabled": true, "format": "0" } },
+                    "type": "ia.display.progress"
+                  },
+                  {
+                    "meta": { "name": "Material" },
+                    "position": { "shrink": 0 },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo04/Status/Material" }, "type": "tag" }
+                      }
+                    },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "9px", "textAlign": "center" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "Silo04" },
+                "position": { "grow": 1 },
+                "propConfig": {
+                  "props.tooltip": {
+                    "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/BatchHouse/Silo04/Description" }, "type": "tag" }
+                  }
+                },
+                "props": { "direction": "column", "justify": "center", "alignItems": "stretch", "style": { "cursor": "help" }, "tooltip": "" },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "SiloRow"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SilosSection"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label"
+                  },
+                  "text": "Batch Mixer"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "State"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/BatchHouse/BatchMixer/State/StateCurrent"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "MixerHeader"
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Row"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label"
+                  },
+                  "text": "Batch Weight"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/BatchHouse/BatchMixer/Status/BatchWeight'), '#,##0.0') + ' lbs'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "MixerWeight"
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Row"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "MixerSection"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label"
+                  },
+                  "text": "Batch Charger"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "State"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/BatchHouse/BatchCharger/State/StateCurrent"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ChargerHeader"
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Row"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label"
+                  },
+                  "text": "Feed Rate"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/BatchHouse/BatchCharger/Status/FeedRate'), '#,##0.0') + ' lbs/min'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ChargerFeedRate"
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Row"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ChargerSection"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

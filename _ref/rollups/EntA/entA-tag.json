@@ -1,0 +1,3895 @@
+{
+  "name": "Enterprise A",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "Dallas",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Glass Manufacturing",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Line 1",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "_metrics",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "OEE",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/State\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "State",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/YieldEfficiency\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "YieldEfficiency",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Outfeed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Outfeed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Performance\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Performance",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/BadCount\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "BadCount",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/StandardRate\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "StandardRate",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/StartTime\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "StartTime",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/GoodCount\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "GoodCount",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/ProductionID\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "ProductionID",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Quality\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Quality",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Infeed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Infeed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/WorkOrder\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "WorkOrder",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Availability\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Availability",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/Waste\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "Waste",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metrics/OEE/RunTime\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "RunTime",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "HotEnd",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "Furnace Fuel Gas",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/HotEnd/SP474"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Operational",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "CurrentDayVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "StaticPressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "FlowRate",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "CurrentHourVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hasRun_Status",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "AccumulatedVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Temperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "DifferentialPressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Status_2",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Status",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "_metadata",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "ContractHour",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "RunNumber",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Location",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "IsentropicExponent",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "MeterType",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "BasePressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "CurrentDayVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "StaticPressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "AtmosphericPressure_2",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "ContractHour_2",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "SurfaceLSD",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "CurrentDateTime",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hasRun_type",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Longitude_2",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "DifferentialPressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Elevation",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hasRun_label",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "PreviousHourVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hasMeterConfiguration_id",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "PipeMaterial",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Model",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "NumberOfRuns",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "AtmosphericPressure",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Latitude_2",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "label_2",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "FlowDirection",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "id",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Units",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hasRun_SurfaceLSD",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hasMeterConfiguration_type",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hasRun_Owner",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "type",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Elevation_2",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "OrificeReferenceTemperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "AGA3",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "Calculation",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Temperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "SurfaceLSD_2",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Longitude",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "ActiveAlarmCount",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Name",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "FlowExtension",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "PreviousDayVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "PipeReferenceTemperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Manufacturer",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Purpose",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "DeviceName",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "BaseTemperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "RunName",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "FlowRate",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hasRun_id",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "AccumulatedVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Owner",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Viscosity",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "CurrentHourVolume",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "OrificeMaterial",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Enabled",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "OrificeTapType",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Latitude",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/VendorUDTs/SP474"
+                    },
+                    {
+                      "name": "ISMachine",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/HotEnd/ISMachine"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "hydraulic_pressure_raw",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "section_status_bits",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "timing_sync_pulse",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "main_drive_encoder",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "MachineSpeed",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "SectionsActive",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Production",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "ContainersFormed",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "CycleCount",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/ISMachine_989A11BF"
+                    },
+                    {
+                      "name": "Forehearth",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/HotEnd/Forehearth"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "gob_pyrometer_raw",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "thermocouple_inlet_mv",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "thermocouple_outlet_mv",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "GobTemp",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Temperature",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Forehearth_9BEF2A31"
+                    },
+                    {
+                      "name": "Furnace",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/HotEnd/Furnace"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Temperature",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "GlassLevel",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "thermocouple_zone2_mv",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "thermocouple_zone1_mv",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "glass_level_radar_mm",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "oxygen_sensor_ma",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Furnace_1817923A"
+                    }
+                  ]
+                },
+                {
+                  "name": "BatchHouse",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "BatchCharger",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/BatchCharger"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "FeedRate",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "belt_speed_encoder",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_motor_status",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "feeder_vfd_output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/BatchCharger_77A947A2"
+                    },
+                    {
+                      "name": "BatchMixer",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/BatchMixer"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "load_cell_raw",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_motor_status",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_motor_current",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "BatchWeight",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/BatchMixer_174042E0"
+                    },
+                    {
+                      "name": "Silo04",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/Silo04"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Level",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Material",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_level_sensor",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "level_transmitter_ma",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Silo_B55E26A6"
+                    },
+                    {
+                      "name": "Silo02",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/Silo02"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "level_transmitter_ma",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_level_sensor",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Material",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Level",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Silo_B55E26A6"
+                    },
+                    {
+                      "name": "Silo03",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/Silo03"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_level_sensor",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "level_transmitter_ma",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Level",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Material",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Silo_B55E26A6"
+                    },
+                    {
+                      "name": "Silo01",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/BatchHouse/Silo01"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "level_transmitter_ma",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_level_sensor",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Material",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Level",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Silo_B55E26A6"
+                    }
+                  ]
+                },
+                {
+                  "name": "ColdEnd",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "Inspector",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/ColdEnd/Inspector"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Production",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "RejectCount",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "DefectSED",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "PassCount",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "DefectCHK",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "DefectDIM",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "TotalInspected",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "photoelectric_sensor",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "vision_system_ready",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "camera_trigger_count",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "reject_gate_status",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Inspector_62333784"
+                    },
+                    {
+                      "name": "Palletizer",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/ColdEnd/Palletizer"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Production",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "PalletsCompleted",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "ContainersPerPallet",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "gripper_vacuum_psi",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pallet_present_sensor",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "robot_position_x",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "robot_position_y",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Palletizer_0024F89F"
+                    },
+                    {
+                      "name": "Lehr",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/ColdEnd/Lehr"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "Description",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "edge",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "zone1_thermocouple_mv",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "belt_tension_raw",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "zone3_thermocouple_mv",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "belt_drive_encoder",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "zone2_thermocouple_mv",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "ZoneTemp1",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "ZoneTemp3",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "BeltSpeed",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "ZoneTemp2",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "State",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "StateCurrent",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "StateReason",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/Equipment/Lehr_427EEECD"
+                    }
+                  ]
+                },
+                {
+                  "name": "Utility",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "Compressor01",
+                      "parameters": {
+                        "srcBasePath": {
+                          "dataType": "String",
+                          "value": "[ProveIt-2026]_UNSTransform/Enterprise A/jpi/Line 1/Utility/InstrumentAir/Compressor01"
+                        }
+                      },
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "ProcessFluidCircuit",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Outlet",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "GaugePressure",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "value",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "timestamp",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Temperature",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "value",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "timestamp",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "DewPoint",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "timestamp",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "value",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "FluidType",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "Delta",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "GaugePressure",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "value",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "timestamp",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "ElectricalCircuit",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Input",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "Current",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "timestamp",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "value",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Operational",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "OilTemperature",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "OperatingState",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "valueName",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Statistics",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "RunningTime",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "value",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "timestamp",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Widget",
+                          "tagType": "UdtInstance",
+                          "tags": [
+                            {
+                              "name": "params",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeX",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hide",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathConfig",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathTrend",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "sizeY",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "title",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "pathDetail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "path",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "priority",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "_metadata",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "Identification",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "AssetId",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "DeviceClass",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "ComponentName",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "ProcessFluidCircuit",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "Delta",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "GaugePressure",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "engineeringUnits",
+                                          "tagType": "Folder",
+                                          "tags": [
+                                            {
+                                              "name": "displayName",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "namespaceUri",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "unitId",
+                                              "tagType": "AtomicTag"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Outlet",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "Temperature",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "engineeringUnits",
+                                          "tagType": "Folder",
+                                          "tags": [
+                                            {
+                                              "name": "unitId",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "displayName",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "namespaceUri",
+                                              "tagType": "AtomicTag"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "GaugePressure",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "engineeringUnits",
+                                          "tagType": "Folder",
+                                          "tags": [
+                                            {
+                                              "name": "unitId",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "displayName",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "namespaceUri",
+                                              "tagType": "AtomicTag"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "DewPoint",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "engineeringUnits",
+                                          "tagType": "Folder",
+                                          "tags": [
+                                            {
+                                              "name": "displayName",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "namespaceUri",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "unitId",
+                                              "tagType": "AtomicTag"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Statistics",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "RunningTime",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "description",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "engineeringUnits",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "namespaceUri",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "displayName",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "unitId",
+                                          "tagType": "AtomicTag"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Operational",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "OperatingState",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "dataType",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "name": "enumValues",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "2",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "0",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "3",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "6",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "1",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "7",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "4",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "5",
+                                          "tagType": "AtomicTag"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "OilTemperature",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "engineeringUnits",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "displayName",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "unitId",
+                                          "tagType": "AtomicTag"
+                                        },
+                                        {
+                                          "name": "namespaceUri",
+                                          "tagType": "AtomicTag"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "ElectricalCircuit",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "Input",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "name": "Current",
+                                      "tagType": "Folder",
+                                      "tags": [
+                                        {
+                                          "name": "engineeringUnits",
+                                          "tagType": "Folder",
+                                          "tags": [
+                                            {
+                                              "name": "namespaceUri",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "displayName",
+                                              "tagType": "AtomicTag"
+                                            },
+                                            {
+                                              "name": "unitId",
+                                              "tagType": "AtomicTag"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "typeId": "Generated/VendorUDTs/Compressor01"
+                    }
+                  ]
+                },
+                {
+                  "name": "_metadata",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "ISO7459",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_tolerance_plus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_tolerance_plus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_measured\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_internal_pressure_resistance_bar_measured",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_upper_limit_ml\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_upper_limit_ml",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_nominal_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_nominal_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_finish_type\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_finish_type",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_samples_failed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_samples_failed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_product_id\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_product_id",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_measured\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_thermal_shock_resistance_c_measured",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_minimum_required\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_internal_pressure_resistance_bar_minimum_required",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_upper_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_upper_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_lower_limit_ml\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_lower_limit_ml",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_thermal_shock_resistance_c_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_nominal_ml\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_nominal_ml",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/compliance_notes\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "compliance_notes",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_upper_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_upper_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_nominal_capacity_ml\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_nominal_capacity_ml",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_sample_size\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_sample_size",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_measured_actual_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_measured_actual_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_lower_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_lower_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_material\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_material",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_tolerance_minus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_tolerance_minus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_internal_pressure_resistance_bar_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_tolerance_minus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_tolerance_minus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_tolerance_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_tolerance_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_nominal_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_nominal_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_inspection_timestamp\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_inspection_timestamp",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_nominal_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_nominal_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_tolerance_minus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_tolerance_minus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_product_name\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_product_name",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_upper_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_upper_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_cpk_value\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_cpk_value",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_measured_actual_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_measured_actual_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_nominal_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_nominal_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_tolerance_plus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_tolerance_plus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_tolerance_minus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_tolerance_minus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_overall_compliance\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_overall_compliance",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_upper_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_upper_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_tolerance_plus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_tolerance_plus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_lower_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_lower_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_status\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_status",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_inspector_id\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_inspector_id",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_tolerance_plus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_tolerance_plus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/standard_name\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "standard_name",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_minimum_required\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "mechanical_properties_thermal_shock_resistance_c_minimum_required",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_lower_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_lower_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_measured_actual_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_measured_actual_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_tolerance_plus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_tolerance_plus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_measured_actual_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_outer_diameter_measured_actual_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/standard\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "standard",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/product_specification_production_line\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_specification_production_line",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_upper_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_upper_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_measured_actual_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_measured_actual_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/next_inspection_due\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "next_inspection_due",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_body_diameter_lower_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_body_diameter_lower_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_overall_height_nominal_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_overall_height_nominal_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/inspection_data_samples_passed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "inspection_data_samples_passed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_tolerance_minus_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_wall_thickness_minimum_tolerance_minus_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/capacity_tolerance_measured_actual_ml\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "capacity_tolerance_measured_actual_ml",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/ISO7459/dimensional_tolerances_finish_height_lower_limit_mm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "dimensional_tolerances_finish_height_lower_limit_mm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "BigQuery",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/oee_metrics_oee_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "oee_metrics_oee_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/enterprise\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "enterprise",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_feed_rate_lbs_min\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_feed_rate_lbs_min",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/palletizing_pallets_completed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "palletizing_pallets_completed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/equipment_status_sections_active\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "equipment_status_sections_active",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_infeed_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_infeed_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/work_order\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "work_order",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_silica_sand_level_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_silica_sand_level_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_good_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_good_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_defect_dimensional\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_defect_dimensional",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_outfeed_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_outfeed_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/stream_version\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "stream_version",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/equipment_status_furnace_temp_f\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "equipment_status_furnace_temp_f",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_runtime_seconds\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_runtime_seconds",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_total_inspected\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_total_inspected",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_waste_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_waste_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/equipment_status_machine_speed_cpm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "equipment_status_machine_speed_cpm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_defect_check\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_defect_check",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/shift\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "shift",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_limestone_level_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_limestone_level_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/equipment_status_lehr_belt_speed_fpm\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "equipment_status_lehr_belt_speed_fpm",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/oee_metrics_performance_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "oee_metrics_performance_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/palletizing_containers_per_pallet\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "palletizing_containers_per_pallet",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/oee_metrics_availability_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "oee_metrics_availability_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_soda_ash_level_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_soda_ash_level_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_production_rate_standard\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_production_rate_standard",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/line\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "line",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_batch_weight_lbs\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_batch_weight_lbs",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/product_id\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "product_id",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_pass_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_pass_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/site\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "site",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_bad_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_bad_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_defect_seed\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_defect_seed",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/quality_metrics_reject_count\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "quality_metrics_reject_count",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/oee_metrics_quality_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "oee_metrics_quality_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/equipment_status_forehearth_temp_f\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "equipment_status_forehearth_temp_f",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/material_usage_cullet_level_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "material_usage_cullet_level_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/timestamp\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "timestamp",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "String",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/data_source\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "data_source",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Float8",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/oee_metrics_yield_efficiency_percent\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "oee_metrics_yield_efficiency_percent",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        },
+                        {
+                          "dataType": "Int4",
+                          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/BigQuery/production_metrics_production_rate_actual\")",
+                          "historyEnabled": true,
+                          "historyProvider": "ignHistorian",
+                          "name": "production_metrics_production_rate_actual",
+                          "tagType": "AtomicTag",
+                          "valueSource": "expr"
+                        }
+                      ]
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/Glass Manufacturing/Line 1/_metadata/Description\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "Description",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "_metadata",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "_shift",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "String",
+                  "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/LocalTime\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "LocalTime",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/Description\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "Description",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "name": "OperatingSchedule",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_1_end_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_1_end_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_2_start_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_2_start_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_2_duration_hours\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_2_duration_hours",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_3_shift_name\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_3_shift_name",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_1_shift_name\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_1_shift_name",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_2_shift_id\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_2_shift_id",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/notes\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "notes",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/facility\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "facility",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_3_start_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_3_start_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_1_start_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_1_start_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/operating_days\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "operating_days",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_3_duration_hours\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_3_duration_hours",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_2_shift_name\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_2_shift_name",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_3_shift_id\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_3_shift_id",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_3_end_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_3_end_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/timezone\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "timezone",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_1_shift_id\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_1_shift_id",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "String",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_2_end_time\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_2_end_time",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    },
+                    {
+                      "dataType": "Int4",
+                      "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/OperatingSchedule/shift_1_duration_hours\")",
+                      "historyEnabled": true,
+                      "historyProvider": "ignHistorian",
+                      "name": "shift_1_duration_hours",
+                      "tagType": "AtomicTag",
+                      "valueSource": "expr"
+                    }
+                  ]
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/ProcessFlow\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "ProcessFlow",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/CurrentShift\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "CurrentShift",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                },
+                {
+                  "dataType": "String",
+                  "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/Dallas/_metadata/_shift/DateTime\")",
+                  "historyEnabled": true,
+                  "historyProvider": "ignHistorian",
+                  "name": "DateTime",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "_metadata",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "String",
+          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/_metadata/site_location\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "site_location",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/_metadata/enterprise_id\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "enterprise_id",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/_metadata/process_type\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "process_type",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag(\"[MQTT Engine]Edge Nodes/jpi/Enterprise A/_metadata/industry\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "industry",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        }
+      ]
+    }
+  ]
+}

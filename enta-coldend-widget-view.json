@@ -1,0 +1,570 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Enterprise A/Dallas/Glass Manufacturing/Line 1"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 420,
+      "width": 480
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "COLD END"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label"
+                          },
+                          "text": "Lehr"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "State"
+                        },
+                        "position": {
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "basePath": "{view.params.basePath}"
+                                },
+                                "tagPath": "{basePath}/ColdEnd/Lehr/State/StateCurrent"
+                              },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Value"
+                          },
+                          "text": "--"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "LehrHeader"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Row"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Zone 1" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Lehr/Status/ZoneTemp1'), '#,##0.0') + ' \u00b0F'" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "LehrZone1" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Zone 2" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Lehr/Status/ZoneTemp2'), '#,##0.0') + ' \u00b0F'" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "LehrZone2" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Zone 3" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Lehr/Status/ZoneTemp3'), '#,##0.0') + ' \u00b0F'" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "LehrZone3" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Belt Speed" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Lehr/Status/BeltSpeed'), '#,##0.0') + ' fpm'" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "LehrBeltSpeed" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "LehrCard"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Palletizer" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "State" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/ColdEnd/Palletizer/State/StateCurrent" },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "PalletizerHeader" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Pallets Completed" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Palletizer/Production/PalletsCompleted'), '#,##0')" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "PalletsPallets" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Containers/Pallet" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Palletizer/Production/ContainersPerPallet'), '#,##0')" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "PalletsPerPallet" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "PalletizerCard"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "LeftColumn"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Inspector" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "State" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/ColdEnd/Inspector/State/StateCurrent" },
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "InspectorHeader" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": { "name": "Value" },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Inspector/Production/PassCount'), '#,##0')" },
+                                  "type": "expr"
+                                }
+                              }
+                            },
+                            "props": { "style": { "classes": "Framework/Card/Value", "color": "#4CAF50", "fontSize": "18px", "textAlign": "center" }, "text": "--" },
+                            "type": "ia.display.label"
+                          },
+                          {
+                            "meta": { "name": "Label" },
+                            "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "10px", "textAlign": "center" }, "text": "Pass" },
+                            "type": "ia.display.label"
+                          }
+                        ],
+                        "meta": { "name": "PassBox" },
+                        "position": { "grow": 1 },
+                        "props": { "direction": "column", "justify": "center" },
+                        "type": "ia.container.flex"
+                      },
+                      {
+                        "children": [
+                          {
+                            "meta": { "name": "Value" },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Inspector/Production/RejectCount'), '#,##0')" },
+                                  "type": "expr"
+                                }
+                              }
+                            },
+                            "props": { "style": { "classes": "Framework/Card/Value", "color": "#F44336", "fontSize": "18px", "textAlign": "center" }, "text": "--" },
+                            "type": "ia.display.label"
+                          },
+                          {
+                            "meta": { "name": "Label" },
+                            "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "10px", "textAlign": "center" }, "text": "Reject" },
+                            "type": "ia.display.label"
+                          }
+                        ],
+                        "meta": { "name": "RejectBox" },
+                        "position": { "grow": 1 },
+                        "props": { "direction": "column", "justify": "center" },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": { "name": "PassRejectRow" },
+                    "position": { "basis": "60px" },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": { "name": "DefectLabel" },
+                    "position": { "shrink": 0 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "10px", "marginTop": "4px" }, "text": "DEFECT BREAKDOWN" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Seed (SED)" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Inspector/Production/DefectSED'), '#,##0')" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value", "color": "#FF9800" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "DefectSED" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Check (CHK)" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Inspector/Production/DefectCHK'), '#,##0')" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value", "color": "#AB47BC" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "DefectCHK" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": { "name": "Label" },
+                        "position": { "grow": 1 },
+                        "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Dimensional (DIM)" },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "Value" },
+                        "position": { "shrink": 0 },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": { "expression": "numberformat(tag({view.params.basePath} + '/ColdEnd/Inspector/Production/DefectDIM'), '#,##0')" },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": { "style": { "classes": "Framework/Card/Value", "color": "#29B6F6" }, "text": "--" },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": { "name": "DefectDIM" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "InspectorCard"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "RightColumn"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ContentGrid"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

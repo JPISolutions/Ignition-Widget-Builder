@@ -1,0 +1,348 @@
+import { useState, useEffect, useCallback } from "react";
+
+const COLORS = {
+  bg: "#0f1117", card: "#1a1d27", cardBorder: "#2a2d3a", text: "#e1e4ed",
+  textDim: "#8b8fa3", green: "#22c55e", yellow: "#eab308", red: "#ef4444",
+  blue: "#3b82f6", cyan: "#06b6d4", orange: "#f97316", purple: "#a855f7",
+  greenBg: "rgba(34,197,94,0.12)", yellowBg: "rgba(234,179,8,0.12)",
+  redBg: "rgba(239,68,68,0.12)", blueBg: "rgba(59,130,246,0.12)",
+};
+
+const rand = (min, max) => Math.random() * (max - min) + min;
+const randInt = (min, max) => Math.floor(rand(min, max));
+
+function genData() {
+  const avail = rand(82, 98), perf = rand(78, 96), qual = rand(90, 99.5);
+  const oee = (avail * perf * qual) / 10000;
+  const good = randInt(14000, 18000), bad = randInt(80, 400), waste = randInt(30, 150);
+  const infeed = good + bad + waste + randInt(50, 200), outfeed = good + randInt(10, 50);
+  return {
+    oee: { oee, avail, perf, qual, yieldEff: rand(88, 99), good, bad, waste, infeed, outfeed, runTime: randInt(18000, 28800), stdRate: 320, state: "Running", workOrder: "WO-2026-0847", productionId: "PID-4521" },
+    batch: {
+      silos: [
+        { name: "Silo 01", material: "Silica Sand", level: rand(40, 95) },
+        { name: "Silo 02", material: "Soda Ash", level: rand(30, 88) },
+        { name: "Silo 03", material: "Limestone", level: rand(45, 92) },
+        { name: "Silo 04", material: "Cullet", level: rand(25, 80) },
+      ],
+      mixer: { weight: rand(1800, 2400), state: "Running" },
+      charger: { feedRate: rand(12, 22), state: "Running" },
+    },
+    hotEnd: {
+      furnace: { temp: rand(2750, 2850), glassLevel: rand(88, 96), state: "Running" },
+      forehearth: { temp: rand(2150, 2250), gobTemp: rand(2050, 2150), state: "Running" },
+      isMachine: { speed: rand(8, 12), sectionsActive: randInt(8, 10), containersFormed: randInt(14000, 18000), state: "Running" },
+      fuelGas: { flowRate: rand(800, 1200), dailyVol: rand(18000, 26000) },
+    },
+    coldEnd: {
+      lehr: { zone1: rand(980, 1020), zone2: rand(750, 800), zone3: rand(400, 450), beltSpeed: rand(18, 24), state: "Running" },
+      inspector: { total: 0, pass: 0, reject: 0, defSED: randInt(10, 60), defCHK: randInt(5, 40), defDIM: randInt(8, 50), state: "Running" },
+      palletizer: { completed: randInt(30, 80), perPallet: 48, state: "Running" },
+    },
+    iso: {
+      bodyDia: { status: "PASS", actual: rand(72, 73), nominal: 72.5 },
+      finishH: { status: "PASS", actual: rand(17.8, 18.2), nominal: 18.0 },
+      overallH: { status: "PASS", actual: rand(168, 172), nominal: 170.0 },
+      wallThk: { status: "PASS", actual: rand(2.8, 3.2), nominal: 3.0 },
+      finishOD: { status: "PASS", actual: rand(37.8, 38.2), nominal: 38.0 },
+      capacity: { status: "PASS", actual: rand(490, 510), nominal: 500 },
+      pressure: { status: "PASS", measured: rand(18, 22), required: 15 },
+      thermal: { status: "PASS", measured: randInt(38, 45), required: 35 },
+      cpk: rand(1.2, 2.1), samplesPassed: 0, samplesFailed: 0, sampleSize: 50, nextDue: "2026-02-11T06:00:00",
+    },
+    utility: { state: "Running", pressure: rand(105, 125), temp: rand(165, 195), dewPoint: rand(35, 45), oilTemp: rand(170, 200), current: rand(85, 120), runHours: randInt(8000, 15000) },
+    shift: "Day", timestamp: new Date().toLocaleTimeString(),
+  };
+}
+
+function initData() {
+  const d = genData();
+  d.coldEnd.inspector.total = d.coldEnd.inspector.defSED + d.coldEnd.inspector.defCHK + d.coldEnd.inspector.defDIM + randInt(200, 600);
+  d.coldEnd.inspector.reject = d.coldEnd.inspector.defSED + d.coldEnd.inspector.defCHK + d.coldEnd.inspector.defDIM;
+  d.coldEnd.inspector.pass = d.coldEnd.inspector.total - d.coldEnd.inspector.reject;
+  d.iso.samplesFailed = randInt(0, 3);
+  d.iso.samplesPassed = d.iso.sampleSize - d.iso.samplesFailed;
+  return d;
+}
+
+// --- Components ---
+
+const Card = ({ children, style, title }) => (
+  <div style={{ background: COLORS.card, borderRadius: 10, border: `1px solid ${COLORS.cardBorder}`, padding: "14px 16px", ...style }}>
+    {title && <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.2, color: COLORS.textDim, marginBottom: 10 }}>{title}</div>}
+    {children}
+  </div>
+);
+
+const StateBadge = ({ state }) => {
+  const c = state === "Running" ? COLORS.green : state === "Idle" ? COLORS.yellow : COLORS.red;
+  return <span style={{ fontSize: 10, fontWeight: 700, color: c, background: state === "Running" ? COLORS.greenBg : state === "Idle" ? COLORS.yellowBg : COLORS.redBg, padding: "2px 8px", borderRadius: 20 }}>{state}</span>;
+};
+
+const GaugeRing = ({ value, label, size = 100, color }) => {
+  const r = (size - 12) / 2, circ = 2 * Math.PI * r, offset = circ * (1 - value / 100);
+  const gc = color || (value >= 85 ? COLORS.green : value >= 60 ? COLORS.yellow : COLORS.red);
+  return (
+    <div style={{ textAlign: "center", width: size }}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={COLORS.cardBorder} strokeWidth={6} />
+        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={gc} strokeWidth={6} strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round" transform={`rotate(-90 ${size/2} ${size/2})`} style={{ transition: "stroke-dashoffset 0.8s ease" }} />
+        <text x={size/2} y={size/2 - 4} textAnchor="middle" fill={COLORS.text} fontSize={size > 80 ? 20 : 16} fontWeight="700">{value.toFixed(1)}%</text>
+        <text x={size/2} y={size/2 + 14} textAnchor="middle" fill={COLORS.textDim} fontSize={9} fontWeight="600">{label}</text>
+      </svg>
+    </div>
+  );
+};
+
+const KPI = ({ label, value, unit, color }) => (
+  <div style={{ textAlign: "center", minWidth: 70 }}>
+    <div style={{ fontSize: 18, fontWeight: 700, color: color || COLORS.text }}>{typeof value === "number" ? value.toLocaleString() : value}</div>
+    <div style={{ fontSize: 10, color: COLORS.textDim }}>{label}{unit ? ` (${unit})` : ""}</div>
+  </div>
+);
+
+const SiloBar = ({ name, material, level }) => {
+  const c = level > 50 ? COLORS.green : level > 25 ? COLORS.yellow : COLORS.red;
+  return (
+    <div style={{ flex: 1, minWidth: 60, textAlign: "center" }}>
+      <div style={{ fontSize: 10, color: COLORS.textDim, marginBottom: 4 }}>{name}</div>
+      <div style={{ height: 80, background: COLORS.bg, borderRadius: 6, position: "relative", overflow: "hidden", border: `1px solid ${COLORS.cardBorder}` }}>
+        <div style={{ position: "absolute", bottom: 0, width: "100%", height: `${level}%`, background: `linear-gradient(to top, ${c}cc, ${c}44)`, transition: "height 0.8s ease", borderRadius: "0 0 5px 5px" }} />
+        <div style={{ position: "absolute", width: "100%", top: "50%", transform: "translateY(-50%)", fontSize: 13, fontWeight: 700, color: "#fff", textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>{level.toFixed(0)}%</div>
+      </div>
+      <div style={{ fontSize: 9, color: COLORS.textDim, marginTop: 3 }}>{material}</div>
+    </div>
+  );
+};
+
+const ISORow = ({ label, status, actual, nominal, unit = "mm" }) => (
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0", borderBottom: `1px solid ${COLORS.cardBorder}` }}>
+    <span style={{ fontSize: 11, color: COLORS.textDim, flex: 2 }}>{label}</span>
+    <span style={{ fontSize: 11, color: COLORS.text, flex: 1, textAlign: "center" }}>{nominal}{unit}</span>
+    <span style={{ fontSize: 11, color: COLORS.text, flex: 1, textAlign: "center" }}>{actual.toFixed(1)}{unit}</span>
+    <span style={{ fontSize: 10, fontWeight: 700, color: status === "PASS" ? COLORS.green : COLORS.red, flex: 0.6, textAlign: "right" }}>{status}</span>
+  </div>
+);
+
+const DefectBar = ({ label, count, total, color }) => {
+  const pct = total > 0 ? (count / total) * 100 : 0;
+  return (
+    <div style={{ marginBottom: 6 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: COLORS.textDim, marginBottom: 2 }}>
+        <span>{label}</span><span>{count}</span>
+      </div>
+      <div style={{ height: 6, background: COLORS.bg, borderRadius: 3, overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${pct}%`, background: color, borderRadius: 3, transition: "width 0.6s ease" }} />
+      </div>
+    </div>
+  );
+};
+
+const MetricRow = ({ label, value, unit }) => (
+  <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0" }}>
+    <span style={{ fontSize: 11, color: COLORS.textDim }}>{label}</span>
+    <span style={{ fontSize: 11, fontWeight: 600, color: COLORS.text }}>{typeof value === "number" ? value.toFixed(1) : value} {unit || ""}</span>
+  </div>
+);
+
+// --- Main Dashboard ---
+
+export default function Dashboard() {
+  const [data, setData] = useState(initData);
+
+  useEffect(() => {
+    const iv = setInterval(() => setData(initData()), 5000);
+    return () => clearInterval(iv);
+  }, []);
+
+  const d = data;
+  const fmtTime = (s) => { const h = Math.floor(s/3600), m = Math.floor((s%3600)/60); return `${h}h ${m}m`; };
+
+  return (
+    <div style={{ background: COLORS.bg, color: COLORS.text, minHeight: "100vh", fontFamily: "'Inter', -apple-system, sans-serif", padding: 16 }}>
+      {/* Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
+        <div>
+          <div style={{ fontSize: 20, fontWeight: 800, letterSpacing: -0.5 }}>🏭 Line 1 — Glass Manufacturing</div>
+          <div style={{ fontSize: 11, color: COLORS.textDim }}>Enterprise A / Dallas Plant</div>
+        </div>
+        <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 10, color: COLORS.textDim }}>Work Order</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.cyan }}>{d.oee.workOrder}</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 10, color: COLORS.textDim }}>Product</div>
+            <div style={{ fontSize: 13, fontWeight: 700 }}>{d.oee.productionId}</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 10, color: COLORS.textDim }}>Shift</div>
+            <div style={{ fontSize: 13, fontWeight: 700 }}>{d.shift}</div>
+          </div>
+          <StateBadge state={d.oee.state} />
+          <div style={{ fontSize: 11, color: COLORS.textDim }}>{d.timestamp}</div>
+        </div>
+      </div>
+
+      {/* Row 1: OEE */}
+      <Card style={{ marginBottom: 12 }} title="OEE Overview">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap", gap: 12 }}>
+          <GaugeRing value={d.oee.oee} label="OEE" size={110} />
+          <GaugeRing value={d.oee.avail} label="Availability" size={90} />
+          <GaugeRing value={d.oee.perf} label="Performance" size={90} />
+          <GaugeRing value={d.oee.qual} label="Quality" size={90} />
+          <GaugeRing value={d.oee.yieldEff} label="Yield Eff." size={90} />
+          <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+            <KPI label="Good" value={d.oee.good} color={COLORS.green} />
+            <KPI label="Bad" value={d.oee.bad} color={COLORS.red} />
+            <KPI label="Waste" value={d.oee.waste} color={COLORS.orange} />
+            <KPI label="Infeed" value={d.oee.infeed} />
+            <KPI label="Outfeed" value={d.oee.outfeed} />
+            <KPI label="Run Time" value={fmtTime(d.oee.runTime)} />
+            <KPI label="Std Rate" value={d.oee.stdRate} unit="cpm" />
+          </div>
+        </div>
+      </Card>
+
+      {/* Row 2: Process Flow */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1.5fr", gap: 12, marginBottom: 12 }}>
+        {/* Batch House */}
+        <Card title="Batch House">
+          <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+            {d.batch.silos.map((s, i) => <SiloBar key={i} {...s} />)}
+          </div>
+          <div style={{ borderTop: `1px solid ${COLORS.cardBorder}`, paddingTop: 8 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>Batch Mixer</span><StateBadge state={d.batch.mixer.state} />
+            </div>
+            <MetricRow label="Batch Weight" value={d.batch.mixer.weight} unit="lbs" />
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, marginBottom: 6 }}>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>Batch Charger</span><StateBadge state={d.batch.charger.state} />
+            </div>
+            <MetricRow label="Feed Rate" value={d.batch.charger.feedRate} unit="lbs/min" />
+          </div>
+        </Card>
+
+        {/* Hot End */}
+        <Card title="Hot End">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>Furnace</span><StateBadge state={d.hotEnd.furnace.state} />
+              </div>
+              <MetricRow label="Temperature" value={d.hotEnd.furnace.temp} unit="°F" />
+              <MetricRow label="Glass Level" value={d.hotEnd.furnace.glassLevel} unit="%" />
+            </div>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>Forehearth</span><StateBadge state={d.hotEnd.forehearth.state} />
+              </div>
+              <MetricRow label="Temperature" value={d.hotEnd.forehearth.temp} unit="°F" />
+              <MetricRow label="Gob Temp" value={d.hotEnd.forehearth.gobTemp} unit="°F" />
+            </div>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>IS Machine</span><StateBadge state={d.hotEnd.isMachine.state} />
+              </div>
+              <MetricRow label="Speed" value={d.hotEnd.isMachine.speed} unit="cpm" />
+              <MetricRow label="Sections Active" value={d.hotEnd.isMachine.sectionsActive} />
+              <MetricRow label="Containers Formed" value={d.hotEnd.isMachine.containersFormed.toLocaleString()} />
+            </div>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 6 }}>Fuel Gas</div>
+              <MetricRow label="Flow Rate" value={d.hotEnd.fuelGas.flowRate} unit="scfh" />
+              <MetricRow label="Daily Volume" value={d.hotEnd.fuelGas.dailyVol} unit="scf" />
+            </div>
+          </div>
+        </Card>
+
+        {/* Cold End */}
+        <Card title="Cold End">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>Lehr</span><StateBadge state={d.coldEnd.lehr.state} />
+              </div>
+              <MetricRow label="Zone 1" value={d.coldEnd.lehr.zone1} unit="°F" />
+              <MetricRow label="Zone 2" value={d.coldEnd.lehr.zone2} unit="°F" />
+              <MetricRow label="Zone 3" value={d.coldEnd.lehr.zone3} unit="°F" />
+              <MetricRow label="Belt Speed" value={d.coldEnd.lehr.beltSpeed} unit="fpm" />
+            </div>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>Inspector</span><StateBadge state={d.coldEnd.inspector.state} />
+              </div>
+              <div style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                <KPI label="Pass" value={d.coldEnd.inspector.pass} color={COLORS.green} />
+                <KPI label="Reject" value={d.coldEnd.inspector.reject} color={COLORS.red} />
+              </div>
+              <DefectBar label="Seed (SED)" count={d.coldEnd.inspector.defSED} total={d.coldEnd.inspector.total} color={COLORS.orange} />
+              <DefectBar label="Check (CHK)" count={d.coldEnd.inspector.defCHK} total={d.coldEnd.inspector.total} color={COLORS.purple} />
+              <DefectBar label="Dimensional (DIM)" count={d.coldEnd.inspector.defDIM} total={d.coldEnd.inspector.total} color={COLORS.cyan} />
+            </div>
+            <div style={{ background: COLORS.bg, borderRadius: 8, padding: 10, gridColumn: "1 / -1" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>Palletizer</span><StateBadge state={d.coldEnd.palletizer.state} />
+              </div>
+              <div style={{ display: "flex", gap: 24 }}>
+                <MetricRow label="Pallets Completed" value={d.coldEnd.palletizer.completed} />
+                <MetricRow label="Containers/Pallet" value={d.coldEnd.palletizer.perPallet} />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Row 3: ISO + Utility */}
+      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12 }}>
+        <Card title="ISO 7459 Compliance">
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div style={{ flex: 2, minWidth: 280 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", marginBottom: 4 }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: COLORS.textDim, flex: 2 }}>PARAMETER</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: COLORS.textDim, flex: 1, textAlign: "center" }}>NOMINAL</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: COLORS.textDim, flex: 1, textAlign: "center" }}>ACTUAL</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: COLORS.textDim, flex: 0.6, textAlign: "right" }}>STATUS</span>
+              </div>
+              <ISORow label="Body Diameter" {...d.iso.bodyDia} />
+              <ISORow label="Finish Height" {...d.iso.finishH} />
+              <ISORow label="Overall Height" {...d.iso.overallH} />
+              <ISORow label="Wall Thickness" {...d.iso.wallThk} />
+              <ISORow label="Finish OD" {...d.iso.finishOD} />
+              <ISORow label="Capacity" {...d.iso.capacity} unit="ml" />
+              <ISORow label="Pressure Resist." status={d.iso.pressure.status} actual={d.iso.pressure.measured} nominal={d.iso.pressure.required} unit="bar" />
+              <ISORow label="Thermal Shock" status={d.iso.thermal.status} actual={d.iso.thermal.measured} nominal={d.iso.thermal.required} unit="°C" />
+            </div>
+            <div style={{ flex: 1, minWidth: 150 }}>
+              <div style={{ background: COLORS.bg, borderRadius: 8, padding: 12, marginBottom: 8 }}>
+                <div style={{ fontSize: 10, color: COLORS.textDim, marginBottom: 4 }}>Cpk</div>
+                <div style={{ fontSize: 24, fontWeight: 800, color: d.iso.cpk >= 1.33 ? COLORS.green : d.iso.cpk >= 1.0 ? COLORS.yellow : COLORS.red }}>{d.iso.cpk.toFixed(2)}</div>
+              </div>
+              <MetricRow label="Sample Size" value={d.iso.sampleSize} />
+              <MetricRow label="Passed" value={d.iso.samplesPassed} />
+              <MetricRow label="Failed" value={d.iso.samplesFailed} />
+              <div style={{ marginTop: 8, fontSize: 10, color: COLORS.textDim }}>Next inspection due</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: COLORS.cyan }}>Feb 11, 2026 06:00</div>
+            </div>
+          </div>
+        </Card>
+
+        <Card title="Utility — Compressor 01">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+            <span style={{ fontSize: 12, fontWeight: 600 }}>Operating State</span><StateBadge state={d.utility.state} />
+          </div>
+          <MetricRow label="Outlet Pressure" value={d.utility.pressure} unit="psi" />
+          <MetricRow label="Outlet Temp" value={d.utility.temp} unit="°F" />
+          <MetricRow label="Dew Point" value={d.utility.dewPoint} unit="°F" />
+          <MetricRow label="Oil Temp" value={d.utility.oilTemp} unit="°F" />
+          <MetricRow label="Motor Current" value={d.utility.current} unit="A" />
+          <MetricRow label="Running Hours" value={d.utility.runHours.toLocaleString()} unit="hrs" />
+        </Card>
+      </div>
+
+      <div style={{ textAlign: "center", fontSize: 10, color: COLORS.textDim, marginTop: 12 }}>
+        Simulated data · Refreshes every 5s · Tags mapped to Ignition MQTT Engine
+      </div>
+    </div>
+  );
+}

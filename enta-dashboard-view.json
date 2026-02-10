@@ -1,0 +1,550 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Enterprise A/Dallas/Glass Manufacturing/Line 1",
+    "batchHouseViewPath": "UDT Views/Prove It/Rollups/EntA/enta-batchhouse-widget-view",
+    "coldEndViewPath": "UDT Views/Prove It/EntA/enta-coldend-widget-view",
+    "compressorViewPath": "UDT Views/Prove It/Vendor/airCompressor",
+    "facilityBasePath": "[default]Enterprise A/Dallas",
+    "hotEndViewPath": "UDT Views/Prove It/Rollups/EntA/enta-hotend-widget-view",
+    "isoViewPath": "UDT Views/Prove It/Rollups/EntA/enta-iso-widget-view",
+    "oeeViewPath": "UDT Views/Prove It/Rollups/EntA/enta-line-kpi-widget-view"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.facilityBasePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1080,
+      "width": 1201
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "16px",
+                    "fontWeight": "bold"
+                  },
+                  "text": "Glass Manufacturing"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Subtitle"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "11px"
+                  },
+                  "text": "Enterprise A / Dallas Plant"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TitleBlock"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "WOLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "Work Order"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "WOValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/_metrics/OEE/WorkOrder"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#29B6F6",
+                    "fontSize": "13px",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "WorkOrderInfo"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "marginRight": "16px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ProdLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "Product"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ProdValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/_metrics/OEE/ProductionID"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "13px",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ProductInfo"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "marginRight": "16px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ShiftLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "Shift"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ShiftValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "facilityBasePath": "{view.params.facilityBasePath}"
+                        },
+                        "tagPath": "{facilityBasePath}/_metadata/_shift/CurrentShift"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "13px",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ShiftInfo"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "marginRight": "16px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "StateLabel"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "State"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "StateValue"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/_metrics/OEE/State"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "13px",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "StateInfo"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "DashboardHeader"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row",
+            "paddingLeft": "8px",
+            "paddingRight": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "OEESection"
+        },
+        "position": {
+          "basis": "240px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.oeeViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "BatchHouse"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.basePath": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.basePath}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.batchHouseViewPath}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "HotEnd"
+                    },
+                    "position": {
+                      "grow": 1.5
+                    },
+                    "propConfig": {
+                      "props.params.basePath": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.basePath}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.hotEndViewPath}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "ColdEnd"
+                    },
+                    "position": {
+                      "grow": 1.5
+                    },
+                    "propConfig": {
+                      "props.params.basePath": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.basePath}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "expression": "{view.params.coldEndViewPath}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "ProcessFlowTab"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "ISOCompliance"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "propConfig": {
+                  "props.params.basePath": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.params.basePath}"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.params.isoViewPath}"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "ContentTabs"
+            },
+            "position": {
+              "grow": 3
+            },
+            "props": {
+              "currentTabIndex": 0,
+              "menuType": "modern",
+              "tabs": [
+                "Process Flow",
+                "ISO 7459"
+              ]
+            },
+            "type": "ia.container.tab"
+          },
+          {
+            "meta": {
+              "name": "Utility"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.basePath": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.basePath} + \u0027/Utility/Compressor01\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.compressorViewPath}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "BottomSection"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

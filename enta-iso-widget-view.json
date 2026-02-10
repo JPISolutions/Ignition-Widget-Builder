@@ -1,0 +1,277 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Enterprise A/Dallas/Glass Manufacturing/Line 1"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 420,
+      "width": 640
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": { "name": "Label" },
+            "position": { "grow": 1 },
+            "props": { "style": { "classes": "Framework/Card/Label" }, "text": "ISO 7459 COMPLIANCE" },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": { "name": "Header" },
+        "position": { "shrink": 0 },
+        "props": { "style": { "classes": "Framework/Card/Row" } },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": { "name": "ParamCol" },
+                    "position": { "grow": 2 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "11px", "fontWeight": "bold" }, "text": "PARAMETER" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "NomCol" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "11px", "fontWeight": "bold", "textAlign": "center" }, "text": "NOMINAL" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ActCol" },
+                    "position": { "grow": 1 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "11px", "fontWeight": "bold", "textAlign": "center" }, "text": "ACTUAL" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "StatCol" },
+                    "position": { "basis": "65px", "shrink": 0 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "11px", "fontWeight": "bold", "textAlign": "right" }, "text": "STATUS" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "TableHeader" },
+                "position": { "shrink": 0 },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-40)", "paddingBottom": "4px", "marginBottom": "2px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Body Diameter" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_body_diameter_nominal_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_body_diameter_measured_actual_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/dimensional_tolerances_body_diameter_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_body_diameter_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowBodyDia" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Finish Height" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_height_nominal_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_height_measured_actual_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/dimensional_tolerances_finish_height_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_height_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowFinishH" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Overall Height" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_overall_height_nominal_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_overall_height_measured_actual_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/dimensional_tolerances_overall_height_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_overall_height_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowOverallH" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Wall Thickness" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_nominal_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_measured_actual_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_wall_thickness_minimum_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowWallThk" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Finish OD" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_nominal_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_measured_actual_mm'), '0.0') + ' mm'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/dimensional_tolerances_finish_outer_diameter_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowFinishOD" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Capacity" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/capacity_tolerance_nominal_ml'), '0') + ' ml'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/capacity_tolerance_measured_actual_ml'), '0.0') + ' ml'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/capacity_tolerance_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/capacity_tolerance_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowCapacity" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Pressure Resist." }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_minimum_required'), '0') + ' bar'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_measured'), '0.0') + ' bar'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_internal_pressure_resistance_bar_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowPressure" },
+                "props": { "style": { "borderBottom": "1px solid var(--neutral-20)", "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  { "meta": { "name": "Param" }, "position": { "grow": 2 }, "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "13px" }, "text": "Thermal Shock" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Nominal" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_minimum_required'), '0') + ' \u00b0C'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Actual" }, "position": { "grow": 1 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_measured'), '0') + ' \u00b0C'" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "fontSize": "13px", "textAlign": "center" }, "text": "--" }, "type": "ia.display.label" },
+                  { "meta": { "name": "Status" }, "position": { "basis": "65px", "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_status" }, "type": "tag" } }, "props.style.color": { "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/mechanical_properties_thermal_shock_resistance_c_status') = 'PASS', '#4CAF50', '#F44336')" }, "type": "expr" } } }, "props": { "style": { "fontSize": "12px", "fontWeight": "bold", "textAlign": "right" }, "text": "--" }, "type": "ia.display.label" }
+                ],
+                "meta": { "name": "RowThermal" },
+                "props": { "style": { "paddingBottom": "5px", "paddingTop": "5px" } },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": { "name": "ParamsTable" },
+            "position": { "grow": 2 },
+            "props": { "direction": "column", "style": { "classes": "Framework/Card/ContainerWBorder" } },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": { "name": "CpkLabel" },
+                    "position": { "shrink": 0 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "10px" }, "text": "Cpk" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "CpkValue" },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_cpk_value'), '0.00')" }, "type": "expr" }
+                      },
+                      "props.style.color": {
+                        "binding": { "config": { "expression": "if(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_cpk_value') >= 1.33, '#4CAF50', if(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_cpk_value') >= 1.0, '#FFC107', '#F44336'))" }, "type": "expr" }
+                      }
+                    },
+                    "props": { "style": { "fontSize": "24px", "fontWeight": "bold", "textAlign": "center" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "CpkCard" },
+                "position": { "shrink": 0 },
+                "props": { "direction": "column", "justify": "center", "style": { "classes": "Framework/Card/ContainerWBorder" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      { "meta": { "name": "Label" }, "position": { "grow": 1 }, "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Sample Size" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Value" }, "position": { "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_sample_size'), '#,##0')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "SampleSize" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Label" }, "position": { "grow": 1 }, "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Passed" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Value" }, "position": { "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_samples_passed'), '#,##0')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "color": "#4CAF50" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Passed" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Label" }, "position": { "grow": 1 }, "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Failed" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Value" }, "position": { "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "expression": "numberformat(tag({view.params.basePath} + '/_metadata/ISO7459/inspection_data_samples_failed'), '#,##0')" }, "type": "expr" } } }, "props": { "style": { "classes": "Framework/Card/Value", "color": "#F44336" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Failed" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      { "meta": { "name": "Label" }, "position": { "grow": 1 }, "props": { "style": { "classes": "Framework/Card/Label" }, "text": "Compliance" }, "type": "ia.display.label" },
+                      { "meta": { "name": "Value" }, "position": { "shrink": 0 }, "propConfig": { "props.text": { "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/inspection_data_overall_compliance" }, "type": "tag" } } }, "props": { "style": { "classes": "Framework/Card/Value" }, "text": "--" }, "type": "ia.display.label" }
+                    ],
+                    "meta": { "name": "Compliance" },
+                    "props": { "style": { "classes": "Framework/Card/Row" } },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": { "name": "SampleStats" },
+                "position": { "shrink": 0 },
+                "props": { "direction": "column", "style": { "classes": "Framework/Card/ContainerWBorder" } },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": { "name": "Label" },
+                    "position": { "shrink": 0 },
+                    "props": { "style": { "classes": "Framework/Card/Label", "fontSize": "10px" }, "text": "Next Inspection Due" },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Value" },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": { "config": { "fallbackDelay": 2.5, "mode": "indirect", "references": { "basePath": "{view.params.basePath}" }, "tagPath": "{basePath}/_metadata/ISO7459/next_inspection_due" }, "type": "tag" }
+                      }
+                    },
+                    "props": { "style": { "color": "#29B6F6", "fontSize": "12px", "fontWeight": "bold" }, "text": "--" },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": { "name": "NextInspection" },
+                "position": { "shrink": 0 },
+                "props": { "direction": "column", "style": { "classes": "Framework/Card/ContainerWBorder" } },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": { "name": "SummaryColumn" },
+            "position": { "grow": 1 },
+            "props": { "direction": "column" },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": { "name": "ContentArea" },
+        "position": { "grow": 1 },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": { "name": "root" },
+    "props": { "direction": "column" },
+    "type": "ia.container.flex"
+  }
+}
