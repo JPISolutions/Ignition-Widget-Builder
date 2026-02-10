@@ -1,0 +1,155 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/palletizing/palletizermanual01",
+    "lineKpiViewPath": "UDT Views/Prove It/Rollups/EntB/line-kpi",
+    "equipmentStatusViewPath": "UDT Views/Prove It/Rollups/EntB/pal-equipment-status-widget-view"
+  },
+  "propConfig": {
+    "custom.equipmentData": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath}"
+        },
+        "transforms": [
+          {
+            "code": "\tbasePath = value\n\tresult = []\n\tfor name in ['workstation', 'robot', 'pallet01']:\n\t\ttagPath = basePath + '/' + name + '/_metadata/assetidentifier/assetname'\n\t\ttry:\n\t\t\tqv = system.tag.readBlocking([tagPath])\n\t\t\tif qv[0].quality.isGood() and qv[0].value is not None:\n\t\t\t\tresult.append({'basePath': basePath + '/' + name})\n\t\texcept:\n\t\t\tpass\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineKpiViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.equipmentStatusViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 750,
+      "width": 1201
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "SubAreaKPI"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineKpiViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "EQUIPMENT"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EquipmentCards"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.equipmentData"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.equipmentStatusViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elementStyle": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "4px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/palletizing/palletizermanual01/workstation"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 120,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Name"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/_metadata/assetidentifier/assetname"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "State"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/State/name"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "HeaderRow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \u0027/_metric/input/rateactual\u0027), \u0027#,##0.0\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#4CAF50",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Rate"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RateActual"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \u0027/_metric/input/countoutfeed\u0027), \u0027#,##0\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#4CAF50",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Outfeed"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CountOutfeed"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \u0027/_metric/input/countdefect\u0027), \u0027#,##0\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#F44336",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Defect"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CountDefect"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ThroughputRow"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \u0027/_metric/input/timerunning\u0027) \u003c 3600, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timerunning\u0027) / 60, \u00270.0\u0027) + \u0027m\u0027, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timerunning\u0027) / 3600, \u00270.0\u0027) + \u0027h\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Running"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeRunning"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \u0027/_metric/input/timeidle\u0027) \u003c 3600, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timeidle\u0027) / 60, \u00270.0\u0027) + \u0027m\u0027, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timeidle\u0027) / 3600, \u00270.0\u0027) + \u0027h\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#FFC107",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Idle"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeIdle"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \u0027/_metric/input/timedownplanned\u0027) \u003c 3600, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timedownplanned\u0027) / 60, \u00270.0\u0027) + \u0027m\u0027, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timedownplanned\u0027) / 3600, \u00270.0\u0027) + \u0027h\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#FF9800",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Planned"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimePlanned"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + \u0027/_metric/input/timedownunplanned\u0027) \u003c 3600, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timedownunplanned\u0027) / 60, \u00270.0\u0027) + \u0027m\u0027, numberformat(tag({view.params.basePath} + \u0027/_metric/input/timedownunplanned\u0027) / 3600, \u00270.0\u0027) + \u0027h\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#F44336",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "9px",
+                    "textAlign": "center"
+                  },
+                  "text": "Unplanned"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeUnplanned"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TimeRow"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -76,6 +76,14 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 | Packaging Dashboard Compact (No-scroll) | Complete |
 | Packaging Dashboard Tabs (dynamic labeler line switcher) | Complete |
 
+### Palletizing Dashboard Widgets
+
+| Widget | Status |
+|--------|--------|
+| Palletizing Equipment Status Widget | Complete |
+| Palletizing Dashboard Compact (No-scroll) | Complete |
+| Palletizing Dashboard Tabs (dynamic sub-area switcher) | Complete |
+
 ## Files
 
 ```
@@ -185,6 +193,11 @@ Ignition-Widget-Builder/
 ├── # Packaging Dashboard Widgets
 ├── pkg-dashboard-compact-view.json        # No-scroll compact dashboard for labeler lines
 ├── pkg-dashboard-tabs-view.json           # Tab wrapper with dynamic labeler line tabs + area metrics
+│
+├── # Palletizing Dashboard Widgets
+├── pal-equipment-status-widget-view.json  # Generic equipment status card (name + state)
+├── pal-dashboard-compact-view.json        # No-scroll compact dashboard for palletizing sub-areas
+├── pal-dashboard-tabs-view.json           # Tab wrapper with dynamic sub-area tabs + area metrics
 │
 └── README.md                             # This file
 ```
@@ -1819,6 +1832,159 @@ Tab wrapper with title breadcrumb, area-level KPI metrics, and dynamic tabs for 
 
 ---
 
+## Palletizing Dashboard Widgets
+
+A set of widgets for composing a palletizing area dashboard. Palletizing has a **different structure** from other areas — it contains two types of sub-areas: **manual palletizers** (`palletizermanual01-04`) with `workstation` equipment, and **automated palletizers** (`palletizer01-02`) with `robot` equipment. No Work Order tracking.
+
+### Tag Hierarchy
+
+```
+palletizing/
+├── _metric/                    # Area-level KPIs
+├── palletizermanual01/
+│   ├── _metric/                # Sub-area KPIs
+│   └── workstation/            # Name + State + OEE metrics
+├── palletizermanual02/
+├── ... (up to palletizermanual04 on Site1)
+├── palletizer01/
+│   ├── _metric/                # Sub-area KPIs
+│   ├── robot/                  # Name + State + OEE metrics
+│   └── pallet01/               # Name + State (optional)
+└── palletizer02/
+```
+
+### Sub-Areas by Site
+
+| Site | Manual Palletizers | Automated Palletizers | Total |
+|------|-------------------|----------------------|-------|
+| Site1 | 4 (palletizermanual01-04) | 2 (palletizer01-02) | 6 |
+| Site2 | 2 (palletizermanual01-02) | 1 (palletizer01) | 3 |
+| Site3 | 1 (palletizermanual01) | 0 | 1 |
+
+### Widget 1: Palletizing Equipment Status Widget
+
+**File:** `pal-equipment-status-widget-view.json`
+
+Equipment status card with throughput and time metrics. Works for workstation, robot, or pallet equipment.
+
+```
+┌──────────────────────────────────────────┐
+│ [Name]                          [State]  │  ← HeaderRow
+│ [Rate (green)] [Outfeed (green)] [Defect (red)] │  ← ThroughputRow (36px)
+│ [Running] [Idle (yellow)] [Planned (orange)] [Unplanned (red)] │  ← TimeRow (36px)
+└──────────────────────────────────────────┘
+```
+
+| Section | Feature | Tag Path | Color |
+|---------|---------|----------|-------|
+| Header | Equipment Name | `_metadata/assetidentifier/assetname` | -- |
+| Header | State | `State/name` | -- |
+| Throughput | Rate Actual | `_metric/input/rateactual` | Green (#4CAF50) |
+| Throughput | Count Outfeed | `_metric/input/countoutfeed` | Green (#4CAF50) |
+| Throughput | Count Defect | `_metric/input/countdefect` | Red (#F44336) |
+| Time | Time Running | `_metric/input/timerunning` | -- |
+| Time | Time Idle | `_metric/input/timeidle` | Yellow (#FFC107) |
+| Time | Planned Downtime | `_metric/input/timedownplanned` | Orange (#FF9800) |
+| Time | Unplanned Downtime | `_metric/input/timedownunplanned` | Red (#F44336) |
+
+**Time Format:** Adaptive — shows minutes (`0.0m`) under 1 hour, hours (`0.0h`) otherwise.
+
+**Size:** 320 x 120 px
+
+---
+
+### Composed Dashboard: Palletizing Dashboard Compact
+
+**File:** `pal-dashboard-compact-view.json`
+
+Compact dashboard for a single palletizing sub-area (tab content). Shows sub-area KPI metrics and dynamically detected equipment cards. Auto-discovers equipment (workstation, robot, pallet01) under the sub-area.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Sub-Area KPI | `ia.display.view` (reuses line-kpi-widget) | 200px (fixed) |
+| Equipment Header | `ia.container.flex` | auto |
+| Equipment Cards | `ia.display.flex-repeater` | grow (fills remaining) |
+
+**Auto-Discovery Script:**
+
+The `custom.equipmentData` property uses a script transform that scans for `workstation`, `robot`, and `pallet01` under the basePath. Returns a list of `{basePath: ...}` objects for each valid equipment found.
+
+```python
+basePath = value
+result = []
+for name in ['workstation', 'robot', 'pallet01']:
+    tagPath = basePath + '/' + name + '/_metadata/assetidentifier/assetname'
+    try:
+        qv = system.tag.readBlocking([tagPath])
+        if qv[0].quality.isGood() and qv[0].value is not None:
+            result.append({'basePath': basePath + '/' + name})
+    except:
+        pass
+return result
+```
+
+Unlike LP compact (which switches between tank/vat widget paths), palletizing uses a single generic `pal-equipment-status-widget-view` for all equipment types.
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/palletizing/palletizermanual01` | Sub-area path |
+| `lineKpiViewPath` | `UDT Views/Prove It/Rollups/EntB/line-kpi` | View path for KPI widget |
+| `equipmentStatusViewPath` | `UDT Views/Prove It/Rollups/EntB/pal-equipment-status-widget-view` | View path for equipment cards |
+
+**Size:** 1201 x 750 px
+
+---
+
+### Composed Dashboard: Palletizing Dashboard Tabs
+
+**File:** `pal-dashboard-tabs-view.json`
+
+Tab wrapper with title breadcrumb, area-level KPI metrics, and **dynamic tabs** for palletizing sub-areas. Uses a dual-prefix discovery script that scans both `palletizermanual01-10` and `palletizer01-10`.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Title | `ia.display.view` (`Page/Embedded/Title`) | 50px (fixed) |
+| Area Metrics | `ia.container.flex` (4 gauges + 5 stats + 4 time boxes) | 220px (fixed) |
+| Tab Container | `ia.container.tab` | grow (fills remaining) |
+
+**Dual-Prefix Tab Discovery:**
+
+```python
+basePath = value
+result = {'tabs': [], 'paths': []}
+for prefix in ['palletizermanual', 'palletizer']:
+    for i in range(1, 11):
+        num = str(i).zfill(2)
+        name = prefix + num
+        tagPath = basePath + '/' + name + '/_metadata/assetidentifier/assetname'
+        try:
+            qv = system.tag.readBlocking([tagPath])
+            if qv[0].quality.isGood() and qv[0].value is not None:
+                result['tabs'].append(str(qv[0].value))
+                result['paths'].append(basePath + '/' + name)
+        except:
+            pass
+return result
+```
+
+- Manual palletizers are discovered first, then automated
+- Tab names come from `assetname` tags (e.g., "Palletizer Manual 01", "Palletizer 01")
+- Up to 6 tabs supported (Site1 maximum: 4 manual + 2 automated)
+- Sites with fewer sub-areas show fewer tabs automatically
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/palletizing` | Area-level path (bound from `{session.custom.basePath}`, `paramDirection: inout`) |
+| `lineDashboardViewPath` | `UDT Views/Prove It/Rollups/EntB/pal-dashboard-compact-view` | View path for the compact dashboard |
+
+**Size:** 1201 x 1080 px
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -1844,6 +2010,9 @@ Tab wrapper with title breadcrumb, area-level KPI metrics, and dynamic tabs for 
 - [x] Create liquid processing dashboard widget set (tank status, vat status, compact, tabs)
 - [x] Auto-detect equipment type (tank vs vat) in LP compact dashboard
 - [x] Create packaging dashboard widget set (compact + tabs, reuses line widgets)
+- [x] Create palletizing dashboard widget set (equipment status, compact, tabs)
+- [x] Auto-detect equipment (workstation/robot/pallet) in palletizing compact dashboard
+- [x] Dual-prefix tab discovery for mixed manual/automated palletizing sub-areas
 - [ ] Area Status: Add equipment active count tag binding when available
 - [ ] Area Status: Add active alarm count tag binding when available
 - [ ] Area Status: Add active work order count tag binding when available
