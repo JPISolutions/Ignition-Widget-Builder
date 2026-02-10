@@ -1,0 +1,604 @@
+{
+  "custom": {
+    "history": [
+      {
+        "aggregate": "MinMax",
+        "alias": "OEE"
+      }
+    ]
+  },
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site2/fillerproduction"
+  },
+  "propConfig": {
+    "custom.history": {
+      "persistent": true
+    },
+    "custom.history[0].path": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath}+'/_metric/oee'"
+        },
+        "type": "expr"
+      }
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 360,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/_metric/oee\") * 100, '0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "OEE"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "OEE_Container"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "OEEGaugeRow"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/_metric/availability\") * 100, '0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "AVAIL"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Availability_Container"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/_metric/performance\") * 100, '0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "PERF"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Performance_Container"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SimpleGauge"
+                },
+                "position": {
+                  "basis": "91.8px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + \"/_metric/quality\") * 100, '0.0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "arc": {
+                    "width": 10
+                  },
+                  "label": {
+                    "maxDecimal": 1,
+                    "size": 15
+                  },
+                  "maxValue": 100,
+                  "minValue": 0,
+                  "style": {
+                    "marginBottom": 0
+                  }
+                },
+                "type": "ia.chart.simple-gauge"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "QUAL"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "%"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "label"
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Quality_Container"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "APQGaugeRow"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "textAlign": "left"
+              },
+              "text": "OEE TREND"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "SparklineLabel"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Sparkline"
+        },
+        "position": {
+          "basis": "80px"
+        },
+        "propConfig": {
+          "props.points": {
+            "binding": {
+              "config": {
+                "aggregate": "MinMax",
+                "avoidScanClassValidation": true,
+                "dateRange": {
+                  "mostRecent": "8",
+                  "mostRecentUnits": "HOUR"
+                },
+                "enableValueCache": true,
+                "ignoreBadQuality": false,
+                "polling": {
+                  "enabled": false,
+                  "rate": "30"
+                },
+                "preventInterpolation": false,
+                "returnFormat": "Wide",
+                "returnSize": {
+                  "numRows": "100",
+                  "type": "FIXED"
+                },
+                "tags": "{view.custom.history}",
+                "valueFormat": "DATASET"
+              },
+              "type": "tag-history"
+            }
+          },
+          "props.range.high": {
+            "binding": {
+              "config": {
+                "aggregate": "MinMax",
+                "avoidScanClassValidation": true,
+                "dateRange": {
+                  "mostRecent": "8",
+                  "mostRecentUnits": "HOUR"
+                },
+                "enableValueCache": true,
+                "ignoreBadQuality": false,
+                "polling": {
+                  "enabled": false,
+                  "rate": "30"
+                },
+                "preventInterpolation": false,
+                "returnFormat": "Wide",
+                "returnSize": {
+                  "numRows": "100",
+                  "type": "FIXED"
+                },
+                "tags": "{view.custom.history}",
+                "valueFormat": "DATASET"
+              },
+              "transforms": [
+                {
+                  "code": "\n\tif value is not None and len(value) > 0:\n\t\tmaxValue = None\n\t\t\n\t\tfor row in value:\n\t\t\tval = row[1]\n\t\t\t\n\t\t\tif maxValue is None or val > maxValue:\n\t\t\t\tmaxValue = val\n\t\t\n\t\treturn maxValue\n\telse:\n\t\treturn 1",
+                  "type": "script"
+                },
+                {
+                  "expression": "min(1, {value}+({value}/8))",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag-history"
+            }
+          },
+          "props.range.low": {
+            "binding": {
+              "config": {
+                "aggregate": "MinMax",
+                "avoidScanClassValidation": true,
+                "dateRange": {
+                  "mostRecent": "8",
+                  "mostRecentUnits": "HOUR"
+                },
+                "enableValueCache": true,
+                "ignoreBadQuality": false,
+                "polling": {
+                  "enabled": false,
+                  "rate": "30"
+                },
+                "preventInterpolation": false,
+                "returnFormat": "Wide",
+                "returnSize": {
+                  "numRows": "100",
+                  "type": "FIXED"
+                },
+                "tags": "{view.custom.history}",
+                "valueFormat": "DATASET"
+              },
+              "transforms": [
+                {
+                  "code": "\n\tif value is not None and len(value) > 0:\n\t\tminValue = None\n\t\t\n\t\tfor row in value:\n\t\t\tval = row[1]\n\t\t\t\n\t\t\tif minValue is None or val < minValue:\n\t\t\t\tminValue = val\n\t\t\n\t\treturn minValue\n\telse:\n\t\treturn 0",
+                  "type": "script"
+                },
+                {
+                  "expression": "max(0, {value}-({value}/8))",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag-history"
+            }
+          }
+        },
+        "props": {
+          "marker": {
+            "first": {
+              "size": 0
+            },
+            "high": {
+              "size": 0
+            },
+            "last": {
+              "size": 0
+            },
+            "low": {
+              "size": 0
+            }
+          },
+          "range": {},
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder"
+          }
+        },
+        "type": "ia.display.sparkline"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

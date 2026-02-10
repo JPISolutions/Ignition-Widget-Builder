@@ -1,0 +1,329 @@
+import { useState, useEffect } from "react";
+
+const GaugeChart = ({ value, max, label, unit, color, warning, critical }) => {
+  const pct = Math.min((value / max) * 100, 100);
+  const status = value <= critical ? "text-red-500" : value <= warning ? "text-yellow-500" : "text-green-500";
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative w-24 h-24">
+        <svg viewBox="0 0 36 36" className="w-24 h-24 -rotate-90">
+          <path d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" fill="none" stroke="#1e293b" strokeWidth="3"/>
+          <path d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" fill="none" stroke={color} strokeWidth="3" strokeDasharray={`${pct}, 100`} strokeLinecap="round"/>
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className={`text-lg font-bold ${status}`}>{value.toFixed(1)}{unit}</span>
+        </div>
+      </div>
+      <span className="text-xs text-slate-400 mt-1 text-center">{label}</span>
+    </div>
+  );
+};
+
+const StatusDot = ({ status }) => {
+  const colors = { Running: "bg-green-500", Idle: "bg-yellow-500", "Planned Downtime": "bg-blue-500", "Unplanned Downtime": "bg-red-500", Starved: "bg-orange-500", Blocked: "bg-purple-500" };
+  return <span className={`inline-block w-2.5 h-2.5 rounded-full ${colors[status] || "bg-gray-500"} mr-2`}/>;
+};
+
+const MiniBar = ({ value, max, color = "#3b82f6" }) => (
+  <div className="w-full bg-slate-700 rounded-full h-2">
+    <div className="h-2 rounded-full transition-all" style={{ width: `${max > 0 ? (value/max)*100 : 0}%`, backgroundColor: color }}/>
+  </div>
+);
+
+const StatCard = ({ label, value, unit, color = "text-slate-100" }) => (
+  <div className="text-center">
+    <div className={`text-lg font-bold ${color}`}>{typeof value === 'number' ? value.toFixed(1) : value}{unit && <span className="text-xs text-slate-500 ml-0.5">{unit}</span>}</div>
+    <div className="text-xs text-slate-500">{label}</div>
+  </div>
+);
+
+const fmtTime = (sec) => {
+  if (sec < 60) return `${sec.toFixed(0)}s`;
+  if (sec < 3600) return `${(sec/60).toFixed(1)}m`;
+  return `${(sec/3600).toFixed(1)}h`;
+};
+
+const initLine = (id) => ({
+  id,
+  workOrder: {
+    workordernumber: `WO-2026-${1000 + Math.floor(Math.random()*100)}`,
+    workorderid: `wo-${id}-${Date.now()}`,
+    quantitytarget: 24000,
+    quantityactual: Math.floor(Math.random() * 18000) + 4000,
+    quantitydefect: Math.floor(Math.random() * 120),
+    uom: "bottles",
+    assetid: `asset-${id}`,
+  },
+  _metric: {
+    oee: 65 + Math.random() * 25,
+    availability: 80 + Math.random() * 15,
+    performance: 75 + Math.random() * 20,
+    quality: 92 + Math.random() * 7,
+    input: {
+      ratestandard: 900,
+      rateactual: 750 + Math.random() * 150,
+      countinfeed: Math.floor(Math.random() * 20000) + 5000,
+      countoutfeed: Math.floor(Math.random() * 19000) + 4500,
+      countdefect: Math.floor(Math.random() * 120),
+      timerunning: 18000 + Math.random() * 4000,
+      timeidle: 600 + Math.random() * 1200,
+      timedownplanned: 1200 + Math.random() * 600,
+      timedownunplanned: Math.random() * 1800,
+    }
+  },
+  filler: {
+    state: { name: "Running", type: "running", code: 1, duration: 12400 + Math.random()*3000 },
+    counters: { infeed: 0, outfeed: 0, defect: 0 },
+    rates: { instant: 820 + Math.random() * 60 },
+    input: { infeedtooutfeed: 0.98 + Math.random()*0.015 },
+    _metric: {
+      oee: 70 + Math.random() * 22,
+      availability: 82 + Math.random() * 14,
+      performance: 78 + Math.random() * 18,
+      quality: 94 + Math.random() * 5.5,
+      input: {
+        ratestandard: 900, rateactual: 800 + Math.random()*80,
+        countinfeed: 0, countoutfeed: 0, countdefect: 0,
+        timerunning: 16000 + Math.random()*3000, timeidle: 500 + Math.random()*800,
+        timedownplanned: 900 + Math.random()*400, timedownunplanned: Math.random()*1200,
+      }
+    }
+  },
+  caploader: {
+    state: { name: "Running", type: "running", code: 1 },
+    input: { infeedtooutfeed: 0.99 + Math.random()*0.008 },
+    _metric: {
+      oee: 72 + Math.random() * 20,
+      availability: 85 + Math.random() * 12,
+      performance: 80 + Math.random() * 16,
+      quality: 95 + Math.random() * 4.5,
+      input: {
+        ratestandard: 920, rateactual: 830 + Math.random()*70,
+        countinfeed: 0, countoutfeed: 0, countdefect: 0,
+        timerunning: 17000 + Math.random()*2500, timeidle: 400 + Math.random()*600,
+        timedownplanned: 800 + Math.random()*300, timedownunplanned: Math.random()*900,
+      }
+    }
+  },
+  washer: {
+    state: { name: "Running", type: "running" },
+    input: { infeedtooutfeed: 0.995 + Math.random()*0.004 },
+    _metric: {
+      oee: 74 + Math.random() * 18,
+      availability: 88 + Math.random() * 10,
+      performance: 82 + Math.random() * 14,
+      quality: 96 + Math.random() * 3.5,
+      input: {
+        ratestandard: 950, rateactual: 860 + Math.random()*60,
+        countinfeed: 0, countoutfeed: 0, countdefect: 0,
+        timerunning: 18000 + Math.random()*2000, timeidle: 300 + Math.random()*500,
+        timedownplanned: 600 + Math.random()*200, timedownunplanned: Math.random()*600,
+      }
+    }
+  }
+});
+
+const states = ["Running", "Idle", "Planned Downtime", "Unplanned Downtime", "Starved", "Blocked"];
+
+export default function Dashboard() {
+  const [lines, setLines] = useState(() => ({
+    fillingline01: initLine("fillingline01"),
+    fillingline02: initLine("fillingline02"),
+    fillingline03: initLine("fillingline03"),
+  }));
+  const [selectedLine, setSelectedLine] = useState("fillingline02");
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setNow(new Date());
+      setLines(prev => {
+        const updated = { ...prev };
+        Object.keys(updated).forEach(k => {
+          const l = { ...updated[k] };
+          const jitter = (v, range, min, max) => Math.max(min, Math.min(max, v + (Math.random()-0.5)*range));
+          l._metric = { ...l._metric, oee: jitter(l._metric.oee, 0.6, 40, 99), availability: jitter(l._metric.availability, 0.3, 60, 99.5), performance: jitter(l._metric.performance, 0.4, 50, 99), quality: jitter(l._metric.quality, 0.1, 85, 99.9),
+            input: { ...l._metric.input, rateactual: jitter(l._metric.input.rateactual, 10, 600, 920), timerunning: l._metric.input.timerunning + 2 }
+          };
+          l.workOrder = { ...l.workOrder, quantityactual: Math.min(l.workOrder.quantitytarget, l.workOrder.quantityactual + Math.floor(Math.random()*4)), quantitydefect: l.workOrder.quantitydefect + (Math.random()>0.92?1:0) };
+          l.filler = { ...l.filler, rates: { instant: jitter(l.filler.rates.instant, 12, 700, 900) }, state: { ...l.filler.state, duration: l.filler.state.duration + 2 },
+            _metric: { ...l.filler._metric, oee: jitter(l.filler._metric.oee, 0.5, 40, 99), availability: jitter(l.filler._metric.availability, 0.3, 60, 99.5), performance: jitter(l.filler._metric.performance, 0.4, 50, 99), quality: jitter(l.filler._metric.quality, 0.1, 85, 99.9),
+              input: { ...l.filler._metric.input, rateactual: jitter(l.filler._metric.input.rateactual, 8, 650, 910) }
+            }
+          };
+          l.caploader = { ...l.caploader, _metric: { ...l.caploader._metric, oee: jitter(l.caploader._metric.oee, 0.5, 40, 99), availability: jitter(l.caploader._metric.availability, 0.3, 60, 99.5), performance: jitter(l.caploader._metric.performance, 0.4, 50, 99), quality: jitter(l.caploader._metric.quality, 0.1, 85, 99.9),
+              input: { ...l.caploader._metric.input, rateactual: jitter(l.caploader._metric.input.rateactual, 8, 650, 930) }
+            }
+          };
+          l.washer = { ...l.washer, _metric: { ...l.washer._metric, oee: jitter(l.washer._metric.oee, 0.4, 45, 99), availability: jitter(l.washer._metric.availability, 0.2, 65, 99.5), performance: jitter(l.washer._metric.performance, 0.3, 55, 99), quality: jitter(l.washer._metric.quality, 0.08, 88, 99.9),
+              input: { ...l.washer._metric.input, rateactual: jitter(l.washer._metric.input.rateactual, 6, 700, 960) }
+            }
+          };
+          // Occasional state changes
+          if (Math.random() > 0.98) {
+            const eq = ["filler","caploader","washer"][Math.floor(Math.random()*3)];
+            const ns = states[Math.floor(Math.random()*states.length)];
+            l[eq] = { ...l[eq], state: { ...l[eq].state, name: ns } };
+          }
+          updated[k] = l;
+        });
+        return updated;
+      });
+    }, 2000);
+    return () => clearInterval(t);
+  }, []);
+
+  const d = lines[selectedLine];
+  const wo = d.workOrder;
+  const lm = d._metric;
+  const pct = wo.quantitytarget > 0 ? ((wo.quantityactual / wo.quantitytarget) * 100).toFixed(1) : 0;
+
+  const EquipCard = ({ title, icon, equip }) => (
+    <div className="bg-slate-800 rounded-lg p-3">
+      <div className="flex justify-between items-center mb-3">
+        <h2 className="text-sm font-semibold text-slate-300">{icon} {title}</h2>
+        <span className="flex items-center text-xs"><StatusDot status={equip.state.name}/>{equip.state.name}</span>
+      </div>
+      <div className="grid grid-cols-4 gap-2 mb-3">
+        <GaugeChart value={equip._metric.oee} max={100} label="OEE" unit="%" color="#22c55e" warning={70} critical={60}/>
+        <GaugeChart value={equip._metric.availability} max={100} label="Avail" unit="%" color="#3b82f6" warning={85} critical={75}/>
+        <GaugeChart value={equip._metric.performance} max={100} label="Perf" unit="%" color="#a855f7" warning={80} critical={70}/>
+        <GaugeChart value={equip._metric.quality} max={100} label="Qual" unit="%" color="#06b6d4" warning={95} critical={90}/>
+      </div>
+      <div className="grid grid-cols-3 gap-2 text-center border-t border-slate-700 pt-2">
+        <StatCard label="Rate Actual" value={equip._metric.input.rateactual} unit="/min" color="text-green-400"/>
+        <StatCard label="Rate Standard" value={equip._metric.input.ratestandard} unit="/min" color="text-blue-400"/>
+        <StatCard label="Infeed→Outfeed" value={(equip.input.infeedtooutfeed * 100).toFixed(1)} unit="%" color="text-cyan-400"/>
+      </div>
+      <div className="grid grid-cols-4 gap-2 text-center mt-2 border-t border-slate-700 pt-2">
+        <div><span className="text-xs font-semibold text-slate-300">{fmtTime(equip._metric.input.timerunning)}</span><div className="text-xs text-slate-500">Running</div></div>
+        <div><span className="text-xs font-semibold text-yellow-400">{fmtTime(equip._metric.input.timeidle)}</span><div className="text-xs text-slate-500">Idle</div></div>
+        <div><span className="text-xs font-semibold text-blue-400">{fmtTime(equip._metric.input.timedownplanned)}</span><div className="text-xs text-slate-500">Planned DT</div></div>
+        <div><span className="text-xs font-semibold text-red-400">{fmtTime(equip._metric.input.timedownunplanned)}</span><div className="text-xs text-slate-500">Unplanned DT</div></div>
+      </div>
+      {equip.rates && (
+        <div className="mt-2 border-t border-slate-700 pt-2 flex justify-between text-xs text-slate-400">
+          <span>Instant Rate: <span className="text-green-400 font-semibold">{equip.rates.instant.toFixed(0)}/min</span></span>
+          {equip.state.duration !== undefined && <span>State Duration: <span className="text-slate-300">{fmtTime(equip.state.duration)}</span></span>}
+        </div>
+      )}
+      {equip.counters && (
+        <div className="mt-2 border-t border-slate-700 pt-2 grid grid-cols-3 gap-2 text-center">
+          <div><span className="text-xs font-semibold text-green-400">{equip.counters.infeed}</span><div className="text-xs text-slate-500">Infeed</div></div>
+          <div><span className="text-xs font-semibold text-blue-400">{equip.counters.outfeed}</span><div className="text-xs text-slate-500">Outfeed</div></div>
+          <div><span className="text-xs font-semibold text-red-400">{equip.counters.defect}</span><div className="text-xs text-slate-500">Defect</div></div>
+        </div>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="bg-slate-900 text-slate-100 min-h-screen p-4 font-sans text-sm">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-4 border-b border-slate-700 pb-3">
+        <div>
+          <h1 className="text-xl font-bold text-white">Cappy Hour Inc — Filler Production</h1>
+          <span className="text-slate-400 text-xs">Site1 &bull; {now.toLocaleTimeString()} &bull; MQTT Edge: jpi</span>
+        </div>
+        <div className="flex gap-2">
+          {Object.keys(lines).map(k => (
+            <button key={k} onClick={() => setSelectedLine(k)} className={`px-3 py-1.5 rounded text-xs font-semibold transition-all ${selectedLine === k ? "bg-blue-600 text-white" : "bg-slate-700 text-slate-400 hover:bg-slate-600"}`}>
+              {k.replace("fillingline", "Line ")}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Line-Level KPIs */}
+      <div className="bg-slate-800 rounded-lg p-3 mb-4">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-sm font-semibold text-slate-300">📊 Line Metrics — {selectedLine.replace("fillingline", "Filling Line ")}</h2>
+          <span className="text-xs text-slate-500">_metric path: fillerproduction/{selectedLine}/_metric</span>
+        </div>
+        <div className="flex items-center gap-6">
+          <div className="flex gap-4">
+            <GaugeChart value={lm.oee} max={100} label="OEE" unit="%" color="#22c55e" warning={70} critical={60}/>
+            <GaugeChart value={lm.availability} max={100} label="Availability" unit="%" color="#3b82f6" warning={85} critical={75}/>
+            <GaugeChart value={lm.performance} max={100} label="Performance" unit="%" color="#a855f7" warning={80} critical={70}/>
+            <GaugeChart value={lm.quality} max={100} label="Quality" unit="%" color="#06b6d4" warning={95} critical={90}/>
+          </div>
+          <div className="flex-1 grid grid-cols-5 gap-3 text-center border-l border-slate-700 pl-4">
+            <StatCard label="Rate Actual" value={lm.input.rateactual} unit="/min" color="text-green-400"/>
+            <StatCard label="Rate Standard" value={lm.input.ratestandard} unit="/min" color="text-blue-400"/>
+            <StatCard label="Count Infeed" value={lm.input.countinfeed.toFixed(0)} color="text-cyan-400"/>
+            <StatCard label="Count Outfeed" value={lm.input.countoutfeed.toFixed(0)} color="text-emerald-400"/>
+            <StatCard label="Count Defect" value={lm.input.countdefect.toFixed(0)} color="text-red-400"/>
+          </div>
+        </div>
+        <div className="grid grid-cols-4 gap-3 mt-3 border-t border-slate-700 pt-2 text-center">
+          <div className="bg-slate-750 rounded p-2"><span className="text-sm font-bold text-slate-200">{fmtTime(lm.input.timerunning)}</span><div className="text-xs text-slate-500">Time Running</div></div>
+          <div className="bg-slate-750 rounded p-2"><span className="text-sm font-bold text-yellow-400">{fmtTime(typeof lm.input.timeidle === 'number' ? lm.input.timeidle : 0)}</span><div className="text-xs text-slate-500">Time Idle</div></div>
+          <div className="bg-slate-750 rounded p-2"><span className="text-sm font-bold text-blue-400">{fmtTime(lm.input.timedownplanned)}</span><div className="text-xs text-slate-500">Planned Downtime</div></div>
+          <div className="bg-slate-750 rounded p-2"><span className="text-sm font-bold text-red-400">{fmtTime(lm.input.timedownunplanned)}</span><div className="text-xs text-slate-500">Unplanned Downtime</div></div>
+        </div>
+      </div>
+
+      {/* Work Order */}
+      <div className="bg-slate-800 rounded-lg p-3 mb-4">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-sm font-semibold text-slate-300">📋 Work Order</h2>
+          <span className="text-xs text-slate-500">UDT: Work Order_C37358E8</span>
+        </div>
+        <div className="flex items-center gap-6">
+          <div>
+            <span className="font-mono text-blue-400 text-sm">{wo.workordernumber}</span>
+            <div className="text-xs text-slate-500 mt-0.5">ID: {wo.workorderid}</div>
+          </div>
+          <div className="flex-1">
+            <div className="flex justify-between text-xs text-slate-400 mb-1">
+              <span>{wo.quantityactual.toLocaleString()} / {wo.quantitytarget.toLocaleString()} {wo.uom}</span>
+              <span>{pct}%</span>
+            </div>
+            <MiniBar value={wo.quantityactual} max={wo.quantitytarget} color="#22c55e"/>
+          </div>
+          <div className="text-center px-3 border-l border-slate-700">
+            <div className="text-lg font-bold text-red-400">{wo.quantitydefect}</div>
+            <div className="text-xs text-slate-500">Defects</div>
+          </div>
+          <div className="text-center px-3 border-l border-slate-700">
+            <div className="text-lg font-bold text-cyan-400">{wo.quantitytarget > 0 ? ((1 - wo.quantitydefect / Math.max(1, wo.quantityactual)) * 100).toFixed(2) : 0}%</div>
+            <div className="text-xs text-slate-500">Yield</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Equipment Cards */}
+      <div className="grid grid-cols-3 gap-4">
+        <EquipCard title="Filler" icon="🍺" equip={d.filler}/>
+        <EquipCard title="Cap Loader" icon="🔩" equip={d.caploader}/>
+        <EquipCard title="Washer" icon="🚿" equip={d.washer}/>
+      </div>
+
+      {/* All Lines Comparison */}
+      <div className="bg-slate-800 rounded-lg p-3 mt-4">
+        <h2 className="text-sm font-semibold text-slate-300 mb-2">🏭 All Lines Comparison</h2>
+        <div className="grid grid-cols-3 gap-4">
+          {Object.entries(lines).map(([k, l]) => (
+            <div key={k} className={`rounded p-2 cursor-pointer transition-all ${k === selectedLine ? "bg-slate-700 ring-1 ring-blue-500" : "bg-slate-750 hover:bg-slate-700"}`} onClick={() => setSelectedLine(k)}>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-xs font-semibold text-slate-300">{k.replace("fillingline","Line ")}</span>
+                <span className="text-xs font-bold text-green-400">{l._metric.oee.toFixed(1)}% OEE</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                <div><span className="text-blue-400 font-semibold">{l._metric.availability.toFixed(1)}%</span><div className="text-slate-600">Avail</div></div>
+                <div><span className="text-purple-400 font-semibold">{l._metric.performance.toFixed(1)}%</span><div className="text-slate-600">Perf</div></div>
+                <div><span className="text-cyan-400 font-semibold">{l._metric.quality.toFixed(1)}%</span><div className="text-slate-600">Qual</div></div>
+              </div>
+              <div className="mt-1"><MiniBar value={l.workOrder.quantityactual} max={l.workOrder.quantitytarget} color={k===selectedLine?"#3b82f6":"#475569"}/></div>
+              <div className="text-xs text-slate-500 mt-0.5 text-right">{l.workOrder.workordernumber}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="text-xs text-slate-600 mt-3 text-center">
+        MQTT Source: [MQTT Engine]Edge Nodes/jpi/Cappy Hour Inc/Site1/fillerproduction/{selectedLine}
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,311 @@
+{
+  "custom": {
+    "equipmentInstances": [
+      {
+        "basePath": ""
+      },
+      {
+        "basePath": ""
+      },
+      {
+        "basePath": ""
+      }
+    ],
+    "comparisonInstances": [
+      {
+        "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01"
+      },
+      {
+        "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline02"
+      },
+      {
+        "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline03"
+      }
+    ]
+  },
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01",
+    "lineKpiViewPath": "WidgetBuilder/line-kpi-widget",
+    "lineWorkorderViewPath": "WidgetBuilder/line-workorder-widget",
+    "equipmentViewPath": "WidgetBuilder/caploader-widget",
+    "lineSummaryViewPath": "WidgetBuilder/line-summary-widget"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineKpiViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineWorkorderViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.equipmentViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineSummaryViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "custom.equipmentInstances[0].basePath": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath} + '/filler'"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.equipmentInstances[1].basePath": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath} + '/caploader'"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.equipmentInstances[2].basePath": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath} + '/washer'"
+        },
+        "type": "expr"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1100,
+      "width": 960
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "LineKPI"
+        },
+        "position": {
+          "basis": "240px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineKpiViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "WidgetBuilder/line-kpi-widget",
+          "params": {
+            "basePath": ""
+          },
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "LineWorkOrder"
+        },
+        "position": {
+          "basis": "100px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineWorkorderViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "WidgetBuilder/line-workorder-widget",
+          "params": {
+            "basePath": ""
+          },
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "EQUIPMENT"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EquipmentCards"
+        },
+        "position": {
+          "basis": "500px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.equipmentInstances"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.equipmentViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "WidgetBuilder/caploader-widget",
+          "instances": [],
+          "elementPosition": {
+            "grow": 1
+          },
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "ALL LINES COMPARISON"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ComparisonHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "ComparisonCards"
+        },
+        "position": {
+          "basis": "180px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.comparisonInstances"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineSummaryViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "WidgetBuilder/line-summary-widget",
+          "instances": [],
+          "elementPosition": {
+            "grow": 1
+          },
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "4px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

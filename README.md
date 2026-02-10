@@ -38,6 +38,36 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 |--------|--------|
 | Compressor Widget | Complete |
 | Compressor Config View | Complete |
+| SP474 Gas Meter Widget | Complete |
+
+### Area Rollup Widgets (Dashboard Components)
+
+| Widget | Status |
+|--------|--------|
+| Area OEE Widget | Complete |
+| Area Production Widget | Complete |
+| Area Availability Widget | Complete |
+| Area Status Widget | Complete (placeholders) |
+
+### Line Dashboard Widgets
+
+| Widget | Status |
+|--------|--------|
+| Line KPI Widget | Complete |
+| Line Work Order Widget | Complete |
+| Line Summary Widget | Complete |
+| Line Dashboard (Composed) | Complete |
+| Line Dashboard Compact (No-scroll) | Complete |
+| Line Dashboard Tabs (dynamic line switcher) | Complete |
+
+### Liquid Processing Dashboard Widgets
+
+| Widget | Status |
+|--------|--------|
+| LP Tank Status Widget | Complete |
+| LP Vat Status Widget | Complete |
+| LP Dashboard Compact (No-scroll) | Complete |
+| LP Dashboard Tabs (dynamic sub-area switcher) | Complete |
 
 ## Files
 
@@ -53,7 +83,8 @@ Ignition-Widget-Builder/
 │   ├── work-order-references.json        # Work Order UDT tag structure
 │   ├── time-metrics-component.json       # Reusable time breakdown bar component
 │   └── vendorUDT/
-│       └── compressor-UDT.json          # Vendor compressor UDT definition (OPC-UA)
+│       ├── compressor-UDT.json          # Vendor compressor UDT definition (OPC-UA)
+│       └── sp474-udt.json              # SP474 gas meter UDT definition
 │
 ├── # Enterprise B Widgets (OEE-focused)
 ├── caploader-widget-view.json            # Cap Loader widget
@@ -122,6 +153,27 @@ Ignition-Widget-Builder/
 ├── # Vendor UDT Widgets (OPC-UA Companion Spec)
 ├── compressor-widget-view.json           # Air compressor operational widget
 ├── compressor-config-view.json           # Air compressor config/metadata view
+├── sp474-widget-view.json               # SP474 gas meter operational widget
+│
+├── # Area Rollup Widgets (Dashboard Components)
+├── area-oee-widget-view.json              # Area OEE & performance gauges + sparkline
+├── area-production-widget-view.json       # Area rate & throughput counts
+├── area-availability-widget-view.json     # Area time breakdown bar
+├── area-status-widget-view.json           # Area status placeholders (missing KPIs)
+│
+├── # Line Dashboard Widgets
+├── line-kpi-widget-view.json              # Line-level OEE gauges + stats + time metrics (wide)
+├── line-workorder-widget-view.json        # Line work order horizontal display (wide)
+├── line-summary-widget-view.json          # Compact line summary card (for comparison)
+├── line-dashboard-view.json               # Composed dashboard using embedded views + flex repeaters
+├── line-dashboard-compact-view.json       # No-scroll compact dashboard (fits in tab containers)
+├── line-dashboard-tabs-view.json          # Tab wrapper with dynamic filling line tabs + area metrics
+│
+├── # Liquid Processing Dashboard Widgets
+├── lp-tank-status-widget-view.json        # Tank status card (name + state)
+├── lp-vat-status-widget-view.json         # Vat status card (name + state + work order + progress)
+├── lp-dashboard-compact-view.json         # No-scroll compact dashboard for LP sub-areas
+├── lp-dashboard-tabs-view.json            # Tab wrapper with dynamic sub-area tabs + area metrics
 │
 └── README.md                             # This file
 ```
@@ -897,6 +949,40 @@ Configuration/metadata display for air compressor UDTs. Shows all `_metadata` in
 
 ---
 
+## SP474 Gas Meter Widget
+
+**File:** `sp474-widget-view.json`
+
+Operational monitoring widget for SP474 orifice plate gas flow meters, designed for tracking fuel gas consumption in glass manufacturing furnaces. Features a prominent flow rate display, volume comparison grid, and process condition monitoring.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Header | Meter Name (tooltip) | `_metadata/Name` |
+| Header | Run Status | `Operational/hasRun_Status/value` |
+| Flow Rate | Gauge (max 250) | `Operational/FlowRate/value` |
+| Volume | Current hour volume | `Operational/CurrentHourVolume/value` |
+| Volume | Previous hour volume | `_metadata/PreviousHourVolume/value` |
+| Volume | Current day volume | `Operational/CurrentDayVolume/value` |
+| Volume | Previous day volume | `_metadata/PreviousDayVolume/value` |
+| Volume | Accumulated total | `Operational/AccumulatedVolume/value` |
+| Process Conditions | Static pressure | `Operational/StaticPressure/value` |
+| Process Conditions | Differential pressure | `Operational/DifferentialPressure/value` |
+| Process Conditions | Gas temperature | `Operational/Temperature/value` |
+| Alarms | Active alarm count (red badge when > 0) | `_metadata/ActiveAlarmCount` |
+| Footer | Meter configuration status | `Operational/Status/value` |
+
+**Key Visualizations:**
+- **Flow Rate Gauge:** Simple gauge (91.8px arc, width 10) with label row beneath; maxValue 250
+- **Volume Comparison Grid:** 2x2 grid showing Current Hour vs Previous Hour and Current Day vs Previous Day side-by-side, enabling instant consumption trend recognition
+- **Process Conditions Grid:** 3-column layout showing static pressure, differential pressure, and gas temperature that affect measurement accuracy
+- **Alarm Indicator:** Conditional red (#F44336) background on alarm count when active alarms > 0
+
+**Values:** All numeric values use `numberformat` expressions without appended engineering units.
+
+**Size:** 320 x 600 px
+
+---
+
 ---
 
 ## Enterprise C Widgets
@@ -1105,6 +1191,535 @@ compressor/
 
 ---
 
+## Area Rollup Widgets
+
+A set of modular widget views designed to be composed on an area-level dashboard in Perspective Designer. Each widget takes a `basePath` parameter pointing to the **area level** of the tag hierarchy.
+
+### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `basePath` | String | Root path to the area-level UDT instance (e.g., `[default]Cappy Hour Inc/Site2/fillerproduction`) |
+
+### Areas
+
+| Area Folder | Display Name | Description |
+|-------------|-------------|-------------|
+| `fillerproduction` | Filler Production | Core filling lines (depalletizer, rinse/fill/cap, washer, dryer) |
+| `liquidprocessing` | Liquid Processing | Mix rooms, tank storage, pasteurization vats |
+| `packaging` | Packaging | Labeling, grouping, wrapping, sealing |
+| `palletizing` | Palletizing | Manual and automated palletizers |
+
+### Widget 1: Area OEE Widget
+
+**File:** `area-oee-widget-view.json`
+
+Primary area health widget showing OEE prominently with supporting A/P/Q metrics and trend.
+
+| Feature | Tag Path |
+|---------|----------|
+| OEE Gauge | `_metric/oee` |
+| Availability Gauge | `_metric/availability` |
+| Performance Gauge | `_metric/performance` |
+| Quality Gauge | `_metric/quality` |
+| OEE Sparkline | `_metric/oee` (8hr tag-history) |
+
+**Size:** 320 x 360 px
+
+---
+
+### Widget 2: Area Production Widget
+
+**File:** `area-production-widget-view.json`
+
+Rate and throughput output metrics for the area.
+
+| Feature | Tag Path |
+|---------|----------|
+| Rate Progress Bar | `_metric/input/rateactual` / `ratestandard` |
+| Throughput Bar | `_metric/input/countoutfeed` / `countdefect` |
+| Infeed Count | `_metric/input/countinfeed` |
+| Outfeed Count | `_metric/input/countoutfeed` |
+| Defect Count | `_metric/input/countdefect` |
+
+**Size:** 320 x 220 px
+
+---
+
+### Widget 3: Area Availability Widget
+
+**File:** `area-availability-widget-view.json`
+
+Time breakdown showing how time is being spent in the area.
+
+| Feature | Tag Path | Color |
+|---------|----------|-------|
+| Running Time | `_metric/input/timerunning` | Green (#4CAF50) |
+| Idle Time | `_metric/input/timeidle` | Yellow (#FFC107) |
+| Planned Downtime | `_metric/input/timedownplanned` | Orange (#FF9800) |
+| Unplanned Downtime | `_metric/input/timedownunplanned` | Red (#F44336) |
+
+**Size:** 320 x 140 px
+
+---
+
+### Widget 4: Area Status Widget
+
+**File:** `area-status-widget-view.json`
+
+Placeholder widget for KPIs that are not yet available in the tag structure.
+
+| KPI | Current Display | Why It Matters |
+|-----|----------------|---------------|
+| Equipment Active Count | "-- / --" | Shows area utilization (X of Y running) |
+| Active Alarm Count | "--" | Alerts needing attention in this area |
+| Active Work Orders | "--" | Production orders in progress |
+| MTBF | "-- hrs" | Mean Time Between Failures - reliability metric |
+| MTTR | "-- hrs" | Mean Time To Repair - maintenance responsiveness |
+
+**Size:** 320 x 220 px
+
+---
+
+### Dashboard Composition
+
+Place 4 widget instances per area on a Perspective dashboard. For a full site with 4 areas, that's 16 widget instances:
+
+```
+┌─── Filler Production ──┬─── Liquid Processing ──┬──── Packaging ────────┬──── Palletizing ──────┐
+│ [OEE Widget]           │ [OEE Widget]           │ [OEE Widget]          │ [OEE Widget]          │
+│ [Production Widget]    │ [Production Widget]    │ [Production Widget]   │ [Production Widget]   │
+│ [Availability Widget]  │ [Availability Widget]  │ [Availability Widget] │ [Availability Widget] │
+│ [Status Widget]        │ [Status Widget]        │ [Status Widget]       │ [Status Widget]       │
+└────────────────────────┴────────────────────────┴───────────────────────┴───────────────────────┘
+```
+
+Example basePath values per area:
+- `[default]Cappy Hour Inc/Site2/fillerproduction`
+- `[default]Cappy Hour Inc/Site2/liquidprocessing`
+- `[default]Cappy Hour Inc/Site2/packaging`
+- `[default]Cappy Hour Inc/Site2/palletizing`
+
+### Sites & Area Availability
+
+Not all sites have all 4 areas:
+
+| Site | fillerproduction | liquidprocessing | packaging | palletizing |
+|------|-----------------|-----------------|-----------|-------------|
+| Site1 | Yes | Yes | -- | -- |
+| Site2 | Yes | Yes | Yes | Yes |
+| Site3 | Yes | Yes | Yes | Yes |
+
+---
+
+## Line Dashboard Widgets
+
+A set of wide and compact widgets for composing a filling line dashboard, inspired by the React dashboard layout in `_ref/rollups/EntB/react-dashboard-example-layout.json`. Each widget takes a `basePath` parameter pointing to the **line level** of the tag hierarchy.
+
+### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `basePath` | String | Root path to the line-level instance (e.g., `[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01`) |
+
+### Dashboard Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ LINE METRICS (line-kpi-widget-view.json, 960×240)                          │
+│ [OEE] [AVAIL] [PERF] [QUAL] │ Rate Actual  Rate Std  IN    OUT    DEF    │
+│ gauge  gauge  gauge  gauge   │ value        value     count count  count  │
+│ [Time Running]  [Time Idle]  [Planned DT]  [Unplanned DT]                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ WORK ORDER (line-workorder-widget-view.json, 960×100)                      │
+│ WO-2026-1042  │  [████████████████░░░░░░]  75.2%  │  Defects  │  Yield   │
+│               │  8,234 / 24,000 bottles            │  42       │  99.65%  │
+├──────────────────┬──────────────────┬───────────────────────────────────────┤
+│ Filler           │ Cap Loader       │ Washer                               │
+│ (filler-widget)  │ (caploader-widg) │ (washer-widget)                      │
+│ 320×500          │ 320×500          │ 320×500                              │
+├──────────────────┼──────────────────┼───────────────────────────────────────┤
+│ ALL LINES COMPARISON (3x line-summary-widget-view.json, 320×180 each)      │
+│ Line 01          │ Line 02          │ Line 03                              │
+│ 85.2% OEE       │ 78.4% OEE       │ 91.0% OEE                           │
+│ A/P/Q values     │ A/P/Q values     │ A/P/Q values                        │
+│ [WO progress]    │ [WO progress]    │ [WO progress]                       │
+└──────────────────┴──────────────────┴───────────────────────────────────────┘
+```
+
+### Widget 1: Line KPI Widget
+
+**File:** `line-kpi-widget-view.json`
+
+Wide line-level metrics widget with 4 OEE gauges, 5 stat cards, and 4 time metric values.
+
+| Section | Feature | Tag Path |
+|---------|---------|----------|
+| Gauges | OEE | `_metric/oee` (× 100) |
+| Gauges | Availability | `_metric/availability` (× 100) |
+| Gauges | Performance | `_metric/performance` (× 100) |
+| Gauges | Quality | `_metric/quality` (× 100) |
+| Stats | Rate Actual (green) | `_metric/input/rateactual` |
+| Stats | Rate Standard (blue) | `_metric/input/ratestandard` |
+| Stats | Count Infeed | `_metric/input/countinfeed` |
+| Stats | Count Outfeed (green) | `_metric/input/countoutfeed` |
+| Stats | Count Defect (red) | `_metric/input/countdefect` |
+| Time | Time Running | `_metric/input/timerunning` |
+| Time | Time Idle (yellow) | `_metric/input/timeidle` |
+| Time | Planned Downtime (orange) | `_metric/input/timedownplanned` |
+| Time | Unplanned Downtime (red) | `_metric/input/timedownunplanned` |
+
+**Time Format:** Adaptive — shows minutes (`0.0m`) under 1 hour, hours (`0.0h`) otherwise.
+
+**Size:** 960 x 240 px
+
+---
+
+### Widget 2: Line Work Order Widget
+
+**File:** `line-workorder-widget-view.json`
+
+Horizontal work order display with progress bar, defect count, and calculated yield.
+
+| Feature | Tag Path |
+|---------|----------|
+| Work Order Number (blue) | `Work Order/workordernumber` |
+| Progress Bar | `Work Order/quantityactual` / `quantitytarget` |
+| Quantity Label | `quantityactual / quantitytarget uom` |
+| Completion % | Calculated: `(actual / target) × 100` |
+| Defect Count (red) | `Work Order/quantitydefect` |
+| Yield % | Calculated: `(1 - defect / actual) × 100` |
+
+**Size:** 960 x 100 px
+
+---
+
+### Widget 3: Line Summary Widget
+
+**File:** `line-summary-widget-view.json`
+
+Compact card for the "All Lines Comparison" section. Place one per filling line side by side.
+
+| Feature | Tag Path |
+|---------|----------|
+| Line Name | `_metadata/assetidentifier/displayname` |
+| OEE % (green, header) | `_metric/oee` (× 100) |
+| Availability % (blue) | `_metric/availability` (× 100) |
+| Performance % | `_metric/performance` (× 100) |
+| Quality % | `_metric/quality` (× 100) |
+| WO Progress Bar | `Work Order/quantityactual` / `quantitytarget` |
+| WO Number | `Work Order/workordernumber` |
+
+**Size:** 320 x 180 px
+
+---
+
+### Composed Dashboard: Line Dashboard
+
+**File:** `line-dashboard-view.json`
+
+A single parent view that composes all line widgets together using `ia.display.view` and `ia.display.flex-repeater`, matching the React reference layout.
+
+| Section | Component Type | View Template | Instances |
+|---------|---------------|---------------|-----------|
+| Line Metrics | `ia.display.view` | line-kpi-widget | 1 (basePath) |
+| Work Order | `ia.display.view` | line-workorder-widget | 1 (basePath) |
+| Equipment Cards | `ia.display.flex-repeater` | caploader-widget | 3 (filler, caploader, washer) |
+| Lines Comparison | `ia.display.flex-repeater` | line-summary-widget | 3 (one per line) |
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01` | Selected line path |
+| `lineKpiViewPath` | `WidgetBuilder/line-kpi-widget` | View path for line KPI widget |
+| `lineWorkorderViewPath` | `WidgetBuilder/line-workorder-widget` | View path for work order widget |
+| `equipmentViewPath` | `WidgetBuilder/caploader-widget` | View path for equipment cards |
+| `lineSummaryViewPath` | `WidgetBuilder/line-summary-widget` | View path for comparison cards |
+
+**Custom Properties (auto-bound):**
+
+- `equipmentInstances` — 3-element array, basePaths derived from `basePath + '/filler'`, `'/caploader'`, `'/washer'`
+- `comparisonInstances` — 3-element array, defaults to Site1's 3 filling lines (update for other sites)
+
+**Setup:** After importing all view JSON files into Perspective, update the `*ViewPath` parameters to match the actual view paths in your project.
+
+**Size:** 960 x 1100 px
+
+---
+
+### Composed Dashboard: Line Dashboard Compact
+
+**File:** `line-dashboard-compact-view.json`
+
+A compact dashboard designed to fit within tab containers. Shows line KPI metrics, work order, equipment status (name + state for filler/caploader/washer), and all-lines comparison cards.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Line KPI | `ia.display.view` | 200px (fixed) |
+| Work Order | `ia.display.view` | 80px (fixed) |
+| Equipment Header | `ia.container.flex` | auto |
+| Equipment Status | `ia.container.flex` (3 inline cards) | 60px (fixed) |
+| Comparison Header | `ia.container.flex` | auto |
+| Comparison Cards | `ia.display.flex-repeater` | grow (fills remaining) |
+
+**Equipment Status Section:**
+Three side-by-side cards showing name (`assetname`) and state (`State/name`) for each equipment:
+- Filler: `{basePath}/filler/_metadata/assetidentifier/assetname` + `State/name`
+- Caploader: `{basePath}/caploader/_metadata/assetidentifier/assetname` + `State/name`
+- Washer: `{basePath}/washer/_metadata/assetidentifier/assetname` + `State/name`
+
+**Line Comparison Section:**
+Uses `ia.display.flex-repeater` with `line-summary-widget` to show all lines side-by-side. Comparison instances are derived from `areaBasePath + '/fillingline01'`, `'/fillingline02'`, `'/fillingline03'`.
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01` | Selected line path |
+| `areaBasePath` | `[default]Cappy Hour Inc/Site1/fillerproduction` | Area path (for comparison instances) |
+| `lineKpiViewPath` | `UDT Views/Prove It/Rollups/EntB/line-kpi` | View path for line KPI widget |
+| `lineWorkorderViewPath` | `UDT Views/Prove It/Rollups/EntB/line-workorder` | View path for work order widget |
+| `lineSummaryViewPath` | `UDT Views/Prove It/Rollups/EntB/line-summary` | View path for comparison cards |
+
+**Size:** 1201 x 750 px
+
+---
+
+### Composed Dashboard: Line Dashboard Tabs
+
+**File:** `line-dashboard-tabs-view.json`
+
+Tab wrapper with a title breadcrumb, area-level KPI metrics, and **dynamic tabs** that automatically discover filling lines from the tag structure. The area metrics section shows aggregate OEE/A/P/Q gauges, production stats, and time breakdown for the entire area, while each tab drills into a specific filling line.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Title | `ia.display.view` (`Page/Embedded/Title`) | 50px (fixed) |
+| Area Metrics | `ia.container.flex` (inline) | 220px (fixed) |
+| Tab Container | `ia.container.tab` | grow (fills remaining) |
+
+**Area Metrics Section:**
+
+| Row | Content |
+|-----|---------|
+| AreaHeader | Area name from `_metadata/assetidentifier/assetname` |
+| TopRow (120px) | 4 OEE gauges (OEE, Avail, Perf, Qual) + 5 stat cards (Rate Actual, Rate Standard, Count In/Out/Defect) |
+| TimeRow (60px) | 4 time boxes: Running, Idle (yellow), Planned DT (orange), Unplanned DT (red) |
+
+**Area Metric Bindings (all under `{basePath}/_metric/`):**
+
+| Metric | Tag Path | Color |
+|--------|----------|-------|
+| OEE Gauge | `_metric/oee` (x100) | -- |
+| Availability Gauge | `_metric/availability` (x100) | -- |
+| Performance Gauge | `_metric/performance` (x100) | -- |
+| Quality Gauge | `_metric/quality` (x100) | -- |
+| Rate Actual | `_metric/input/rateactual` | Green (#4CAF50) |
+| Rate Standard | `_metric/input/ratestandard` | Blue (#2196F3) |
+| Count Infeed | `_metric/input/countinfeed` | -- |
+| Count Outfeed | `_metric/input/countoutfeed` | Green (#4CAF50) |
+| Count Defect | `_metric/input/countdefect` | Red (#F44336) |
+| Time Running | `_metric/input/timerunning` | -- |
+| Time Idle | `_metric/input/timeidle` | Yellow (#FFC107) |
+| Planned Downtime | `_metric/input/timedownplanned` | Orange (#FF9800) |
+| Unplanned Downtime | `_metric/input/timedownunplanned` | Red (#F44336) |
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/fillerproduction` | Area-level path (bound from `{session.custom.basePath}`, `paramDirection: inout`) |
+| `lineDashboardViewPath` | `UDT Views/Prove It/Rollups/EntB/line-overview` | View path for the compact dashboard |
+
+**Dynamic Tab Discovery:**
+
+Tabs are generated dynamically using a `custom.lineData` property with a script transform. The script scans `fillingline01` through `fillingline10` under the area basePath, reading `_metadata/assetidentifier/assetname` for each. Only lines with a valid (good quality, non-null) assetname tag are included.
+
+```python
+# Script transform on custom.lineData (triggered by basePath expression binding)
+basePath = value
+result = {'tabs': [], 'paths': []}
+for i in range(1, 11):
+    num = str(i).zfill(2)
+    lineName = 'fillingline' + num
+    tagPath = basePath + '/' + lineName + '/_metadata/assetidentifier/assetname'
+    try:
+        qv = system.tag.readBlocking([tagPath])
+        if qv[0].quality.isGood() and qv[0].value is not None:
+            result['tabs'].append(str(qv[0].value))
+            result['paths'].append(basePath + '/' + lineName)
+    except:
+        pass
+return result
+```
+
+- `custom.lineData.tabs` → bound to `props.tabs` on the tab container (controls tab labels)
+- `custom.lineData.paths[N]` → bound to each child's `props.params.basePath` (provides line-level path)
+- Site1 with 3 filling lines shows 3 tabs; Site3 with 1 filling line shows 1 tab
+- Tab names use `assetname` (e.g., "Filling Line 01") rather than hardcoded strings
+
+**Tab Behavior:**
+- Tab menu style: `modern` with responsive font sizing (13px desktop, 10px mobile)
+- Title breadcrumb reads the area `.Path` tag and formats as `Site > Area > ...`
+- Time values use adaptive format: minutes (`0.0m`) under 1 hour, hours (`0.0h`) otherwise
+- Up to 10 filling lines supported per area
+
+**Size:** 1201 x 1080 px
+
+---
+
+### Equipment Cards (Existing Widgets)
+
+The equipment card section uses the existing individual equipment widgets:
+
+| Widget | File | Size |
+|--------|------|------|
+| Filler | `filler-widget-view.json` | 320×500 |
+| Cap Loader | `caploader-widget-view.json` | 320×500 |
+| Washer | `washer-widget-view.json` | 320×500 |
+
+---
+
+## Liquid Processing Dashboard Widgets
+
+A set of widgets for composing a liquid processing area dashboard. The liquid processing area contains two sub-areas: **tankstorage** (tanks) and **mixroom** (vats). Equipment count varies by site.
+
+### Tag Hierarchy
+
+```
+liquidprocessing/
+├── _metric/                    # Area-level KPIs (same as other areas)
+├── tankstorage01/
+│   ├── _metric/                # Sub-area KPIs
+│   ├── tank01/                 # Name + State
+│   ├── tank02/
+│   └── ... (up to tank06 on Site1)
+└── mixroom01/
+    ├── _metric/                # Sub-area KPIs
+    ├── vat01/                  # Name + State + Work Order
+    ├── vat02/
+    └── ... (up to vat02 on Site2)
+```
+
+### Equipment by Site
+
+| Site | Tanks (tankstorage01) | Vats (mixroom01) |
+|------|----------------------|------------------|
+| Site1 | 6 | 1+ |
+| Site2 | 3 | 2 |
+| Site3 | 2 | 1 |
+
+### Widget 1: LP Tank Status Widget
+
+**File:** `lp-tank-status-widget-view.json`
+
+Simple status card showing tank name and current state.
+
+| Feature | Tag Path |
+|---------|----------|
+| Tank Name | `_metadata/assetidentifier/assetname` |
+| State | `State/name` |
+
+**Size:** 320 x 60 px
+
+---
+
+### Widget 2: LP Vat Status Widget
+
+**File:** `lp-vat-status-widget-view.json`
+
+Status card showing vat name, state, associated work order number, and production progress.
+
+| Feature | Tag Path |
+|---------|----------|
+| Vat Name | `_metadata/assetidentifier/assetname` |
+| State | `State/name` |
+| Work Order Number (blue) | `Work Order/workordernumber` |
+| Progress Value | `Work Order/quantityactual` |
+| Progress Max | `Work Order/quantitytarget` |
+
+**Size:** 320 x 120 px
+
+---
+
+### Composed Dashboard: LP Dashboard Compact
+
+**File:** `lp-dashboard-compact-view.json`
+
+Compact dashboard for liquid processing sub-areas (tab content). Shows sub-area KPI metrics and dynamically detected equipment cards. Auto-detects whether the sub-area contains tanks or vats and switches the widget view path accordingly.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Sub-Area KPI | `ia.display.view` | 200px (fixed) |
+| Equipment Header | `ia.container.flex` | auto |
+| Equipment Cards | `ia.display.flex-repeater` | grow (fills remaining) |
+
+**Auto-Detection Script:**
+
+The `custom.equipmentData` property uses a script transform that scans for both `tank01-10` and `vat01-10` under the basePath. Returns `{type: 'tank'|'vat', instances: [...]}`. The flex-repeater path binding uses a conditional expression:
+
+```
+if({view.custom.equipmentData.type} = 'vat', vatViewPath, tankViewPath)
+```
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/liquidprocessing/tankstorage01` | Sub-area path |
+| `lineKpiViewPath` | `UDT Views/Prove It/Rollups/EntB/line-kpi` | View path for KPI widget |
+| `tankStatusViewPath` | `UDT Views/Prove It/Rollups/EntB/lp-tank-status-widget-view` | View path for tank cards |
+| `vatStatusViewPath` | `UDT Views/Prove It/Rollups/EntB/lp-vat-status-widget-view` | View path for vat cards |
+
+**Size:** 1201 x 750 px
+
+---
+
+### Composed Dashboard: LP Dashboard Tabs
+
+**File:** `lp-dashboard-tabs-view.json`
+
+Tab wrapper with a title breadcrumb, area-level KPI metrics (identical to filler production tabs), and **dynamic tabs** for sub-areas. The script scans for `tankstorage01` and `mixroom01` under the area basePath, reading `assetname` to generate tab labels.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Title | `ia.display.view` (`Page/Embedded/Title`) | 50px (fixed) |
+| Area Metrics | `ia.container.flex` (4 gauges + 5 stats + 4 time boxes) | 220px (fixed) |
+| Tab Container | `ia.container.tab` | grow (fills remaining) |
+
+**Dynamic Sub-Area Discovery:**
+
+```python
+basePath = value
+result = {'tabs': [], 'paths': []}
+subAreas = ['tankstorage01', 'mixroom01']
+for sa in subAreas:
+    tagPath = basePath + '/' + sa + '/_metadata/assetidentifier/assetname'
+    try:
+        qv = system.tag.readBlocking([tagPath])
+        if qv[0].quality.isGood() and qv[0].value is not None:
+            result['tabs'].append(str(qv[0].value))
+            result['paths'].append(basePath + '/' + sa)
+    except:
+        pass
+return result
+```
+
+- Tab names come from `assetname` (e.g., "Tank Storage 01", "Mix Room 01")
+- Only sub-areas with valid tags appear as tabs
+- Each tab embeds `lp-dashboard-compact-view.json` which auto-detects equipment type
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]InPlay Oil/Cardium/Leafland/14-32-039-05W5/SAT 14-32-039-05W5` | Area-level path (bound from `{session.custom.basePath}`, `paramDirection: inout`) |
+| `lineDashboardViewPath` | `UDT Views/Prove It/Rollups/EntB/lp-dashboard-compact-view` | View path for the compact dashboard |
+
+**Size:** 1201 x 1080 px
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -1120,4 +1735,17 @@ compressor/
 - [x] Create Enterprise C widgets (45 total)
 - [x] Create vendor UDT compressor widget with operating state visualization
 - [x] Create vendor UDT compressor config/metadata view
+- [x] Create vendor UDT SP474 gas meter widget with volume comparison
 - [ ] Add additional vendor UDT equipment types (pumps, valves, etc.)
+- [x] Create area rollup widget set (OEE, Production, Availability, Status)
+- [x] Create line dashboard widget set (KPI, Work Order, Summary)
+- [x] Create compact no-scroll line dashboard for tab containers
+- [x] Create tabbed line dashboard with title breadcrumb
+- [x] Dynamic tab discovery from tag structure (assetname-based, conditional visibility)
+- [x] Create liquid processing dashboard widget set (tank status, vat status, compact, tabs)
+- [x] Auto-detect equipment type (tank vs vat) in LP compact dashboard
+- [ ] Area Status: Add equipment active count tag binding when available
+- [ ] Area Status: Add active alarm count tag binding when available
+- [ ] Area Status: Add active work order count tag binding when available
+- [ ] Area Status: Add MTBF tag binding when available
+- [ ] Area Status: Add MTTR tag binding when available

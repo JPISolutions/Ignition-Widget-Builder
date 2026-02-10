@@ -1,0 +1,363 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 180,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "LineName"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/_metadata/assetidentifier/displayname"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "Filling Line"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "OEEValue"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + '/_metric/oee') * 100, '0.0') + '% OEE'"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value",
+                "color": "#4CAF50"
+              },
+              "text": "--% OEE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/availability') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#2196F3",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Avail"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Avail"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/performance') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Perf"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Perf"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/quality') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Qual"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Qual"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "APQRow"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {},
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Progress"
+            },
+            "position": {
+              "basis": "16px"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "expression": "tag({view.params.basePath} + '/Work Order/quantityactual')"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.max": {
+                "binding": {
+                  "config": {
+                    "expression": "tag({view.params.basePath} + '/Work Order/quantitytarget')"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "max": 100,
+              "style": {
+                "paddingBottom": 2,
+                "paddingTop": 2
+              },
+              "valueDisplay": {
+                "enabled": false
+              }
+            },
+            "type": "ia.display.progress"
+          },
+          {
+            "meta": {
+              "name": "WONumber"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/Work Order/workordernumber"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label",
+                "fontSize": "10px",
+                "textAlign": "right"
+              },
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "WOSection"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder",
+            "paddingBottom": 4,
+            "paddingTop": 4
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

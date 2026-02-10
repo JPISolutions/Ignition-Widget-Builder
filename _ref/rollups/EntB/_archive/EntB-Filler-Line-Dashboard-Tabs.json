@@ -1,0 +1,171 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]InPlay Oil/Cardium/Leafland/14-32-039-05W5/SAT 14-32-039-05W5"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "binding": {
+        "config": {
+          "path": "session.custom.basePath"
+        },
+        "type": "property"
+      },
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 832
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "basePath": "{session.custom.basePath}"
+                },
+                "tagPath": "{basePath}.Path"
+              },
+              "transforms": [
+                {
+                  "expression": "replace(replace({value}, \u0027[default]\u0027, \u0027\u0027), \u0027/\u0027, \u0027 \u003e \u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "icon": "dashboard"
+          },
+          "path": "Page/Embedded/Title"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Line01"
+            },
+            "propConfig": {
+              "props.params.basePath": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.basePath} + \"/fillingline01\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "UDT Views/Prove It/Rollups/EntB/line-overview"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Line02"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "propConfig": {
+              "props.params.basePath": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.basePath} + \"/fillingline02\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "UDT Views/Prove It/Rollups/EntB/line-overview"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Line03"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "propConfig": {
+              "props.params.basePath": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.basePath} + \"/fillingline03\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "UDT Views/Prove It/Rollups/EntB/line-overview"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "basis": "800px"
+        },
+        "propConfig": {
+          "props.tabStyle.active.fontSize": {
+            "binding": {
+              "config": {
+                "expression": "if({page.props.dimensions.viewport.width}\u003e650, \"13px\", \"10px\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.tabStyle.inactive.fontSize": {
+            "binding": {
+              "config": {
+                "expression": "if({page.props.dimensions.viewport.width}\u003e650, \"13px\", \"10px\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "menuType": "modern",
+          "tabs": [
+            "Line 01",
+            "Line 02",
+            "Line 03"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

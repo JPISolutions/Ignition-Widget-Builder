@@ -1,0 +1,160 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/liquidprocessing/tankstorage01",
+    "lineKpiViewPath": "UDT Views/Prove It/Rollups/EntB/line-kpi",
+    "tankStatusViewPath": "UDT Views/Prove It/Rollups/EntB/lp-tank-status-widget-view",
+    "vatStatusViewPath": "UDT Views/Prove It/Rollups/EntB/lp-vat-status-widget-view"
+  },
+  "propConfig": {
+    "custom.equipmentData": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath}"
+        },
+        "transforms": [
+          {
+            "code": "\tbasePath \u003d value\n\tresult \u003d {\u0027type\u0027: \u0027\u0027, \u0027instances\u0027: []}\n\tfor prefix in [\u0027tank\u0027, \u0027vat\u0027]:\n\t\tfor i in range(1, 11):\n\t\t\tnum \u003d str(i).zfill(2)\n\t\t\tname \u003d prefix + num\n\t\t\ttagPath \u003d basePath + \u0027/\u0027 + name + \u0027/_metadata/assetidentifier/assetname\u0027\n\t\t\ttry:\n\t\t\t\tqv \u003d system.tag.readBlocking([tagPath])\n\t\t\t\tif qv[0].quality.isGood() and qv[0].value is not None:\n\t\t\t\t\tresult[\u0027type\u0027] \u003d prefix\n\t\t\t\t\tresult[\u0027instances\u0027].append({\u0027basePath\u0027: basePath + \u0027/\u0027 + name})\n\t\t\texcept:\n\t\t\t\tpass\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineKpiViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tankStatusViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.vatStatusViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 750,
+      "width": 1201
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "SubAreaKPI"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineKpiViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "EQUIPMENT"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EquipmentCards"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.equipmentData.instances"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.equipmentData.type} \u003d \u0027vat\u0027, {view.params.vatStatusViewPath}, {view.params.tankStatusViewPath})"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elementStyle": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "4px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

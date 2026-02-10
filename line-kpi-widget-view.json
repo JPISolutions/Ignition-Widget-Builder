@@ -1,0 +1,996 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1/fillerproduction/fillingline01"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 240,
+      "width": 960
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "LINE METRICS"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/_metric/oee\") * 100, '0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "maxValue": 100,
+                      "minValue": 0,
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "OEE"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          },
+                          "text": "%"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "OEE_Container"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/_metric/availability\") * 100, '0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "maxValue": 100,
+                      "minValue": 0,
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "AVAIL"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          },
+                          "text": "%"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Availability_Container"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/_metric/performance\") * 100, '0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "maxValue": 100,
+                      "minValue": 0,
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "PERF"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          },
+                          "text": "%"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Performance_Container"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "SimpleGauge"
+                    },
+                    "position": {
+                      "basis": "91.8px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + \"/_metric/quality\") * 100, '0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "arc": {
+                        "width": 10
+                      },
+                      "label": {
+                        "maxDecimal": 1,
+                        "size": 15
+                      },
+                      "maxValue": 100,
+                      "minValue": 0,
+                      "style": {
+                        "marginBottom": 0
+                      }
+                    },
+                    "type": "ia.chart.simple-gauge"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "left"
+                          },
+                          "text": "QUAL"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "Framework/Card/Label",
+                            "textAlign": "right"
+                          },
+                          "text": "%"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "label"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Quality_Container"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "GaugesSection"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + '/_metric/input/rateactual'), '#,##0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Value",
+                        "color": "#4CAF50",
+                        "fontSize": "18px",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "10px",
+                        "textAlign": "center"
+                      },
+                      "text": "Rate Actual"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "RateActual"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + '/_metric/input/ratestandard'), '#,##0.0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Value",
+                        "color": "#2196F3",
+                        "fontSize": "18px",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "10px",
+                        "textAlign": "center"
+                      },
+                      "text": "Rate Standard"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "RateStandard"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + '/_metric/input/countinfeed'), '#,##0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Value",
+                        "fontSize": "18px",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "10px",
+                        "textAlign": "center"
+                      },
+                      "text": "Count Infeed"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "CountInfeed"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + '/_metric/input/countoutfeed'), '#,##0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Value",
+                        "color": "#4CAF50",
+                        "fontSize": "18px",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "10px",
+                        "textAlign": "center"
+                      },
+                      "text": "Count Outfeed"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "CountOutfeed"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Value"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberformat(tag({view.params.basePath} + '/_metric/input/countdefect'), '#,##0')"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Value",
+                        "color": "#F44336",
+                        "fontSize": "18px",
+                        "textAlign": "center"
+                      },
+                      "text": "--"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "fontSize": "10px",
+                        "textAlign": "center"
+                      },
+                      "text": "Count Defect"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "CountDefect"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center",
+                  "style": {
+                    "classes": "Framework/Card/ContainerWBorder"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "StatsSection"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TopRow"
+        },
+        "position": {
+          "basis": "120px"
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/_metric/input/timerunning') < 3600, numberformat(tag({view.params.basePath} + '/_metric/input/timerunning') / 60, '0.0') + 'm', numberformat(tag({view.params.basePath} + '/_metric/input/timerunning') / 3600, '0.0') + 'h')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "16px",
+                    "textAlign": "center"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Time Running"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeRunning"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/_metric/input/timeidle') < 3600, numberformat(tag({view.params.basePath} + '/_metric/input/timeidle') / 60, '0.0') + 'm', numberformat(tag({view.params.basePath} + '/_metric/input/timeidle') / 3600, '0.0') + 'h')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#FFC107",
+                    "fontSize": "16px",
+                    "textAlign": "center"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Time Idle"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeIdle"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/_metric/input/timedownplanned') < 3600, numberformat(tag({view.params.basePath} + '/_metric/input/timedownplanned') / 60, '0.0') + 'm', numberformat(tag({view.params.basePath} + '/_metric/input/timedownplanned') / 3600, '0.0') + 'h')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#FF9800",
+                    "fontSize": "16px",
+                    "textAlign": "center"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Planned Downtime"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimePlanned"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(tag({view.params.basePath} + '/_metric/input/timedownunplanned') < 3600, numberformat(tag({view.params.basePath} + '/_metric/input/timedownunplanned') / 60, '0.0') + 'm', numberformat(tag({view.params.basePath} + '/_metric/input/timedownunplanned') / 3600, '0.0') + 'h')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#F44336",
+                    "fontSize": "16px",
+                    "textAlign": "center"
+                  },
+                  "text": "--"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Unplanned Downtime"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TimeUnplanned"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TimeRow"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

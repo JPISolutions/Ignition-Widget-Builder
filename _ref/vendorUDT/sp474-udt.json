@@ -1,0 +1,1130 @@
+{
+  "name": "SP474",
+  "parameters": {
+    "srcBasePath": {
+      "dataType": "String",
+      "value": ""
+    }
+  },
+  "tagType": "UdtType",
+  "tags": [
+    {
+      "name": "Operational",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Status_2",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Status_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Status\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "FlowRate",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_FlowRate\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_FlowRate_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "AccumulatedVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AccumulatedVolume_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AccumulatedVolume\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Status",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Status_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Status\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "CurrentHourVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentHourVolume\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentHourVolume_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "StaticPressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_StaticPressure\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_StaticPressure_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "hasRun_Status",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_Status\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_Status_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "CurrentDayVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentDayVolume_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentDayVolume\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "DifferentialPressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_DifferentialPressure\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_DifferentialPressure_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Temperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Temperature\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Temperature_timestamp\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "timestamp",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "_metadata",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_OrificeTapType\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "OrificeTapType",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/rdfs_label\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "label_2",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_RunName\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "RunName",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_FlowDirection\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "FlowDirection",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_CurrentDateTime\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "CurrentDateTime",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Name\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Name",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_ContractHour\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "ContractHour_2",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_Owner\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasRun_Owner",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "PipeReferenceTemperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PipeReferenceTemperature_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PipeReferenceTemperature\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Location\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Location",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "BaseTemperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_BaseTemperature\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_BaseTemperature_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_rdfs_label\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "label",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "AtmosphericPressure_2",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_AtmosphericPressure\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_AtmosphericPressure_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Latitude_2",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Latitude\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Latitude_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_FlowExtension\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "FlowExtension",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "PreviousHourVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PreviousHourVolume_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PreviousHourVolume\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "IsentropicExponent",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_IsentropicExponent_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_IsentropicExponent\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Model\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Model",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_SurfaceLSD\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasRun_SurfaceLSD",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "Longitude_2",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Longitude_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Longitude\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_RunNumber\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "RunNumber",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "BasePressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_BasePressure_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_BasePressure\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "CurrentHourVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentHourVolume_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "DifferentialPressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_DifferentialPressure_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Viscosity",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Viscosity_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Viscosity\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Elevation_2",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Elevation_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Elevation\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_type\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasMeterConfiguration_type",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_SurfaceLSD\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "SurfaceLSD_2",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_type\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasRun_type",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/id\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "id",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_MeterType\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "MeterType",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Owner\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Owner",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "AGA3",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AGA3_Calculation\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "Calculation",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/type\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "type",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "Boolean",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_Enabled\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Enabled",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PipeMaterial\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "PipeMaterial",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_id\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasMeterConfiguration_id",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "CurrentDayVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_CurrentDayVolume_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "StaticPressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_StaticPressure_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_Manufacturer\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Manufacturer",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_rdfs_label\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasRun_label",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Units\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Units",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_ContractHour\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "ContractHour",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "Elevation",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Elevation\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Elevation_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Latitude",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Latitude\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Latitude_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "AtmosphericPressure",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AtmosphericPressure_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AtmosphericPressure\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_id\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "hasRun_id",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "AccumulatedVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_AccumulatedVolume_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_DeviceName\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "DeviceName",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_OrificeMaterial\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "OrificeMaterial",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_propertyValues_Purpose\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "Purpose",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "FlowRate",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_FlowRate_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "OrificeReferenceTemperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_OrificeReferenceTemperature\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_OrificeReferenceTemperature_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "Longitude",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Longitude_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Float8",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Longitude\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "name": "PreviousDayVolume",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PreviousDayVolume_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Int4",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_PreviousDayVolume\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "value",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_NumberOfRuns\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "NumberOfRuns",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "name": "Temperature",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "dataType": "String",
+              "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_Temperature_unit\")",
+              "historyEnabled": true,
+              "historyProvider": "ignHistorian",
+              "name": "unit",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            }
+          ]
+        },
+        {
+          "dataType": "Int4",
+          "expression": "tag({srcBasePath} + \"/jpi_propertyValues_ActiveAlarmCount\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "ActiveAlarmCount",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        },
+        {
+          "dataType": "String",
+          "expression": "tag({srcBasePath} + \"/jpi_hasRun_1_jpi_hasMeterConfiguration_jpi_propertyValues_SurfaceLSD\")",
+          "historyEnabled": true,
+          "historyProvider": "ignHistorian",
+          "name": "SurfaceLSD",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        }
+      ]
+    },
+    {
+      "name": "Widget",
+      "tagType": "UdtInstance",
+      "tags": [
+        {
+          "name": "pathTrend",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "title",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeY",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "params",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathConfig",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "sizeX",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "path",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "pathDetail",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "priority",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "hide",
+          "tagType": "AtomicTag"
+        }
+      ],
+      "typeId": "JPI-Framework/Misc/Metadata/Widget"
+    }
+  ]
+}

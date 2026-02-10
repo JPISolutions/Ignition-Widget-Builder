@@ -1,0 +1,397 @@
+{
+  "custom": {},
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site2/fillerproduction"
+  },
+  "propConfig": {
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 220,
+      "width": 320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "PRODUCTION"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Progress"
+                },
+                "position": {
+                  "basis": "36px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "tag({view.params.basePath} + \"/_metric/input/rateactual\")"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.max": {
+                    "binding": {
+                      "config": {
+                        "expression": "tag({view.params.basePath} + \"/_metric/input/ratestandard\")"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "max": 100,
+                  "style": {
+                    "paddingBottom": 6,
+                    "paddingTop": 6
+                  },
+                  "valueDisplay": {
+                    "enabled": true,
+                    "format": "0"
+                  }
+                },
+                "type": "ia.display.progress"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "left"
+                      },
+                      "text": "RATE"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Framework/Card/Label",
+                        "textAlign": "right"
+                      },
+                      "text": "PPM"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "props": {
+                  "justify": "center",
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Rate_Container"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder",
+                "paddingTop": 4
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "RateRow"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ThroughputLabel"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "THROUGHPUT"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "OutfeedSegment"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.grow": {
+                    "binding": {
+                      "config": {
+                        "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/countoutfeed'))"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.tooltip": {
+                    "binding": {
+                      "config": {
+                        "expression": "'Outfeed: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countoutfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#4CAF50",
+                    "borderRadius": "4px 0 0 4px"
+                  },
+                  "tooltip": ""
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "DefectSegment"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.grow": {
+                    "binding": {
+                      "config": {
+                        "expression": "max(0.001, tag({view.params.basePath} + '/_metric/input/countdefect'))"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.tooltip": {
+                    "binding": {
+                      "config": {
+                        "expression": "'Defect: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countdefect'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#F44336",
+                    "borderRadius": "0 4px 4px 0"
+                  },
+                  "tooltip": ""
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "ThroughputBar"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "borderRadius": "4px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "InfeedLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'IN: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countinfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "left"
+                  },
+                  "text": "IN: 0"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "OutfeedLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'OUT: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countoutfeed'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "color": "#4CAF50",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "OUT: 0"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DefectLabel"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "'DEF: ' + numberformat(tag({view.params.basePath} + '/_metric/input/countdefect'), '#,##0')"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "color": "#F44336",
+                    "fontSize": "10px",
+                    "textAlign": "right"
+                  },
+                  "text": "DEF: 0"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ThroughputLegend"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ThroughputMetrics"
+        },
+        "position": {
+          "basis": "70px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Framework/Card/ContainerWBorder",
+            "paddingBottom": 4,
+            "paddingTop": 4
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}
