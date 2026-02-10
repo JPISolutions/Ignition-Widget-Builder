@@ -84,6 +84,14 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 | Palletizing Dashboard Compact (No-scroll) | Complete |
 | Palletizing Dashboard Tabs (dynamic sub-area switcher) | Complete |
 
+### Site Dashboard Widgets
+
+| Widget | Status |
+|--------|--------|
+| Area Summary Widget | Complete |
+| Site Summary Widget (Site card with area summaries) | Complete |
+| Site Dashboard (KPI + Site Comparison) | Complete |
+
 ## Files
 
 ```
@@ -198,6 +206,11 @@ Ignition-Widget-Builder/
 ├── pal-equipment-status-widget-view.json  # Generic equipment status card (name + state)
 ├── pal-dashboard-compact-view.json        # No-scroll compact dashboard for palletizing sub-areas
 ├── pal-dashboard-tabs-view.json           # Tab wrapper with dynamic sub-area tabs + area metrics
+│
+├── # Site Dashboard Widgets
+├── area-summary-widget-view.json          # Compact area summary card (name + OEE + A/P/Q)
+├── site-summary-widget-view.json          # Site card with OEE/APQ + embedded area summaries
+├── site-dashboard-view.json               # Site dashboard with KPI + site comparison
 │
 └── README.md                             # This file
 ```
@@ -1985,6 +1998,149 @@ return result
 
 ---
 
+## Site Dashboard Widgets
+
+A site-level dashboard showing site KPI metrics at the top and a dynamic site comparison at the bottom. The comparison section discovers all sites and renders each as a site-summary card containing embedded area summaries.
+
+### Tag Hierarchy
+
+```
+Cappy Hour Inc/
+├── Site1/
+│   ├── _metric/                    # Site-level KPIs (oee, availability, performance, quality, input/*)
+│   ├── _metadata/                  # Site-level asset identification
+│   ├── fillerproduction/           # Area
+│   ├── liquidprocessing/           # Area
+│   ├── packaging/                  # Area
+│   └── palletizing/                # Area
+├── Site2/ (same structure)
+└── Site3/ (same structure)
+```
+
+### Widget 1: Area Summary Widget
+
+**File:** `area-summary-widget-view.json`
+
+Compact area card showing area-level OEE metrics. Used as embedded cards within site-summary-widget.
+
+```
+┌──────────────────────────────────────┐
+│ [Area Name]              [85.2% OEE] │  ← Header
+│ [Avail (blue)]  [Perf]  [Qual]       │  ← APQ row (50px)
+└──────────────────────────────────────┘
+```
+
+| Feature | Tag Path | Color |
+|---------|----------|-------|
+| Area Name | `_metadata/assetidentifier/assetname` | -- |
+| OEE % | `_metric/oee` (× 100) | Green (#4CAF50) |
+| Availability % | `_metric/availability` (× 100) | Blue (#2196F3) |
+| Performance % | `_metric/performance` (× 100) | -- |
+| Quality % | `_metric/quality` (× 100) | -- |
+
+**Size:** 320 x 100 px
+
+---
+
+### Widget 2: Site Summary Widget
+
+**File:** `site-summary-widget-view.json`
+
+Site card that shows site-level OEE/APQ metrics and dynamically discovers and embeds area summary cards. Used as repeated instances in the site dashboard comparison section.
+
+```
+┌──────────────────────────────────────┐
+│ [Site Name]              [85.2% OEE] │  ← SiteHeader
+│ [Avail (blue)]  [Perf]  [Qual]       │  ← APQ row (50px)
+│ ┌─Filler Production──────85% OEE──┐ │
+│ │ [Avail]  [Perf]  [Qual]         │ │  ← area-summary-widget
+│ └─────────────────────────────────┘ │
+│ ┌─Liquid Processing──────82% OEE──┐ │
+│ │ [Avail]  [Perf]  [Qual]         │ │  ← area-summary-widget
+│ └─────────────────────────────────┘ │
+│ ┌─Packaging──────────────79% OEE──┐ │
+│ │ [Avail]  [Perf]  [Qual]         │ │  ← area-summary-widget
+│ └─────────────────────────────────┘ │
+│ ┌─Palletizing────────────91% OEE──┐ │
+│ │ [Avail]  [Perf]  [Qual]         │ │  ← area-summary-widget
+│ └─────────────────────────────────┘ │
+└──────────────────────────────────────┘
+```
+
+**Area Discovery Script** (on `custom.areaData`):
+
+```python
+basePath = value
+result = []
+for area in ['fillerproduction', 'liquidprocessing', 'packaging', 'palletizing']:
+    tagPath = basePath + '/' + area + '/_metadata/assetidentifier/assetname'
+    try:
+        qv = system.tag.readBlocking([tagPath])
+        if qv[0].quality.isGood() and qv[0].value is not None:
+            result.append({'basePath': basePath + '/' + area})
+    except:
+        pass
+return result
+```
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1` | Site-level tag path |
+| `areaSummaryViewPath` | `UDT Views/Prove It/Rollups/EntB/area-summary-widget-view` | View path for area summary cards |
+
+**Size:** 380 x 550 px
+
+---
+
+### Composed Dashboard: Site Dashboard
+
+**File:** `site-dashboard-view.json`
+
+Site dashboard with KPI metrics at the top and a site comparison section at the bottom. The comparison dynamically discovers all sites and renders site-summary-widgets side-by-side.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Title | `ia.display.view` (`Page/Embedded/Title`) | 50px (fixed) |
+| Site Metrics | `ia.container.flex` (4 gauges + 5 stats + 4 time boxes) | 220px (fixed) |
+| Comparison Header | `ia.container.flex` | auto |
+| Site Comparison | `ia.display.flex-repeater` (site-summary-widgets) | grow (fills remaining) |
+
+**Site Discovery Script** (on `custom.siteData`):
+
+```python
+basePath = value
+parts = basePath.rsplit('/', 1)
+enterprisePath = parts[0] if len(parts) > 1 else basePath
+result = []
+for i in range(1, 11):
+    siteName = 'Site' + str(i)
+    tagPath = enterprisePath + '/' + siteName + '/_metadata/assetidentifier/assetname'
+    try:
+        qv = system.tag.readBlocking([tagPath])
+        if qv[0].quality.isGood() and qv[0].value is not None:
+            result.append({'basePath': enterprisePath + '/' + siteName})
+    except:
+        pass
+return result
+```
+
+- Derives enterprise path from `basePath` (strips last segment)
+- Scans `Site1` through `Site10` for existence
+- Each discovered site becomes a site-summary-widget instance showing that site's OEE/APQ + area breakdowns
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1` | Site-level path (bound from `{session.custom.basePath}`, `paramDirection: inout`) |
+| `siteSummaryViewPath` | `UDT Views/Prove It/Rollups/EntB/site-summary-widget-view` | View path for site summary cards |
+
+**Size:** 1201 x 900 px
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -2013,6 +2169,10 @@ return result
 - [x] Create palletizing dashboard widget set (equipment status, compact, tabs)
 - [x] Auto-detect equipment (workstation/robot/pallet) in palletizing compact dashboard
 - [x] Dual-prefix tab discovery for mixed manual/automated palletizing sub-areas
+- [x] Create site dashboard with dynamic site comparison (site-summary-widget + area-summary-widget)
+- [x] Auto-discover sites from enterprise path for site comparison
+- [x] Create site dashboard with KPI + area comparison (generic, works for all sites)
+- [x] Create area summary widget for site-level comparison cards
 - [ ] Area Status: Add equipment active count tag binding when available
 - [ ] Area Status: Add active alarm count tag binding when available
 - [ ] Area Status: Add active work order count tag binding when available

@@ -1,0 +1,336 @@
+{
+  "custom": {
+    "areaData": []
+  },
+  "params": {
+    "basePath": "[default]Cappy Hour Inc/Site1",
+    "areaSummaryViewPath": "UDT Views/Prove It/Rollups/EntB/area-summary-widget-view"
+  },
+  "propConfig": {
+    "custom.areaData": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.basePath}"
+        },
+        "transforms": [
+          {
+            "code": "\tbasePath = value\n\tresult = []\n\tfor area in ['fillerproduction', 'liquidprocessing', 'packaging', 'palletizing']:\n\t\ttagPath = basePath + '/' + area + '/_metadata/assetidentifier/assetname'\n\t\ttry:\n\t\t\tqv = system.tag.readBlocking([tagPath])\n\t\t\tif qv[0].quality.isGood() and qv[0].value is not None:\n\t\t\t\tresult.append({'basePath': basePath + '/' + area})\n\t\texcept:\n\t\t\tpass\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.areaSummaryViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 550,
+      "width": 380
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SiteName"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "basePath": "{view.params.basePath}"
+                    },
+                    "tagPath": "{basePath}/_metadata/assetidentifier/assetname"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "OEEValue"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberformat(tag({view.params.basePath} + '/_metric/oee') * 100, '0.0') + '% OEE'"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Value",
+                "color": "#4CAF50"
+              },
+              "text": "--% OEE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "SiteHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/availability') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "color": "#2196F3",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Avail"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Avail"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/performance') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Perf"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Perf"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Value"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberformat(tag({view.params.basePath} + '/_metric/quality') * 100, '0.0') + '%'"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "fontSize": "14px",
+                    "textAlign": "center"
+                  },
+                  "text": "--%"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "fontSize": "10px",
+                    "textAlign": "center"
+                  },
+                  "text": "Qual"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Qual"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "APQRow"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {},
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AreaCards"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.areaData"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.areaSummaryViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "grow": 1
+          },
+          "elementStyle": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "instances": [],
+          "path": "",
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}
