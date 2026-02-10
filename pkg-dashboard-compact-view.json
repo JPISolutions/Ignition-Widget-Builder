@@ -1,0 +1,465 @@
+{
+  "custom": {},
+  "params": {
+    "areaBasePath": "[default]Cappy Hour Inc/Site1/packaging",
+    "basePath": "[default]Cappy Hour Inc/Site1/packaging/labelerline01",
+    "lineKpiViewPath": "UDT Views/Prove It/Rollups/EntB/line-kpi",
+    "lineSummaryViewPath": "UDT Views/Prove It/Rollups/EntB/line-summary",
+    "lineWorkorderViewPath": "UDT Views/Prove It/Rollups/EntB/line-workorder"
+  },
+  "propConfig": {
+    "custom.comparisonInstances": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.areaBasePath}"
+        },
+        "transforms": [
+          {
+            "code": "\tareaBasePath = value\n\tresult = []\n\tfor i in range(1, 11):\n\t\tnum = str(i).zfill(2)\n\t\tlineName = 'labelerline' + num\n\t\ttagPath = areaBasePath + '/' + lineName + '/_metadata/assetidentifier/assetname'\n\t\ttry:\n\t\t\tqv = system.tag.readBlocking([tagPath])\n\t\t\tif qv[0].quality.isGood() and qv[0].value is not None:\n\t\t\t\tresult.append({'basePath': areaBasePath + '/' + lineName})\n\t\texcept:\n\t\t\tpass\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.areaBasePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.basePath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineKpiViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineSummaryViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineWorkorderViewPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 750,
+      "width": 1201
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "LineKPI"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineKpiViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "LineWorkOrder"
+        },
+        "position": {
+          "basis": "80px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.basePath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.basePath}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineWorkorderViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "EQUIPMENT STATUS"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Name"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/labeler/_metadata/assetidentifier/assetname"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "State"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/labeler/State/name"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "LabelerStatus"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Name"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/sealer/_metadata/assetidentifier/assetname"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "State"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/sealer/State/name"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "SealerStatus"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Name"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/packager/_metadata/assetidentifier/assetname"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Label",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "State"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "basePath": "{view.params.basePath}"
+                        },
+                        "tagPath": "{basePath}/packager/State/name"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Framework/Card/Value",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "PackagerStatus"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Framework/Card/ContainerWBorder"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentStatus"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Framework/Card/Label"
+              },
+              "text": "ALL LINES COMPARISON"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ComparisonHeader"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Framework/Card/Row"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "ComparisonCards"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.comparisonInstances"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.lineSummaryViewPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elementPosition": {
+            "grow": 1
+          },
+          "elementStyle": {
+            "classes": "Framework/Card/ContainerWBorder"
+          },
+          "style": {
+            "gap": "4px"
+          }
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "4px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

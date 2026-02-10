@@ -69,6 +69,13 @@ A project to create reusable Perspective views/widgets for Ignition SCADA system
 | LP Dashboard Compact (No-scroll) | Complete |
 | LP Dashboard Tabs (dynamic sub-area switcher) | Complete |
 
+### Packaging Dashboard Widgets
+
+| Widget | Status |
+|--------|--------|
+| Packaging Dashboard Compact (No-scroll) | Complete |
+| Packaging Dashboard Tabs (dynamic labeler line switcher) | Complete |
+
 ## Files
 
 ```
@@ -174,6 +181,10 @@ Ignition-Widget-Builder/
 ├── lp-vat-status-widget-view.json         # Vat status card (name + state + work order + progress)
 ├── lp-dashboard-compact-view.json         # No-scroll compact dashboard for LP sub-areas
 ├── lp-dashboard-tabs-view.json            # Tab wrapper with dynamic sub-area tabs + area metrics
+│
+├── # Packaging Dashboard Widgets
+├── pkg-dashboard-compact-view.json        # No-scroll compact dashboard for labeler lines
+├── pkg-dashboard-tabs-view.json           # Tab wrapper with dynamic labeler line tabs + area metrics
 │
 └── README.md                             # This file
 ```
@@ -1720,6 +1731,94 @@ return result
 
 ---
 
+## Packaging Dashboard Widgets
+
+A set of dashboard views for the packaging area. The packaging area follows the **same structure as filler production** — labeler lines with 3 equipment each. Reuses the existing `line-kpi-widget`, `line-workorder-widget`, and `line-summary-widget`.
+
+### Tag Hierarchy
+
+```
+packaging/
+├── _metric/                    # Area-level KPIs
+├── labelerline01/
+│   ├── _metric/                # Line-level KPIs
+│   ├── labeler/                # Name + State + OEE metrics
+│   ├── sealer/                 # Name + State + OEE metrics
+│   ├── packager/               # Name + State + OEE metrics
+│   └── Work Order/             # Work order tracking
+├── labelerline02/
+└── ... (up to labelerline04 on Site1)
+```
+
+### Lines by Site
+
+| Site | Labeler Lines |
+|------|--------------|
+| Site1 | 4 (labelerline01-04) |
+| Site2 | 2 (labelerline01-02) |
+| Site3 | 1 (labelerline01) |
+
+### Composed Dashboard: Packaging Dashboard Compact
+
+**File:** `pkg-dashboard-compact-view.json`
+
+Compact dashboard for a single labeler line (tab content). Same layout as filler compact view with equipment swapped.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Line KPI | `ia.display.view` (reuses line-kpi-widget) | 200px (fixed) |
+| Work Order | `ia.display.view` (reuses line-workorder-widget) | 80px (fixed) |
+| Equipment Header | `ia.container.flex` | auto |
+| Equipment Status | `ia.container.flex` (3 inline cards) | 60px (fixed) |
+| Comparison Header | `ia.container.flex` | auto |
+| Comparison Cards | `ia.display.flex-repeater` (reuses line-summary-widget) | grow |
+
+**Equipment Status Cards:**
+- Labeler: `{basePath}/labeler/_metadata/assetidentifier/assetname` + `State/name`
+- Sealer: `{basePath}/sealer/_metadata/assetidentifier/assetname` + `State/name`
+- Packager: `{basePath}/packager/_metadata/assetidentifier/assetname` + `State/name`
+
+**Comparison Script:** Scans `labelerline01-10` under `areaBasePath`.
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/packaging/labelerline01` | Selected line path |
+| `areaBasePath` | `[default]Cappy Hour Inc/Site1/packaging` | Area path (for comparison instances) |
+| `lineKpiViewPath` | `UDT Views/Prove It/Rollups/EntB/line-kpi` | View path for line KPI widget |
+| `lineWorkorderViewPath` | `UDT Views/Prove It/Rollups/EntB/line-workorder` | View path for work order widget |
+| `lineSummaryViewPath` | `UDT Views/Prove It/Rollups/EntB/line-summary` | View path for comparison cards |
+
+**Size:** 1201 x 750 px
+
+---
+
+### Composed Dashboard: Packaging Dashboard Tabs
+
+**File:** `pkg-dashboard-tabs-view.json`
+
+Tab wrapper with title breadcrumb, area-level KPI metrics, and dynamic tabs for labeler lines. Identical structure to filler tabs view.
+
+| Section | Component Type | Height |
+|---------|---------------|--------|
+| Title | `ia.display.view` (`Page/Embedded/Title`) | 50px (fixed) |
+| Area Metrics | `ia.container.flex` (4 gauges + 5 stats + 4 time boxes) | 220px (fixed) |
+| Tab Container | `ia.container.tab` | grow (fills remaining) |
+
+**Dynamic Tab Discovery:** Scans `labelerline01-10` under basePath. Tab names from `assetname` tags.
+
+**Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `basePath` | `[default]Cappy Hour Inc/Site1/packaging` | Area-level path (bound from `{session.custom.basePath}`, `paramDirection: inout`) |
+| `lineDashboardViewPath` | `UDT Views/Prove It/Rollups/EntB/pkg-dashboard-compact-view` | View path for the compact dashboard |
+
+**Size:** 1201 x 1080 px
+
+---
+
 ## Future Enhancements
 
 - [ ] Add click actions to navigate to detail views
@@ -1744,6 +1843,7 @@ return result
 - [x] Dynamic tab discovery from tag structure (assetname-based, conditional visibility)
 - [x] Create liquid processing dashboard widget set (tank status, vat status, compact, tabs)
 - [x] Auto-detect equipment type (tank vs vat) in LP compact dashboard
+- [x] Create packaging dashboard widget set (compact + tabs, reuses line widgets)
 - [ ] Area Status: Add equipment active count tag binding when available
 - [ ] Area Status: Add active alarm count tag binding when available
 - [ ] Area Status: Add active work order count tag binding when available
